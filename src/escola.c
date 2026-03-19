@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include TAM_ALUNO 3
+#define TAM_ALUNO 3
 
 typedef struct alu{
     int matricula;
@@ -88,6 +88,33 @@ int main() {
                         }
                         case 3: {
                             printf(" Atualizar Aluno\n");
+                            printf(" Digite a matrícula ");
+                            int matricula;
+                            scanf("%d", &matricula);
+                            int achou = 0;
+                            if (matricula < 0 ){
+                                printf("Matrícula Inválida\n");
+                            }
+                            else{
+                                for(int i = 0; i < qtdAluno; i++)
+                                {
+                                    if(matricula == listaAluno[i].matricula && listaAluno[i].ativo){
+                                        //atualização
+                                        printf(" Digite a nova matrícula \n");
+                                        int novamatricula;
+                                        scanf("%d", &novamatricula);
+                                        listaAluno[j].matricula = matricula;
+                                        achou = 1;
+                                        break;
+                                    }
+                                }
+                                if (achou){
+                                    printf("Aluno atualizado com sucesso\n");
+                                }
+                                else{
+                                    printf("Matrícula inexistente\n");
+                                }
+                            }                            
                             break;
                         }
                         case 4: {
@@ -107,9 +134,9 @@ int main() {
                                         listaAluno[i].ativo = -1;
                                         
                                         for(int j = i; j < qtdAluno - 1; j++){ //shift
-                                            listaAluno[j].matricula = listaAluno[j].matricula;
-                                            listaAluno[j].sexo = listaAluno[j].sexo;
-                                            listaAluno[j].ativo = listaAluno[j].ativo;
+                                            listaAluno[j].matricula = listaAluno[j+1].matricula;
+                                            listaAluno[j].sexo = listaAluno[j+1].sexo;
+                                            listaAluno[j].ativo = listaAluno[j+1].ativo;
                                         }
                                         qtdAluno --;
                                         achou = 1;
