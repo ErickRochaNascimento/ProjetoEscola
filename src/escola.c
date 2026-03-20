@@ -201,7 +201,7 @@ int main()
         {
             printf("Módulo Professor\n");
             int sairProfessor = 0;
-            int opcaoProfessor;
+            int opcaoProfessor = 0;
             while (!sair)
             {
                 printf("0 - Voltar ao menu Principal\n");
@@ -220,46 +220,111 @@ int main()
                 case 1:
                 {
                     printf("Cadastrar Professor\n");
-                    printf("Digite a matricula\n");
+                    if(qtdProfessor == TAM_PROFESSOR){
+                        printf("Lista de Professor cheia\n");
+                    }else{
+                        printf("Digite a matricula\n");
                     int matricula;
                     scanf("%d", &matricula);
+                    int achou = 0;
                     if (matricula < 0)
                     {
                         printf("Matricula Invalida\n");
-                    }
-                    else
-                    {
-                        if (qtdProfessor == TAM_PROFESSOR)
-                        {
-                            printf("Lista de professores Cheia\n");
+                    }else{
+                        for(int i = 0; i < qtdProfessor; i++){
+                            if(matricula == listaProfessor[i].matricula && listaProfessor[i].ativo){
+                                printf(" Matricula ja existe\n");
+                                printf(" Cadastre uma nova\n");
+                            }
                         }
-                        else
-                        {
-                            listarProfessor[qtdProfessor] = matricula;
+                    }
+                    listaProfessor[qtdProfessor].matricula = matricula;
+                    listaProfessor[qtdProfessor].ativo = 1;
                             qtdProfessor++;
-                        }
+                            
                     }
+                    
+                    
+                    
 
                     break;
                 }
                 case 2:
                 {
                     printf("Listar Professor\n");
-                    for (int i = 0; i < TAM_PROFESSOR; i++)
+                    if(qtdProfessor == 0){
+                        printf(" Lista de professores vazia\n");
+                    }else{
+                        for (int i = 0; i < qtdProfessor; i++)
                     {
+                        if(listaProfessor[i].ativo == 1){
                         printf("Matricula: %d\n", listaProfessor[i]);
+ 
+                        }
                     }
-
+                    }
                     break;
                 }
                 case 3:
                 {
-                    printf("Atualizar Professor\n");
+                    printf(" Atualizar Professor\n");
+                    printf(" Digite a matricula ");
+                    int matricula;
+                    scanf("%d", &matricula);
+                    int achou = 0;
+                    if(matricula < 0){
+                        printf("Matricula Inválida\n");
+                    }else{
+                        for(int i = 0; i < qtdProfessor; i++){
+                            if(matricula == listaProfessor[i].matricula && listaProfessor[i].ativo){
+                                printf(" Digite a nova matricula \n");
+                                int novamatricula;
+                                scanf("%d", &novamatricula);
+                                listaProfessor[i].matricula = matricula;
+                                achou = 1;
+                                break;
+                            }
+                        }
+                        if(achou == 1){
+                            printf("Professor atualizado com sucesso\n");
+                        }else{
+                            printf("Matrícula inexistente\n");
+                        }
+                    }
                     break;
                 }
                 case 4:
                 {
-                    printf("Excluir Professor\n");
+                    printf(" Excluir Professor\n");
+                    printf(" Digite a matrícula ");
+                    int matricula;
+                    scanf("%d", &matricula);
+                    int achou = 0;
+                    if (matricula < 0)
+                    {
+                        printf("Matrícula Inválida\n");
+                    }
+                    else{
+                        for(int i = 0; i < qtdProfessor; i++){
+                            if(matricula == listaProfessor[i].matricula){
+                                listaProfessor[i].ativo = -1;
+                                
+                                for(int j = i; j < qtdProfessor - 1; j++){
+                                   listaProfessor[j].matricula = listaProfessor[j + 1].matricula;
+                                    listaProfessor[j].sexo = listaProfessor[j + 1].sexo;
+                                    listaProfessor[j].ativo = listaProfessor[j + 1].ativo;
+                                }
+                                qtdProfessor--;
+                                achou - 1;
+                                break;
+                            }
+                        }
+                    }
+                    if(achou == 1){
+                        printf("Professor excluido com sucesso\n");
+                    }else{
+                        printf("Matrícula inexistente\n");
+                    }
                     break;
                 }
                 default:
@@ -271,7 +336,6 @@ int main()
 
             break;
         }
-
         case 3:
         {
             printf("Módulo Disciplina\n");
@@ -283,4 +347,5 @@ int main()
         }
         }
     }
+    return 0;
 }
