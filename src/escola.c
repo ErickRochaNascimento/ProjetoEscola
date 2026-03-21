@@ -132,7 +132,7 @@ int main()
                                 printf(" Digite a nova matrícula \n");
                                 int novamatricula;
                                 scanf("%d", &novamatricula);
-                                listaAluno[j].matricula = matricula;
+                                listaAluno[i].matricula = matricula;
                                 achou = 1;
                                 break;
                             }
@@ -241,11 +241,11 @@ int main()
                     listaProfessor[qtdProfessor].matricula = matricula;
                     listaProfessor[qtdProfessor].ativo = 1;
                             qtdProfessor++;
-                            
+
                     }
-                    
-                    
-                    
+
+
+
 
                     break;
                 }
@@ -259,7 +259,7 @@ int main()
                     {
                         if(listaProfessor[i].ativo == 1){
                         printf("Matricula: %d\n", listaProfessor[i]);
- 
+
                         }
                     }
                     }
@@ -308,7 +308,7 @@ int main()
                         for(int i = 0; i < qtdProfessor; i++){
                             if(matricula == listaProfessor[i].matricula){
                                 listaProfessor[i].ativo = -1;
-                                
+
                                 for(int j = i; j < qtdProfessor - 1; j++){
                                    listaProfessor[j].matricula = listaProfessor[j + 1].matricula;
                                     listaProfessor[j].sexo = listaProfessor[j + 1].sexo;
