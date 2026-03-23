@@ -63,11 +63,11 @@ int excluirProfessor(int matricula)
     return 0;
 }
 
-    void listarProfessor(Professor *lista, int *qtd){
-        *qtd = qtdProfessor;
-        for (int i = 0; i < qtdProfessor; i++)
-        {
-            lista[i] = listaProfessor[i];
-        }
-        
+void listarProfessor(Professor *lista, int *qtd)
+{
+    *qtd = qtdProfessor;
+    for (int i = 0; i < qtdProfessor; i++)
+    {
+        lista[i] = listaProfessor[i];
     }
+}

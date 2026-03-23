@@ -1,5 +1,6 @@
 #include <stdio.h>
-#include "professor_controller.h"
+#include "./controller/professor_controller.h"
+
 #define TAM_ALUNO 3
 #define TAM_PROFESSOR 3
 
@@ -10,12 +11,7 @@ typedef struct alu
     int ativo;
 } Aluno;
 
-typedef struct professor
-{
-    int matricula;
-    char sexo;
-    int ativo;
-} Professor;
+
 
 int main()
 {
@@ -197,9 +193,11 @@ int main()
                 }
                 }
             }
+            break;
         }
         case 2:{
             gerenciarProfessor();
+            break;
         }
         case 3:
         {

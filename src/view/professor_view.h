@@ -1,10 +1,10 @@
 #ifndef PROFESSOR_VIEW_H
 #define PROFESSOR_VIEW_H
 
-#include "professor_model.h"
+#include "../model/professor_model.h"
 
 
-void exibirMenuProfessor();
+int exibirMenuProfessor();
 Professor pedirDadosProfessor();
 int pedirMatriculaProfessor();
 void exibirProfessor(Professor p);

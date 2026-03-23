@@ -32,7 +32,7 @@ Professor pedirDadosProfessor()
     return p;
 }
 
-void pedirMatriculaCadastroProfessor()
+int pedirMatriculaProfessor()
 {
     printf("Digite a matrícula: ");
     int matricula;
