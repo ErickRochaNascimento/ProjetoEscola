@@ -16,6 +16,6 @@ typedef struct professor
 int cadastrarProfessor(int matricula);
 int atualizarProfessor(int matriculaAntiga, Professor novoProfessor);
 int excluirProfessor(int matricula);
-Professor* listarProfessor(Professor lista, int qtd);
+void listarProfessor(Professor* lista, int *qtd);
 
 #endif

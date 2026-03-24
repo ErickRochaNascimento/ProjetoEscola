@@ -1,8 +1,6 @@
 #include "professor_controller.h"
-#include "professor_model.h"
-#include "professor_view.h"
-#include <stdio.h>
 
+#include <stdio.h>
 void gerenciarProfessor() {
     int opcaoProfessor;
     int sairProfessor = 0;
