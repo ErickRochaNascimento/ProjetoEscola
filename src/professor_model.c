@@ -1,9 +1,10 @@
 #include "professor_model.h"
+#include <string.h>
 
 Professor listaProfessor[TAM_PROFESSOR];
 int qtdProfessor = 0;
 
-int cadastrarProfessor(int matricula)
+int cadastrarProfessor(int matricula, char *nome, char *dataNascimento, char *cpf, char sexo)
 {
     if (qtdProfessor == TAM_PROFESSOR)
     {
@@ -11,63 +12,81 @@ int cadastrarProfessor(int matricula)
     }
     if (matricula < 0)
     {
-        return -2;
+        return -2; // Essa matricula é Inválida
     }
     for (int i = 0; i < qtdProfessor; i++)
     {
-        if (listaProfessor[i].matricula == matricula && listaProfessor[1].ativo == 1)
+        if (listaProfessor[i].matricula == matricula && listaProfessor[i].ativo == 1)
         {
-            return -2;
+            return 0; // já existe um professor com essa matrícula
         }
     }
+
     listaProfessor[qtdProfessor].matricula = matricula;
+
+    strcpy(listaProfessor->nome, nome);
+    strcpy(listaProfessor->dataNascimento, nome);
+    strcpy(listaProfessor->cpf, nome);
+
+    listaProfessor[qtdProfessor].sexo = sexo;
     listaProfessor[qtdProfessor].ativo = 1;
     qtdProfessor++;
 
-    return 1;
+    return 1; // matriculado com sucesso
 }
 
-int atualizarProfessor(int matriculaAntiga, Professor novoProfessor)
+Professor *listarProfessor()
 {
+    return listaProfessor;
+}
+
+int obterQtdProfessor()
+{
+    return qtdProfessor;
+}
+
+int atualizarProfessor(int matricula_antiga, int matricula_nova)
+{
+    if (matricula_nova < 0)
+    {
+        return -2; // matrícula inválida
+    }
     for (int i = 0; i < qtdProfessor; i++)
     {
-        if (matriculaAntiga == listaProfessor[i].matricula && listaProfessor[i].ativo == 1)
+        if (matricula_nova == listaProfessor[i].matricula && listaProfessor[i].ativo == 1)
         {
-            listaProfessor[i].matricula = novoProfessor.matricula;
-            return 1;
+            return 0; // alguem ja possui essa matricula
         }
     }
-    return 0;
+
+    for (int i = 0; i < qtdProfessor; i++)
+    {
+        if (matricula_antiga == listaProfessor[i].matricula && listaProfessor[i].ativo == 1)
+        {
+            listaProfessor[i].matricula = matricula_nova;
+            return 1; // Matricula atualizada
+        }
+    }
+
+    return -1; // Matricula antiga não encontrada
 }
 
 int excluirProfessor(int matricula)
 {
+    if (matricula < 0)
+        return -2; // Matricula invalida
+
     for (int i = 0; i < qtdProfessor; i++)
     {
-        if (matricula == listaProfessor[i].matricula && listaProfessor[i].ativo == 1)
+        if (matricula == listaProfessor[i].matricula && listaProfessor[i].ativo)
         {
-            listaProfessor[i].ativo = -1;
-
             for (int j = i; j < qtdProfessor - 1; j++)
             {
-                listaProfessor[j].matricula = listaProfessor[j + 1].matricula;
-                listaProfessor[j].sexo = listaProfessor[j + 1].sexo;
-                listaProfessor[j].ativo = listaProfessor[j + 1].ativo;
-                listaProfessor[j].nome = listaProfessor[j + 1].nome;
-                listaProfessor[j].dataNascimento = listaProfessor[j + 1].dataNascimento;
+                listaProfessor[j] = listaProfessor[j + 1];
             }
             qtdProfessor--;
-            return 1;
+            return 1; // Professor excluido com sucesso
         }
     }
-    return 0;
-}
-
-void listarProfessor(Professor *lista, int *qtd)
-{
-    *qtd = qtdProfessor;
-    for (int i = 0; i < qtdProfessor; i++)
-    {
-        lista[i] = listaProfessor[i];
-    }
+    return -1; // matricula não encontrada
 }

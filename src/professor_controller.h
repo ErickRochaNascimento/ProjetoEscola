@@ -1,10 +1,8 @@
 #ifndef PROFESSOR_CONTROLLER_H
 #define PROFESSOR_CONTROLLER_H
 
+#include "professor_view.h"
 
-
-#include "../view/professor_view.h"
-
-void gerenciarProfessor();
+void ModuloProfessor();
 
 #endif

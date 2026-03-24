@@ -1,100 +1,126 @@
 #include "professor_controller.h"
-
 #include <stdio.h>
-void gerenciarProfessor() {
+
+void ModuloProfessor()
+{
     int opcaoProfessor;
     int sairProfessor = 0;
 
-    while (!sairProfessor) {
-        exibirMenuProfessor();
-        scanf("%d", &opcaoProfessor);
+    while (!sairProfessor)
+    {
+        opcaoProfessor = imprimirMenuProfessor();
 
-        switch (opcaoProfessor) {
-            case 0: {
-                sairProfessor = 1;
-                exibirMensagem("Voltando ao menu principal...");
-                break;
+        switch (opcaoProfessor)
+        {
+        case 0:
+        {
+            sairProfessor = 1;
+            mostrarMensagem("Voltando ao menu principal...");
+            break;
+        }
+        case 1:
+        { // Cadastrar Professor
+            mostrarMensagem(" --- Cadastrar Professor --- ");
+            Professor novoProfessor = pedirDadosProfessor();
+
+            int resultadoBusca = cadastrarProfessor(novoProfessor.matricula, novoProfessor.nome, novoProfessor.dataNascimento, novoProfessor.cpf, novoProfessor.sexo);
+
+            if (resultadoBusca == 1)
+            {
+                mostrarMensagem("Professor cadastrado com sucesso!");
             }
-            case 1: { // Cadastrar Professor
-                Professor novoProfessor = pedirDadosProfessor();
-                if (novoProfessor.matricula < 0) {
-                    exibirMensagem("Matrícula Inválida!");
-                } else {
-                    int resultado = cadastrarProfessorModel(novoProfessor);
-                    if (resultado == 1) {
-                        exibirMensagem("Professor cadastrado com sucesso!");
-                    } else if (resultado == -1) {
-                        exibirMensagem("Lista de professores cheia!");
-                    } else if (resultado == -2) {
-                        exibirMensagem("Matrícula já existe!");
-                    }
-                }
-                break;
+
+            else if (resultadoBusca == -1)
+            {
+                mostrarMensagem("Lista de professores cheia!");
             }
-            case 2: { // Listar Professor
-                Professor professores[TAM_PROFESSOR];
-                int qtd = 0;
-                listarProfessoresModel(professores, &qtd);
-                exibirListaProfessores(professores, qtd);
-                break;
+
+            else if (resultadoBusca == -2)
+            {
+                mostrarMensagem("Matrícula invalida. ");
             }
-            case 3: { // Atualizar Professor
-                int matriculaAntiga = pedirMatriculaProfessor();
-                if (matriculaAntiga < 0) {
-                    exibirMensagem("Matrícula Inválida!");
-                    break;
-                }
-                Professor* professorExistente = buscarProfessorPorMatriculaModel(matriculaAntiga);
-                if (professorExistente == NULL || professorExistente->ativo == -1) {
-                    exibirMensagem("Professor não encontrado ou inativo.");
-                } else {
-                    exibirMensagem("Professor encontrado. Digite a nova matrícula:");
-                    Professor novaProfessor = pedirDadosProfessor(); // Pede a nova matrícula
-                    if (novaProfessor.matricula < 0) {
-                        exibirMensagem("Nova matrícula inválida!");
-                    } else {
-                        int resultado = atualizarProfessorModel(matriculaAntiga, novaProfessor);
-                        if (resultado == 1) {
-                            exibirMensagem("Professor atualizado com sucesso!");
-                        } else {
-                            exibirMensagem("Erro ao atualizar professor.");
-                        }
-                    }
-                }
-                break;
+
+            else if (resultadoBusca == 0)
+            {
+                mostrarMensagem("Já existe um professor cadastrado com essa matrícula! ");
             }
-            case 4: { // Excluir Professor
-                int matriculaParaExcluir = pedirMatriculaProfessor();
-                if (matriculaParaExcluir < 0) {
-                    exibirMensagem("Matrícula Inválida!");
-                    break;
-                }
-                int resultado = excluirProfessorModel(matriculaParaExcluir);
-                if (resultado == 1) {
-                    exibirMensagem("Professor excluído com sucesso!");
-                } else {
-                    exibirMensagem("Professor não encontrado.");
-                }
-                break;
+
+            break;
+        }
+        case 2:
+        { // Listar Professor
+            mostrarMensagem(" --- Listar Professor --- ");
+            int quantidade = obterQtdProfessor();
+
+            if (quantidade == 0)
+            {
+                mostrarMensagem("Lista de professores vazia!");
             }
-            default: {
-                exibirMensagem("Opção Inválida!");
-                break;
+            else
+            {
+                Professor *listaCompleta = listarProfessor();
+                exibirListaProfessores(listaCompleta, quantidade);
             }
+            break;
+        }
+        case 3:
+        { // Atualizar Professor
+            mostrarMensagem(" --- Atualizar Professor --- ");
+            int matriculaAntiga = pedirMatriculaProfessor();
+            int matriculaNova = pedirMatriculaProfessor();
+            int resultadoAtualizacao = atualizarProfessor(matriculaAntiga, matriculaNova);
+
+            if (resultadoAtualizacao == 1)
+            {
+                mostrarMensagem("Matrícula atualizada com sucesso! ");
+            }
+
+            else if (resultadoAtualizacao == -1)
+            {
+                mostrarMensagem("Matrícula antiga não encontrada. ");
+            }
+
+            else if (resultadoAtualizacao == -2)
+            {
+                mostrarMensagem("Matrícula nova inválida. ");
+            }
+
+            else if (resultadoAtualizacao == 0)
+            {
+                mostrarMensagem("Já existe um professor cadastrado com a nova matrícula! ");
+            }
+            break;
+        }
+        case 4:
+        { // Excluir Professor
+            mostrarMensagem(" --- Excluir Professor --- ");
+
+            int matriculaExcluir = pedirMatriculaProfessor();
+
+            int resultadoExclusao = excluirProfessor(matriculaExcluir);
+
+            if (resultadoExclusao == 1)
+            {
+                mostrarMensagem("Professor excluído com sucesso!");
+            }
+
+            else if (resultadoExclusao == -2)
+            {
+                mostrarMensagem("Matrícula inválida. ");
+            }
+
+            else if (resultadoExclusao == -1)
+            {
+                mostrarMensagem("Matrícula não encontrada. ");
+            }
+
+            break;
+        }
+        default:
+        {
+            mostrarMensagem("Opção Inválida!");
+            break;
+        }
         }
     }
-}
-
-
-// Implementação da função buscarProfessorPorMatriculaModel (necessária para o controller)
-Professor* buscarProfessorPorMatriculaModel(int matricula) {
-    extern Professor listaProfessor[TAM_PROFESSOR]; // Declarar como extern para acessar a global
-    extern int qtdProfessor; // Declarar como extern para acessar a global
-
-    for (int i = 0; i < qtdProfessor; i++) {
-        if (listaProfessor[i].matricula == matricula && listaProfessor[i].ativo == 1) {
-            return &listaProfessor[i];
-        }
-    }
-    return NULL;
 }

@@ -1,7 +1,7 @@
 #include "professor_view.h"
 #include <stdio.h>
 
-int exibirMenuProfessor()
+int imprimirMenuProfessor()
 {
     printf("\n--- Módulo Professor ---\n");
     printf("0 - Voltar ao menu Principal\n");
@@ -21,14 +21,21 @@ Professor pedirDadosProfessor()
     Professor p;
     printf("Digite a matrícula: ");
     scanf("%d", &p.matricula);
+
+    getchar(); // Limpar o buffer do teclado antes de usar o fgets!
+
     printf("Digite o nome: ");
-    fgets(p.nome, sizeof(p.nome), stdin);
+    fgets(p.nome, TAM_NOME, stdin);
+    //p.nome[strcspn(p.nome, "\n")] = 0; // Remover o 'Enter' (\n) que o fgets salva no final do nome
+
     printf("Digite a data de nascimento: ");
-    fgets(p.dataNascimento, sizeof(p.dataNascimento), stdin);
+    scanf("%s", p.dataNascimento);
+
     printf("Digite o cpf: ");
-    fgets(p.cpf, sizeof(p.cpf), stdin);
-    printf("Digite a sexo: ");
-    fgets(p.sexo, sizeof(p.sexo), stdin);
+    scanf("%s", p.cpf);
+
+    printf("Digite o sexo (M/F): ");
+    scanf(" %c", &p.sexo);
     return p;
 }
 
@@ -42,7 +49,7 @@ int pedirMatriculaProfessor()
 
 void exibirProfessor(Professor p)
 {
-    printf("Matricula: %d\n", p.matricula);
+    printf("Matricula: %d | Nome: %s | Sexo: %c | Data de Nascimento: %s | CPF: %s\n", p.matricula, p.nome, p.sexo, p.dataNascimento, p.cpf);
 }
 
 void exibirListaProfessores(Professor *lista, int qtd)
@@ -63,7 +70,7 @@ void exibirListaProfessores(Professor *lista, int qtd)
     printf("----------------------------\n");
 }
 
-void exibirMensagem(const char *mensagem)
+void mostrarMensagem(const char *mensagem)
 {
     printf("%s\n", mensagem);
 }

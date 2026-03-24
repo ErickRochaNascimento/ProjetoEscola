@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include "aluno_controller.h"
-//#include "professor_controller.h"
+#include "professor_controller.h"
 
 #define TAM_ALUNO 3
 #define TAM_PROFESSOR 3
@@ -31,14 +31,14 @@ int main()
             
             case 1:
             {
-                ModuloAluno();
+                //ModuloAluno();
+                printf("Modulo Aluno");
                 break;
             }
 
             case 2:
             {
-                //gerenciarProfessor();
-                printf("Módulo Professor\n");
+                ModuloProfessor();
                 break;
             }
 
