@@ -1,11 +1,12 @@
 #include <stdio.h>
 #include "aluno_view.h"
 #include <string.h>
+#include "utils.h"
 
 int imprimirMenuAluno()
 {
     int opcaoAluno;
-    printf("0 - Voltar ao menu Principal\n");
+    printf("\n0 - Voltar ao menu Principal\n");
     printf("1 - Cadastrar Aluno\n");
     printf("2 - Listar Aluno\n");
     printf("3 - Atualizar Aluno\n");
@@ -13,10 +14,6 @@ int imprimirMenuAluno()
     scanf("%d", &opcaoAluno);
 
     return opcaoAluno;
-}
-
-void mostrarMensagem(char* mensagem) {
-    printf("%s\n", mensagem); 
 }
 
 void exibirListaAlunos(Aluno* lista, int quantidade){
@@ -77,6 +74,13 @@ int pedirMatricula() {
     return matricula;
 }
 
-void mostrarMatriculaGerada(int matricula) {
-    printf("Aluno cadastrado com sucesso! A matrícula gerada foi: %d\n", matricula);
+
+void exibirAluno(Aluno aluno){
+    printf("\nCadastrado com sucesso! Segue os dados:\n");
+    printf("Matricula: %d | Nome: %s | Sexo: %c | Data de Nascimento: %s | CPF: %s\n", 
+           aluno.matricula, 
+           aluno.nome, 
+           aluno.sexo, 
+           aluno.dataNascimento, 
+           aluno.cpf);
 }

@@ -3,13 +3,11 @@
 
 #include "professor_model.h"
 
-
 int imprimirMenuProfessor();
 Professor pedirDadosProfessor();
 
 int pedirMatriculaProfessor();
 void exibirProfessor(Professor p);
 void exibirListaProfessores(Professor *lista, int qtd);
-void mostrarMensagem(const char *mensagem);
 
 #endif

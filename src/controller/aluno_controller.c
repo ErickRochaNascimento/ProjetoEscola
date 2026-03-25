@@ -2,6 +2,7 @@
 #include "aluno_controller.h"
 #include "aluno_model.h"
 #include "aluno_view.h"
+#include "utils.h"
 
 void ModuloAluno()
 {
@@ -28,7 +29,7 @@ void ModuloAluno()
 
             if (resultadoBusca > 0)
             {
-                mostrarMatriculaGerada(resultadoBusca);
+                exibirAluno(novoAluno);
             }
 
             else if (resultadoBusca == -1)

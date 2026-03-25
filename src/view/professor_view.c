@@ -2,6 +2,8 @@
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
+#include "utils.h"
+
 
 int imprimirMenuProfessor()
 {
@@ -72,7 +74,4 @@ void exibirListaProfessores(Professor *lista, int qtd)
     printf("----------------------------\n");
 }
 
-void mostrarMensagem(const char *mensagem)
-{
-    printf("%s\n", mensagem);
-}
+

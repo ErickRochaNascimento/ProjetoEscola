@@ -7,7 +7,6 @@
 #define TAMANHO_CPF 15
 #define TAM_ALUNO 3
 
-
 typedef struct aluno
 {
     int matricula;
@@ -17,8 +16,6 @@ typedef struct aluno
     char cpf [TAMANHO_CPF];
     int ativo;
 } Aluno;
-
-
 
 int cadastrarAluno(Aluno novoAluno);
 int atualizarAluno(int matricula_antiga, int matricula_nova);

@@ -37,8 +37,7 @@ int main()
 
             case 2:
             {
-                //ModuloProfessor();
-                printf("Módulo Professor\n");
+                ModuloProfessor();
                 break;
             }
 

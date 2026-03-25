@@ -1,4 +1,5 @@
 #include "professor_controller.h"
+#include "utils.h"
 #include <stdio.h>
 
 void ModuloProfessor()
@@ -27,6 +28,7 @@ void ModuloProfessor()
             if (resultadoBusca == 1)
             {
                 mostrarMensagem("Professor cadastrado com sucesso!");
+                exibirProfessor(novoProfessor);
             }
 
             else if (resultadoBusca == -1)
@@ -72,6 +74,7 @@ void ModuloProfessor()
             if (resultadoAtualizacao == 1)
             {
                 mostrarMensagem("Matrícula atualizada com sucesso! ");
+                
             }
 
             else if (resultadoAtualizacao == -1)

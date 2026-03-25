@@ -29,7 +29,8 @@ int cadastrarAluno(Aluno novoAluno)
     listaAluno[qtdAluno].ativo = 1;
     qtdAluno++;
 
-    return matriculaCriada; // matriculado com sucesso
+
+    return matriculaCriada; 
 }
 
 Aluno *listarAlunos()

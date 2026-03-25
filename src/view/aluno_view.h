@@ -6,10 +6,9 @@
 #include "aluno_model.h"
 
 int imprimirMenuAluno();
-void mostrarMensagem(char* mensagem);
 void exibirListaAlunos(Aluno* lista, int qtd);
 Aluno pedirDadosAluno();
 int pedirMatricula();
-void mostrarMatriculaGerada(int matricula);
+void exibirAluno(Aluno aluno);
 
 #endif
