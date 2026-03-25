@@ -10,4 +10,6 @@ void mostrarMensagem(char* mensagem);
 void exibirListaAlunos(Aluno* lista, int qtd);
 Aluno pedirDadosAluno();
 int pedirMatricula();
+void mostrarMatriculaGerada(int matricula);
+
 #endif

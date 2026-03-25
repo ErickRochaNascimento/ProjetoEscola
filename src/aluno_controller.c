@@ -26,9 +26,9 @@ void ModuloAluno()
 
             int resultadoBusca = cadastrarAluno(novoAluno);
 
-            if (resultadoBusca == 1)
+            if (resultadoBusca > 0)
             {
-                mostrarMensagem("Aluno cadastrado com sucesso! ");
+                mostrarMatriculaGerada(resultadoBusca);
             }
 
             else if (resultadoBusca == -1)
@@ -36,17 +36,12 @@ void ModuloAluno()
                 mostrarMensagem("Lista de alunos cheia!  ");
             }
 
-            else if (resultadoBusca == -2)
-            {
-                mostrarMensagem("Matrícula inválida. ");
-            }
-
             else if (resultadoBusca == 0)
             {
                 mostrarMensagem("Já existe um aluno cadastrado com essa matrícula! ");
             }
 
-            else if (resultadoBusca == -3)
+            else if (resultadoBusca == -2)
             {
                 mostrarMensagem("Sexo inválido. ");
             }

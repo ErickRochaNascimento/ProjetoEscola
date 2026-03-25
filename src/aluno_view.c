@@ -54,9 +54,6 @@ void exibirListaAlunos(Aluno* lista, int quantidade){
 
 Aluno pedirDadosAluno() {
     Aluno aluno;
-    
-    printf("\nDigite a matrícula: ");
-    scanf("%d", &aluno.matricula); // Tem '&' porque é int
 
     printf("Digite seu nome: ");
     scanf(" %100[^\n]", aluno.nome);  // Sem '&'. O %[^\n] permite ler nomes com espaço!
@@ -78,4 +75,8 @@ int pedirMatricula() {
     printf("\nDigite a matricula: ");
     scanf("%d", &matricula);
     return matricula;
+}
+
+void mostrarMatriculaGerada(int matricula) {
+    printf("Aluno cadastrado com sucesso! A matrícula gerada foi: %d\n", matricula);
 }
