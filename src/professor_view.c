@@ -1,5 +1,7 @@
 #include "professor_view.h"
 #include <stdio.h>
+#include <string.h>
+#include <ctype.h>
 
 int imprimirMenuProfessor()
 {
@@ -25,8 +27,7 @@ Professor pedirDadosProfessor()
     getchar(); // Limpar o buffer do teclado antes de usar o fgets!
 
     printf("Digite o nome: ");
-    fgets(p.nome, TAM_NOME, stdin);
-    //p.nome[strcspn(p.nome, "\n")] = 0; // Remover o 'Enter' (\n) que o fgets salva no final do nome
+    scanf("%s", p.nome);
 
     printf("Digite a data de nascimento: ");
     scanf("%s", p.dataNascimento);
@@ -34,8 +35,9 @@ Professor pedirDadosProfessor()
     printf("Digite o cpf: ");
     scanf("%s", p.cpf);
 
-    printf("Digite o sexo (M/F): ");
-    scanf(" %c", &p.sexo);
+    printf("Qual o seu sexo (Para masculino digite M e para feminino F): ");
+    scanf("%s", p.sexo);
+    p.sexo[0] = toupper(p.sexo[0]);
     return p;
 }
 
@@ -49,7 +51,7 @@ int pedirMatriculaProfessor()
 
 void exibirProfessor(Professor p)
 {
-    printf("Matricula: %d | Nome: %s | Sexo: %c | Data de Nascimento: %s | CPF: %s\n", p.matricula, p.nome, p.sexo, p.dataNascimento, p.cpf);
+    printf("Matricula: %d | Nome: %s | Sexo: %s | Data de Nascimento: %s | CPF: %s\n", p.matricula, p.nome, p.sexo, p.dataNascimento, p.cpf);
 }
 
 void exibirListaProfessores(Professor *lista, int qtd)

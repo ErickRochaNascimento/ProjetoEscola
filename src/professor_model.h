@@ -5,6 +5,7 @@
 #define TAM_DATANASCIMENTO 12
 #define TAM_CPF 16
 #define TAM_NOME 50
+#define TAM_SEXO 10
 
 typedef struct professor
 {
@@ -12,11 +13,11 @@ typedef struct professor
     char nome[TAM_NOME];
     char dataNascimento[TAM_DATANASCIMENTO];
     char cpf[TAM_CPF];
-    char sexo;
+    char sexo[TAM_SEXO];
     int ativo;
 } Professor;
 
-int cadastrarProfessor(int matricula, char *nome, char *dataNasciemento, char *cpf, char sexo);
+int cadastrarProfessor(Professor novoProfessor);
 int excluirProfessor(int matricula);
 Professor *listarProfessor();
 int obterQtdProfessor();

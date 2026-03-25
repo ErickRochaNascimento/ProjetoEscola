@@ -22,9 +22,8 @@ void ModuloProfessor()
         { // Cadastrar Professor
             mostrarMensagem(" --- Cadastrar Professor --- ");
             Professor novoProfessor = pedirDadosProfessor();
-
-            int resultadoBusca = cadastrarProfessor(novoProfessor.matricula, novoProfessor.nome, novoProfessor.dataNascimento, novoProfessor.cpf, novoProfessor.sexo);
-
+            int resultadoBusca = cadastrarProfessor(novoProfessor);
+            
             if (resultadoBusca == 1)
             {
                 mostrarMensagem("Professor cadastrado com sucesso!");

@@ -4,31 +4,37 @@
 Professor listaProfessor[TAM_PROFESSOR];
 int qtdProfessor = 0;
 
-int cadastrarProfessor(int matricula, char *nome, char *dataNascimento, char *cpf, char sexo)
+int cadastrarProfessor(Professor novoProfessor)
 {
     if (qtdProfessor == TAM_PROFESSOR)
     {
         return -1; // Lista sem espaço
     }
-    if (matricula < 0)
+    if (novoProfessor.matricula < 0)
     {
         return -2; // Essa matricula é Inválida
     }
     for (int i = 0; i < qtdProfessor; i++)
     {
-        if (listaProfessor[i].matricula == matricula && listaProfessor[i].ativo == 1)
+        if (listaProfessor[i].matricula == novoProfessor.matricula && listaProfessor[i].ativo == 1)
         {
             return 0; // já existe um professor com essa matrícula
         }
     }
 
-    listaProfessor[qtdProfessor].matricula = matricula;
+    listaProfessor[qtdProfessor].matricula = novoProfessor.matricula;
 
-    strcpy(listaProfessor->nome, nome);
-    strcpy(listaProfessor->dataNascimento, nome);
-    strcpy(listaProfessor->cpf, nome);
+    strcpy(listaProfessor[qtdProfessor].nome, novoProfessor.nome);
+    strcpy(listaProfessor[qtdProfessor].dataNascimento, novoProfessor.dataNascimento);
+    strcpy(listaProfessor[qtdProfessor].cpf, novoProfessor.cpf);
+   
+    char tempSexo[10] = "Masculino";
+    if (!strcmp(novoProfessor.sexo, "F"))
+    {
+        strcpy(tempSexo, "Feminino");
+    }
+    strcpy(listaProfessor[qtdProfessor].sexo, tempSexo);
 
-    listaProfessor[qtdProfessor].sexo = sexo;
     listaProfessor[qtdProfessor].ativo = 1;
     qtdProfessor++;
 
