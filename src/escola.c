@@ -31,14 +31,14 @@ int main()
             
             case 1:
             {
-                //ModuloAluno();
-                printf("Modulo Aluno");
+                ModuloAluno();
                 break;
             }
 
             case 2:
             {
-                ModuloProfessor();
+                //ModuloProfessor();
+                printf("Módulo Professor\n");
                 break;
             }
 
