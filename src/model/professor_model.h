@@ -5,7 +5,6 @@
 #define TAM_DATANASCIMENTO 12
 #define TAM_CPF 16
 #define TAM_NOME 50
-#define TAM_SEXO 10
 
 typedef struct professor
 {
@@ -13,7 +12,7 @@ typedef struct professor
     char nome[TAM_NOME];
     char dataNascimento[TAM_DATANASCIMENTO];
     char cpf[TAM_CPF];
-    char sexo[TAM_SEXO];
+    char sexo;
     int ativo;
 } Professor;
 

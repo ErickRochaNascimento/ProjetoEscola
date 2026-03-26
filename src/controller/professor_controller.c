@@ -38,7 +38,7 @@ void ModuloProfessor()
 
             else if (resultadoBusca == -2)
             {
-                mostrarMensagem("Matrícula invalida. ");
+                mostrarMensagem("Sexo invalido. ");
             }
 
             else if (resultadoBusca == 0)

@@ -1,7 +1,6 @@
 #include "professor_view.h"
 #include <stdio.h>
 #include <string.h>
-#include <ctype.h>
 #include "utils.h"
 
 
@@ -23,23 +22,19 @@ int imprimirMenuProfessor()
 Professor pedirDadosProfessor()
 {
     Professor p;
-    printf("Digite a matrícula: ");
-    scanf("%d", &p.matricula);
-
-    getchar(); // Limpar o buffer do teclado antes de usar o fgets!
-
     printf("Digite o nome: ");
-    scanf("%s", p.nome);
+    scanf(" %100[^\n]", p.nome);
+
+    printf("Digite seu sexo (M/F): ");
+    scanf(" %c", &p.sexo);
 
     printf("Digite a data de nascimento: ");
-    scanf("%s", p.dataNascimento);
+    scanf(" %s", p.dataNascimento);
 
     printf("Digite o cpf: ");
-    scanf("%s", p.cpf);
+    scanf(" %s", p.cpf);
 
-    printf("Qual o seu sexo (Para masculino digite M e para feminino F): ");
-    scanf("%s", p.sexo);
-    p.sexo[0] = toupper(p.sexo[0]);
+    
     return p;
 }
 
@@ -53,23 +48,36 @@ int pedirMatriculaProfessor()
 
 void exibirProfessor(Professor p)
 {
-    printf("Matricula: %d | Nome: %s | Sexo: %s | Data de Nascimento: %s | CPF: %s\n", p.matricula, p.nome, p.sexo, p.dataNascimento, p.cpf);
+    printf("Matricula: %d | Nome: %s | Sexo: %c | Data de Nascimento: %s | CPF: %s\n", p.matricula, p.nome, p.sexo, p.dataNascimento, p.cpf);
 }
 
 void exibirListaProfessores(Professor *lista, int qtd)
 {
-    if (qtd == 0)
-    {
-        printf("Lista de professores vazia.\n");
-        return;
-    }
-    printf("\n--- Lista de Professores ---\n");
-    for (int i = 0; i < qtd; i++)
-    {
-        if (lista[i].ativo == 1)
-        {
-            exibirProfessor(lista[i]);
+     for(int i = 0 ; i < qtd; i++){
+
+        if(lista[i].ativo == 1){
+            char* palavraSexo;
+
+            if (lista[i].sexo == 'M' || lista[i].sexo == 'm') {
+                palavraSexo = "Masculino";
+            } 
+
+            else if (lista[i].sexo == 'F' || lista[i].sexo == 'f') {
+                palavraSexo = "Feminino";
+            } 
+
+            else {
+                palavraSexo = "Não Informado"; 
+            }
+
+            printf("Matricula: %d | Nome: %s | Sexo: %s | Data de Nascimento: %s | CPF: %s\n", 
+            lista[i].matricula, 
+            lista[i].nome, 
+            palavraSexo,         
+            lista[i].dataNascimento, 
+            lista[i].cpf);
         }
+
     }
     printf("----------------------------\n");
 }
