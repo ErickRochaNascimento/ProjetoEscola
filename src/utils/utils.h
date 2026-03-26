@@ -3,5 +3,5 @@
 
 // Declaramos a função genérica para todo mundo usar
 void mostrarMensagem(const char* mensagem);
-
+void limparConsole();
 #endif
