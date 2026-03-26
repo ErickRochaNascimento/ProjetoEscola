@@ -17,6 +17,13 @@ int cadastrarAluno(Aluno novoAluno)
         return -3;
     }
     
+    if (novoAluno.dataNascimento.dia < 1 || novoAluno.dataNascimento.dia > 31) {
+        return -4; 
+    }
+    if (novoAluno.dataNascimento.mes < 1 || novoAluno.dataNascimento.mes > 12) {
+        return -5; 
+    }
+
     int matriculaCriada = geradorMatricula;
 
     listaAluno[qtdAluno].matricula = geradorMatricula; 
@@ -24,7 +31,9 @@ int cadastrarAluno(Aluno novoAluno)
 
     listaAluno[qtdAluno].sexo = novoAluno.sexo;
     strcpy(listaAluno[qtdAluno].nome, novoAluno.nome);
-    strcpy(listaAluno[qtdAluno].dataNascimento, novoAluno.dataNascimento);
+    listaAluno[qtdAluno].dataNascimento.dia = novoAluno.dataNascimento.dia;
+    listaAluno[qtdAluno].dataNascimento.mes = novoAluno.dataNascimento.mes;
+    listaAluno[qtdAluno].dataNascimento.ano = novoAluno.dataNascimento.ano;
     strcpy(listaAluno[qtdAluno].cpf, novoAluno.cpf);
     listaAluno[qtdAluno].ativo = 1;
     qtdAluno++;

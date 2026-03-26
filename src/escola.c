@@ -14,6 +14,7 @@ int main()
 
     while (!sair)
     {
+        limparConsole();
         printf("Projeto Escola\n");
         printf("1 - Aluno\n");
         printf("2 - Professor\n");
@@ -39,18 +40,21 @@ int main()
 
             case 2:
             {
+                limparConsole();
                 ModuloProfessor();
                 break;
             }
 
             case 3:
             {
+                limparConsole();
                 printf("Módulo Disciplina\n");
                 break;
             }
 
             default:
             {
+                limparConsole();
                 printf("Opção Inválida\n");
             }
 

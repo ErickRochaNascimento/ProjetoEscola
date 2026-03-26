@@ -5,5 +5,6 @@
 void mostrarMensagem(const char* mensagem);
 void limparConsole();
 void pausarConsole();
+int menuPessoa(const char* tipoPessoa);
 
 #endif
