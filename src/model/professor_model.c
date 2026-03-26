@@ -1,6 +1,7 @@
 #include "professor_model.h"
 #include <string.h>
 
+
 Professor listaProfessor[TAM_PROFESSOR];
 int qtdProfessor = 0;
 int geradorMAtriculaProfessor = 1;
@@ -24,13 +25,16 @@ int cadastrarProfessor(Professor novoProfessor)
     listaProfessor[qtdProfessor].sexo = novoProfessor.sexo;
 
     strcpy(listaProfessor[qtdProfessor].nome, novoProfessor.nome);
-    strcpy(listaProfessor[qtdProfessor].dataNascimento, novoProfessor.dataNascimento);
+
     strcpy(listaProfessor[qtdProfessor].cpf, novoProfessor.cpf);
+    listaProfessor[qtdProfessor].dataNascimento.dia = novoProfessor.dataNascimento.dia;
+    listaProfessor[qtdProfessor].dataNascimento.mes = novoProfessor.dataNascimento.mes;
+    listaProfessor[qtdProfessor].dataNascimento.ano = novoProfessor.dataNascimento.ano;
 
     listaProfessor[qtdProfessor].ativo = 1;
     qtdProfessor++;
 
-    return 1; // matriculado com sucesso
+    return matriculaCriada; // matriculado com sucesso
 }
 
 Professor *listarProfessor()

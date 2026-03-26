@@ -5,7 +5,6 @@
 
 int imprimirMenuProfessor();
 Professor pedirDadosProfessor();
-
 int pedirMatriculaProfessor();
 void exibirProfessor(Professor p);
 void exibirListaProfessores(Professor *lista, int qtd);

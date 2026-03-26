@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 #include "utils.h"
-
+#include "data_model.h"
 
 int imprimirMenuProfessor()
 {
@@ -19,6 +19,8 @@ int imprimirMenuProfessor()
     return opcaoProfessor;
 }
 
+
+
 Professor pedirDadosProfessor()
 {
     Professor p;
@@ -28,13 +30,18 @@ Professor pedirDadosProfessor()
     printf("Digite seu sexo (M/F): ");
     scanf(" %c", &p.sexo);
 
-    printf("Digite a data de nascimento: ");
-    scanf(" %s", p.dataNascimento);
-
     printf("Digite o cpf: ");
     scanf(" %s", p.cpf);
 
-    
+    printf("Digite o dia de nascimento: ");
+    scanf("%d", &p.dataNascimento.dia);
+
+    printf("Digite o mêS de nascimento: ");
+    scanf("%d", &p.dataNascimento.mes);
+
+    printf("Digite o ano de nascimento: ");
+    scanf("%d", &p.dataNascimento.ano);
+
     return p;
 }
 
@@ -48,38 +55,41 @@ int pedirMatriculaProfessor()
 
 void exibirProfessor(Professor p)
 {
-    printf("Matricula: %d | Nome: %s | Sexo: %c | Data de Nascimento: %s | CPF: %s\n", p.matricula, p.nome, p.sexo, p.dataNascimento, p.cpf);
+    printf("Matricula: %d | Nome: %s | Sexo: %c | Data de Nascimento: %s | CPF: %s\n | Data Nasceu: %02d/%02d/%04d", p.matricula, p.nome, p.sexo, p.dataNascimento,
+         p.cpf, p.dataNascimento.dia, p.dataNascimento.mes, p.dataNascimento.ano);
 }
 
 void exibirListaProfessores(Professor *lista, int qtd)
 {
-     for(int i = 0 ; i < qtd; i++){
+    for (int i = 0; i < qtd; i++)
+    {
 
-        if(lista[i].ativo == 1){
-            char* palavraSexo;
+        if (lista[i].ativo == 1)
+        {
+            char *palavraSexo;
 
-            if (lista[i].sexo == 'M' || lista[i].sexo == 'm') {
+            if (lista[i].sexo == 'M' || lista[i].sexo == 'm')
+            {
                 palavraSexo = "Masculino";
-            } 
-
-            else if (lista[i].sexo == 'F' || lista[i].sexo == 'f') {
-                palavraSexo = "Feminino";
-            } 
-
-            else {
-                palavraSexo = "Não Informado"; 
             }
 
-            printf("Matricula: %d | Nome: %s | Sexo: %s | Data de Nascimento: %s | CPF: %s\n", 
-            lista[i].matricula, 
-            lista[i].nome, 
-            palavraSexo,         
-            lista[i].dataNascimento, 
-            lista[i].cpf);
-        }
+            else if (lista[i].sexo == 'F' || lista[i].sexo == 'f')
+            {
+                palavraSexo = "Feminino";
+            }
 
+            else
+            {
+                palavraSexo = "Não Informado";
+            }
+
+            printf("Matricula: %d | Nome: %s | Sexo: %s | Data de Nascimento: %s | CPF: %s\n",
+                   lista[i].matricula,
+                   lista[i].nome,
+                   palavraSexo,
+                   lista[i].dataNascimento,
+                   lista[i].cpf);
+        }
     }
     printf("----------------------------\n");
 }
-
-
