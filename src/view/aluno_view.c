@@ -6,6 +6,7 @@
 int imprimirMenuAluno()
 {
     int opcaoAluno;
+    limparConsole();
     printf("\n0 - Voltar ao menu Principal\n");
     printf("1 - Cadastrar Aluno\n");
     printf("2 - Listar Aluno\n");
@@ -17,7 +18,7 @@ int imprimirMenuAluno()
 }
 
 void exibirListaAlunos(Aluno* lista, int quantidade){
-
+    limparConsole();
     printf("\n ----- Lista de Alunos ----- \n");
 
     for(int i = 0 ; i < quantidade; i++){
@@ -52,6 +53,9 @@ void exibirListaAlunos(Aluno* lista, int quantidade){
 Aluno pedirDadosAluno() {
     Aluno aluno;
 
+    limparConsole();
+    printf("\n--- Cadastrar Aluno ---\n");
+
     printf("Digite seu nome: ");
     scanf(" %100[^\n]", aluno.nome);  // Sem '&'. O %[^\n] permite ler nomes com espaço!
 
@@ -68,6 +72,7 @@ Aluno pedirDadosAluno() {
 }
 
 int pedirMatricula() {
+    limparConsole();
     int matricula;
     printf("\nDigite a matricula: ");
     scanf("%d", &matricula);
@@ -76,8 +81,9 @@ int pedirMatricula() {
 
 
 void exibirAluno(Aluno aluno){
+    limparConsole();
     printf("\nCadastrado com sucesso! Segue os dados:\n");
-    printf("Matricula: %d | Nome: %s | Sexo: %c | Data de Nascimento: %s | CPF: %s\n", 
+    printf("\nMatricula: %d | Nome: %s | Sexo: %c | Data de Nascimento: %s | CPF: %s\n", 
            aluno.matricula, 
            aluno.nome, 
            aluno.sexo, 

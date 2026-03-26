@@ -29,6 +29,7 @@ void ModuloAluno()
 
             if (resultadoBusca > 0)
             {
+                novoAluno.matricula = resultadoBusca;                   
                 exibirAluno(novoAluno);
             }
 
@@ -118,6 +119,9 @@ void ModuloAluno()
             }
             break;
         }
+        }
+        if (opcaoAluno != 0) {
+            pausarConsole();
         }
     }
 }
