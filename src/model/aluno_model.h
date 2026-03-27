@@ -3,16 +3,21 @@
 #ifndef ALUNO_MODEL_H
 #define ALUNO_MODEL_H
 #define TAMANHO_NOME 100
-#define TAMANHO_DATA 11
 #define TAMANHO_CPF 15
 #define TAM_ALUNO 3
+
+typedef struct {
+    int dia;
+    int mes;
+    int ano;
+} Data;
 
 typedef struct aluno
 {
     int matricula;
     char nome [TAMANHO_NOME];
     char sexo ;
-    char dataNascimento [TAMANHO_DATA];
+    Data dataNascimento;
     char cpf [TAMANHO_CPF];
     int ativo;
 } Aluno;

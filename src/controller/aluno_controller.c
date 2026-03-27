@@ -11,7 +11,7 @@ void ModuloAluno()
 
     while (!sairAluno)
     {
-        opcaoAluno = imprimirMenuAluno();
+        opcaoAluno = menuPessoa("Aluno");
 
         switch (opcaoAluno)
         {
@@ -29,6 +29,7 @@ void ModuloAluno()
 
             if (resultadoBusca > 0)
             {
+                novoAluno.matricula = resultadoBusca;                   
                 exibirAluno(novoAluno);
             }
 
@@ -66,9 +67,9 @@ void ModuloAluno()
         case 3:
         {
             mostrarMensagem("  --- Atualizar Aluno ---  ");
-            int matriculaAntiga = pedirMatricula();
+            int matriculaAntiga = pedirMatricula("antiga");
 
-            int matriculaNova = pedirMatricula();
+            int matriculaNova = pedirMatricula("nova");
 
             int resultadoAtualizacao = atualizarAluno(matriculaAntiga, matriculaNova);
 
@@ -98,7 +99,7 @@ void ModuloAluno()
         {
             mostrarMensagem("  --- Excluir matricula de Aluno ---  ");
 
-            int matriculaExcluir = pedirMatricula();
+            int matriculaExcluir = pedirMatricula("a excluir");
 
             int resultadoExclusao = excluirAluno(matriculaExcluir);
 
@@ -118,6 +119,9 @@ void ModuloAluno()
             }
             break;
         }
+        }
+        if (opcaoAluno != 0) {
+            pausarConsole();
         }
     }
 }

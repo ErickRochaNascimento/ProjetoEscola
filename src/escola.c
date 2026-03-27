@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "aluno_controller.h"
 #include "professor_controller.h"
+#include "utils.h"
 
 #define TAM_ALUNO 3
 #define TAM_PROFESSOR 3
@@ -13,6 +14,7 @@ int main()
 
     while (!sair)
     {
+        limparConsole();
         printf("Projeto Escola\n");
         printf("1 - Aluno\n");
         printf("2 - Professor\n");
@@ -31,24 +33,28 @@ int main()
             
             case 1:
             {
+                limparConsole();
                 ModuloAluno();
                 break;
             }
 
             case 2:
             {
+                limparConsole();
                 ModuloProfessor();
                 break;
             }
 
             case 3:
             {
+                limparConsole();
                 printf("Módulo Disciplina\n");
                 break;
             }
 
             default:
             {
+                limparConsole();
                 printf("Opção Inválida\n");
             }
 
