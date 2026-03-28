@@ -3,7 +3,7 @@
 #ifndef ALUNO_MODEL_H
 #define ALUNO_MODEL_H
 #define TAMANHO_NOME 100
-#define TAMANHO_DATA 11
+#define TAMANHO_DATA 12
 #define TAMANHO_CPF 15
 #define TAM_ALUNO 3
 

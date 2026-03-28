@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "aluno_controller.h"
 #include "professor_controller.h"
+#include "utils.h"
 
 #define TAM_ALUNO 3
 #define TAM_PROFESSOR 3

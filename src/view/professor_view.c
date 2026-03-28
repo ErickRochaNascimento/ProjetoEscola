@@ -30,8 +30,7 @@ Professor pedirDadosProfessor()
     printf("Digite seu sexo (M/F): ");
     scanf(" %c", &p.sexo);
 
-    printf("Digite o cpf: ");
-    scanf(" %s", p.cpf);
+    lerCPF(p.cpf);
 
     printf("Digite o dia de nascimento: ");
     scanf("%d", &p.dataNascimento.dia);
@@ -45,6 +44,7 @@ Professor pedirDadosProfessor()
     return p;
 }
 
+
 int pedirMatriculaProfessor()
 {
     printf("Digite a matrícula: ");
@@ -55,7 +55,7 @@ int pedirMatriculaProfessor()
 
 void exibirProfessor(Professor p)
 {
-    printf("Matricula: %d | Nome: %s | Sexo: %c | Data de Nascimento: %s | CPF: %s\n | Data Nasceu: %02d/%02d/%04d", p.matricula, p.nome, p.sexo, p.dataNascimento,
+    printf("Matricula: %d | Nome: %s | Sexo: %c | Data de Nascimento:  %02d/%02d/%04d | CPF: %s\n", p.matricula, p.nome, p.sexo,
          p.cpf, p.dataNascimento.dia, p.dataNascimento.mes, p.dataNascimento.ano);
 }
 
