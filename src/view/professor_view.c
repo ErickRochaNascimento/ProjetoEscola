@@ -19,30 +19,21 @@ int imprimirMenuProfessor()
     return opcaoProfessor;
 }
 
-
-
 Professor pedirDadosProfessor()
 {
     Professor p;
     lerNome(p.nome);
 
-    printf("Digite seu sexo (M/F): ");
-    scanf(" %c", &p.sexo);
+    p.sexo = lerSexo(p.sexo);
 
     lerCPF(p.cpf);
 
-    printf("Digite o dia de nascimento: ");
-    scanf("%d", &p.dataNascimento.dia);
+    lerDataNascimento(&p.dataNascimento);
 
-    printf("Digite o mêS de nascimento: ");
-    scanf("%d", &p.dataNascimento.mes);
-
-    printf("Digite o ano de nascimento: ");
-    scanf("%d", &p.dataNascimento.ano);
+    
 
     return p;
 }
-
 
 int pedirMatriculaProfessor()
 {
@@ -54,8 +45,8 @@ int pedirMatriculaProfessor()
 
 void exibirProfessor(Professor p)
 {
-    printf("Matricula: %d | Nome: %s | Sexo: %c | Data de Nascimento:  %02d/%02d/%04d | CPF: %s\n", p.matricula, p.nome, p.sexo,
-         p.cpf, p.dataNascimento.dia, p.dataNascimento.mes, p.dataNascimento.ano);
+    printf("Matricula: %d | Nome: %s | Sexo: %c | Data de Nascimento:  %02d/%02d/%04d | CPF: %s \n", p.matricula, p.nome, p.sexo, p.dataNascimento.dia, p.dataNascimento.mes, p.dataNascimento.ano,
+           p.cpf);
 }
 
 void exibirListaProfessores(Professor *lista, int qtd)

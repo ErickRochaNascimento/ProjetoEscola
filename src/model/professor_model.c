@@ -1,6 +1,6 @@
 #include "professor_model.h"
 #include <string.h>
-
+#include <stdio.h>
 
 Professor listaProfessor[TAM_PROFESSOR];
 int qtdProfessor = 0;

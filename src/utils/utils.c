@@ -61,7 +61,7 @@ int verificarCPF(const char *cpf)
     }
 }
 
-char lerCPF(const char *destino)
+char lerCPF(char *destino)
 {
     while (1)
     {
@@ -79,9 +79,93 @@ char lerCPF(const char *destino)
     }
 }
 
-char lerNome(const char *destino)
+char lerNome(char *destino)
 {
     printf("Digite o nome: ");
     scanf(" %100[^\n]", destino);
     getchar();
+}
+
+int verificarSexo(const char sexo)
+{
+
+    if (sexo == 'M' || sexo == 'F' || sexo == 'm' || sexo == 'f')
+    {
+        return 1;
+    }
+    return 0;
+}
+
+char lerSexo(char destino)
+{
+    while (1)
+    {
+        printf("Digite seu sexo (M/F): ");
+        scanf(" %c", &destino);
+        if (verificarSexo(destino))
+        {
+            return destino;
+            break;
+        }
+        else
+        {
+            printf("Sexo invalido!\n");
+        }
+    }
+}
+
+int verificarData(int d, int m, int a)
+{
+    if (a < 1900 || a > 2026)
+        return 0; // Ano fora da realidade
+    if (m < 1 || m > 12)
+        return 0; // Mês inexistente
+    if (d < 1 || d > 31)
+        return 0; // Dia impossível
+
+    // 2. Meses com 30 dias
+    if ((m == 4 || m == 6 || m == 9 || m == 11) && d > 30)
+        return 0;
+
+    // 3. Verificação de Fevereiro e Ano Bissexto
+    if (m == 2)
+    {
+        // Regra do Bissexto: divisível por 4 e (não por 100 ou divisível por 400)
+        int bissexto = (a % 4 == 0 && (a % 100 != 0 || a % 400 == 0));
+        if (bissexto)
+        {
+            if (d > 29)
+                return 0;
+        }
+        else
+        {
+            if (d > 28)
+                return 0;
+        }
+    }
+
+    return 1; // Se passou por tudo, a data é válida!
+}
+
+char lerDataNascimento(Data *dataNascimento)
+{
+    while (1)
+    {
+        printf("Digite o dia de nascimento: ");
+        scanf("%d", &dataNascimento->dia);
+
+        printf("Digite o mêS de nascimento: ");
+        scanf("%d", &dataNascimento->mes);
+
+        printf("Digite o ano de nascimento: ");
+        scanf("%d", &dataNascimento->ano);
+        if (verificarData(dataNascimento->dia, dataNascimento->mes, dataNascimento->ano))
+        {
+            break; // Data válida!
+        }
+        else
+        {
+            printf("Data invalida! Tente novamente.\n");
+        }
+    }
 }
