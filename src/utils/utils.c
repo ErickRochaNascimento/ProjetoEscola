@@ -24,7 +24,7 @@ int verificarCPF(const char *cpf)
     // Verificar se o CPF tem 11 dígitos
     if (strlen(cpf) != 11)
     {
-        return -1; // CPF Invalido
+        return 0; // CPF Invalido
     }
 
     // Verificar se todos os caracteres são dígitos
