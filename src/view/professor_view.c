@@ -24,8 +24,7 @@ int imprimirMenuProfessor()
 Professor pedirDadosProfessor()
 {
     Professor p;
-    printf("Digite o nome: ");
-    scanf(" %100[^\n]", p.nome);
+    lerNome(p.nome);
 
     printf("Digite seu sexo (M/F): ");
     scanf(" %c", &p.sexo);

@@ -70,11 +70,18 @@ char lerCPF(const char *destino)
         getchar();
         if (verificarCPF(destino))
         {
-           break;
+            break;
         }
         else
         {
             printf("CPF invalido.\n");
         }
     }
+}
+
+char lerNome(const char *destino)
+{
+    printf("Digite o nome: ");
+    scanf(" %100[^\n]", destino);
+    getchar();
 }

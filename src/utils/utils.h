@@ -6,4 +6,5 @@ void mostrarMensagem(const char* mensagem);
 void limparConsole();
 int verificarCPF(const char *cpf);
 char lerCPF(const char *destino);
+char lerNome(const char *destino);
 #endif
