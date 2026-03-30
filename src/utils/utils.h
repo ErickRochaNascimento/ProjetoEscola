@@ -12,4 +12,7 @@ char lerSexo( char destino);
 int verificarSexo(const char sexo);
 char lerDataNascimento(Data *dataNascimento);
 int verificarData(int d, int m, int a);
+void pausarConsole();
+int menuPessoa(const char* tipoPessoa);
+
 #endif
