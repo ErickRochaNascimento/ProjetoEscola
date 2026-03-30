@@ -161,7 +161,9 @@ char lerDataNascimento(Data *dataNascimento)
             printf("Data invalida! Tente novamente.\n");
         }
     }
-    
+}
+
+
 void limparConsole(){
     #ifdef _WIN32
         system("cls");

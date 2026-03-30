@@ -3,7 +3,6 @@
 #include <string.h>
 #include "utils.h"
 
-
 void exibirListaAlunos(Aluno* lista, int quantidade){
     limparConsole();
     printf("\n ----- Lista de Alunos ----- \n");
@@ -44,22 +43,10 @@ Aluno pedirDadosAluno() {
 
     limparConsole();
     printf("\n--- Cadastrar Aluno ---\n");
-
-    printf("Digite seu nome: ");
-    scanf(" %100[^\n]", aluno.nome);  // Sem '&'. O %[^\n] permite ler nomes com espaço!
-
-    printf("Digite seu sexo (M/F): ");
-    scanf(" %c", &aluno.sexo);     // Tem '&' porque é apenas um char
-
-    printf("Digite o dia de nascimento: ");
-    scanf("%d", &aluno.dataNascimento.dia);
-    printf("Digite o mes de nascimento: ");
-    scanf("%d", &aluno.dataNascimento.mes);
-    printf("Digite o ano de nascimento: ");
-    scanf("%d", &aluno.dataNascimento.ano);
-
-    printf("Digite seu CPF: ");
-    scanf(" %s", aluno.cpf); // Sem '&' porque é string (vetor)
+    lerNome(aluno.nome);
+    aluno.sexo = lerSexo(aluno.sexo);
+    lerDataNascimento(&aluno.dataNascimento);
+    lerCPF(aluno.cpf);
 
     return aluno;
 }
@@ -71,7 +58,6 @@ int pedirMatricula(const char* tipoMatricula){
     scanf("%d", &matricula);
     return matricula;
 }
-
 
 void exibirAluno(Aluno aluno){
     limparConsole();
