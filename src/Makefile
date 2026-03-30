@@ -1,18 +1,20 @@
-# Nome do nosso programa final
-TARGET = projeto_escola.exe
+# Nome do nosso programa final (sem .exe no Linux)
+TARGET = projeto_escola
 
 # Qual compilador estamos usando
 CC = gcc
 
 # O Segredo: Avisa o compilador em quais pastas ele deve procurar os arquivos .h
-CFLAGS = -I./model -I./view -I./controller -I./utils
+# Adicionado -Wall para mostrar todos os avisos e -g para permitir debug
+CFLAGS = -I./model -I./view -I./controller -I./utils -Wall -g
 
-SRCS = escola.c model/*.c view/*.c controller/*.c utils/*.c
+# Capturando os arquivos C de forma segura
+SRCS = escola.c $(wildcard model/*.c) $(wildcard view/*.c) $(wildcard controller/*.c) $(wildcard utils/*.c)
 
 # A regra principal (o que acontece quando você digita 'make')
 all:
 	$(CC) $(SRCS) $(CFLAGS) -o $(TARGET)
 
-# Regra para limpar o executável antigo
+# Regra para limpar o executável antigo (usando 'rm -f' do Linux)
 clean:
-	del $(TARGET)
+	rm -f $(TARGET)
