@@ -191,3 +191,11 @@ int menuPessoa(const char* tipoPessoa) {
 
     return opcaoPessoa;
 }
+
+int lerMatricula(const char* tipoMatricula){
+    limparConsole();
+    int matricula;
+    printf("\nDigite a matricula %s: ", tipoMatricula);
+    scanf("%d", &matricula);
+    return matricula;
+}

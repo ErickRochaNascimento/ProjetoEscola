@@ -68,8 +68,8 @@ void ModuloProfessor()
         case 3:
         { // Atualizar Professor
             mostrarMensagem(" --- Atualizar Professor --- ");
-            int matriculaAntiga = pedirMatriculaProfessor();
-            int matriculaNova = pedirMatriculaProfessor();
+            int matriculaAntiga = lerMatricula("antiga");
+            int matriculaNova = lerMatricula("nova");
             int resultadoAtualizacao = atualizarProfessor(matriculaAntiga, matriculaNova);
 
             if (resultadoAtualizacao == 1)
@@ -98,7 +98,7 @@ void ModuloProfessor()
         { // Excluir Professor
             mostrarMensagem(" --- Excluir Professor --- ");
 
-            int matriculaExcluir = pedirMatriculaProfessor();
+            int matriculaExcluir = lerMatricula("a excluir");
 
             int resultadoExclusao = excluirProfessor(matriculaExcluir);
 

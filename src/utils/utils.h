@@ -14,5 +14,6 @@ char lerDataNascimento(Data *dataNascimento);
 int verificarData(int d, int m, int a);
 void pausarConsole();
 int menuPessoa(const char* tipoPessoa);
+int lerMatricula(const char* tipoMatricula);
 
 #endif
