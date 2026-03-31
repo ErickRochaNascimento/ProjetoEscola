@@ -30,6 +30,7 @@ void ModuloProfessor()
                 novoProfessor.matricula = resultadoBusca;
                 mostrarMensagem("Professor cadastrado com sucesso!");
                 exibirProfessor(novoProfessor);
+                pausarConsole();
             }
 
             else if (resultadoBusca == -1)
@@ -53,15 +54,17 @@ void ModuloProfessor()
         { // Listar Professor
             mostrarMensagem(" --- Listar Professor --- ");
             int quantidade = obterQtdProfessor();
-
             if (quantidade == 0)
             {
-                mostrarMensagem("Lista de professores vazia!");
+                mostrarMensagem("Lista de Professores Vazia!\nPrimeiro cadastre um professor.\n");
+                pausarConsole();
+                break;
             }
             else
             {
                 Professor *listaCompleta = listarProfessor();
                 exibirListaProfessores(listaCompleta, quantidade);
+                pausarConsole();
             }
             break;
         }
@@ -71,7 +74,8 @@ void ModuloProfessor()
             int quantidade = obterQtdProfessor();
             if (quantidade == 0)
             {
-                mostrarMensagem("Lista de Professores Vazia!");
+                mostrarMensagem("Lista de Professores Vazia!\nPrimeiro cadastre um professor.\n");
+                pausarConsole();
                 break;
             }
             int matriculaAntiga = lerMatricula("antiga");
@@ -105,7 +109,8 @@ void ModuloProfessor()
             int quantidade = obterQtdProfessor();
             if (quantidade == 0)
             {
-                mostrarMensagem("Lista de Professores Vazia!");
+                mostrarMensagem("Lista de Professores Vazia!\nPrimeiro cadastre um professor.\n");
+                pausarConsole();
                 break;
             }
 
@@ -137,7 +142,8 @@ void ModuloProfessor()
             int quantidade = obterQtdProfessor();
             if (quantidade == 0)
             {
-                mostrarMensagem("Lista de Professores Vazia!");
+                mostrarMensagem("Lista de Professores Vazia!\nPrimeiro cadastre um professor.\n");
+                pausarConsole();
                 break;
             }
 
@@ -159,7 +165,7 @@ void ModuloProfessor()
 
                     Professor *listaCompleta = listarProfessor();
                     exibirListaProfessoresPorSexo(listaCompleta, quantidade, sexoRelatorio);
-
+                    pausarConsole();
                     break;
                 }
 

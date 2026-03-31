@@ -79,6 +79,7 @@ void exibirListaProfessoresPorSexo(Professor *lista, int qtd, char sexoFiltro)
 
 int imprimirMenuRelatorios()
 {
+    limparConsole();
     int opcao;
     printf("---  Relatorios  ---\n");
     printf("0 - Voltar ao menu Principal \n");
