@@ -9,7 +9,7 @@ void ModuloProfessor()
 
     while (!sairProfessor)
     {
-        opcaoProfessor = imprimirMenuProfessor();
+        opcaoProfessor = menuPessoa("Professor");
 
         switch (opcaoProfessor)
         {
@@ -24,7 +24,7 @@ void ModuloProfessor()
             mostrarMensagem(" --- Cadastrar Professor --- ");
             Professor novoProfessor = pedirDadosProfessor();
             int resultadoBusca = cadastrarProfessor(novoProfessor);
-            
+
             if (resultadoBusca > 0)
             {
                 novoProfessor.matricula = resultadoBusca;
@@ -68,6 +68,12 @@ void ModuloProfessor()
         case 3:
         { // Atualizar Professor
             mostrarMensagem(" --- Atualizar Professor --- ");
+            int quantidade = obterQtdProfessor();
+            if (quantidade == 0)
+            {
+                mostrarMensagem("Lista de Professores Vazia!");
+                break;
+            }
             int matriculaAntiga = lerMatricula("antiga");
             int matriculaNova = lerMatricula("nova");
             int resultadoAtualizacao = atualizarProfessor(matriculaAntiga, matriculaNova);
@@ -75,7 +81,6 @@ void ModuloProfessor()
             if (resultadoAtualizacao == 1)
             {
                 mostrarMensagem("Matrícula atualizada com sucesso! ");
-                
             }
 
             else if (resultadoAtualizacao == -1)
@@ -97,6 +102,12 @@ void ModuloProfessor()
         case 4:
         { // Excluir Professor
             mostrarMensagem(" --- Excluir Professor --- ");
+            int quantidade = obterQtdProfessor();
+            if (quantidade == 0)
+            {
+                mostrarMensagem("Lista de Professores Vazia!");
+                break;
+            }
 
             int matriculaExcluir = lerMatricula("a excluir");
 
@@ -118,6 +129,44 @@ void ModuloProfessor()
             }
 
             break;
+        }
+        case 5:
+        { // Relatorios
+
+            int sairMenu = 0;
+            int quantidade = obterQtdProfessor();
+            if (quantidade == 0)
+            {
+                mostrarMensagem("Lista de Professores Vazia!");
+                break;
+            }
+
+            while (!sairMenu)
+            {
+                int opcao = imprimirMenuRelatorios();
+
+                switch (opcao)
+                {
+                case 0:
+                {
+                    sairMenu = 1;
+                    mostrarMensagem("Voltando ao menu principal...");
+                    break;
+                }
+                case 1:
+                {
+                    char sexoRelatorio = lerSexo(sexoRelatorio);
+
+                    Professor *listaCompleta = listarProfessor();
+                    exibirListaProfessoresPorSexo(listaCompleta, quantidade, sexoRelatorio);
+
+                    break;
+                }
+
+                default:
+                    break;
+                }
+            }
         }
         default:
         {

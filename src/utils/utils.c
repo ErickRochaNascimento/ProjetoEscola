@@ -178,7 +178,6 @@ void pausarConsole() {
 }
 
 int menuPessoa(const char* tipoPessoa) {
-
     limparConsole();    
     int opcaoPessoa;
     printf("---- Modulo %s ----\n", tipoPessoa);
@@ -187,6 +186,7 @@ int menuPessoa(const char* tipoPessoa) {
     printf("2 - Listar %s\n", tipoPessoa);
     printf("3 - Atualizar %s\n", tipoPessoa);
     printf("4 - Excluir %s\n", tipoPessoa);
+    printf("5 - Relatorios %s\n",tipoPessoa);
     scanf("%d", &opcaoPessoa);
 
     return opcaoPessoa;
@@ -199,3 +199,4 @@ int lerMatricula(const char* tipoMatricula){
     scanf("%d", &matricula);
     return matricula;
 }
+

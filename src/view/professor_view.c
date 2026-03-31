@@ -4,20 +4,7 @@
 #include "utils.h"
 #include "data_model.h"
 
-int imprimirMenuProfessor()
-{
-    printf("\n--- Módulo Professor ---\n");
-    printf("0 - Voltar ao menu Principal\n");
-    printf("1 - Cadastrar Professor\n");
-    printf("2 - Listar Professor\n");
-    printf("3 - Atualizar Professor\n");
-    printf("4 - Excluir Professor\n");
-    printf("Escolha uma opção: ");
-    int opcaoProfessor = 0;
-    scanf("%d", &opcaoProfessor);
 
-    return opcaoProfessor;
-}
 
 Professor pedirDadosProfessor()
 {
@@ -29,8 +16,6 @@ Professor pedirDadosProfessor()
     lerCPF(p.cpf);
 
     lerDataNascimento(&p.dataNascimento);
-
-    
 
     return p;
 }
@@ -73,13 +58,31 @@ void exibirListaProfessores(Professor *lista, int qtd)
                 palavraSexo = "Não Informado";
             }
 
-            printf("Matricula: %d | Nome: %s | Sexo: %s | Data de Nascimento: %s | CPF: %s\n",
-                   lista[i].matricula,
-                   lista[i].nome,
-                   palavraSexo,
-                   lista[i].dataNascimento,
-                   lista[i].cpf);
+            exibirProfessor(lista[i]);
         }
     }
     printf("----------------------------\n");
+}
+
+void exibirListaProfessoresPorSexo(Professor *lista, int qtd, char sexoFiltro)
+{
+    for (int i = 0; i < qtd; i++)
+    {
+
+        if (lista[i].ativo == 1 && lista[i].sexo == sexoFiltro)
+        {
+            exibirProfessor(lista[i]);
+        }
+    }
+    printf("----------------------------\n");
+}
+
+int imprimirMenuRelatorios()
+{
+    int opcao;
+    printf("---  Relatorios  ---\n");
+    printf("0 - Voltar ao menu Principal \n");
+    printf("1 - Imprimir por Sexo\n");
+    scanf("%d", &opcao);
+    return opcao;
 }

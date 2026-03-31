@@ -3,10 +3,10 @@
 
 #include "professor_model.h"
 
-int imprimirMenuProfessor();
 Professor pedirDadosProfessor();
 int pedirMatriculaProfessor();
 void exibirProfessor(Professor p);
 void exibirListaProfessores(Professor *lista, int qtd);
-
+int imprimirMenuRelatorios();
+void exibirListaProfessoresPorSexo(Professor *lista, int qtd, char sexoFiltro);
 #endif
