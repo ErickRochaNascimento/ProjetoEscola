@@ -171,7 +171,13 @@ void ModuloProfessor()
                 case 2:
                 {
                     Professor *listaCompleta = listarProfessor();
-                    exibirListaProfessores(listaCompleta, quantidade);
+                    exibirListaProfessoresAlfabetico(listaCompleta, quantidade);
+                    pausarConsole();
+                }
+                case 3:
+                {
+                    Professor *listaCompleta = listarProfessor();
+                    exibirListaProfessoresPorNascimento(listaCompleta, quantidade);
                     pausarConsole();
                 }
 

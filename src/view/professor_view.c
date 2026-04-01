@@ -1,5 +1,6 @@
 #include "professor_view.h"
 #include <stdio.h>
+#include <ctype.h>
 #include <string.h>
 #include "utils.h"
 #include "data_model.h"
@@ -28,7 +29,13 @@ int pedirMatriculaProfessor()
 
 void exibirProfessor(Professor p)
 {
-    printf("Matricula: %d | Nome: %s | Sexo: %c | Data de Nascimento:  %02d/%02d/%04d | CPF: %s \n", p.matricula, p.nome, p.sexo, p.dataNascimento.dia, p.dataNascimento.mes, p.dataNascimento.ano,
+    for (int i = 0; p.nome[i] != '\0'; i++)
+    {
+        p.nome[i] = toupper(p.nome[i]);
+    }
+    
+
+    printf("Matricula: %d | Nome: %s | Sexo: %c | Data de Nascimento:  %02d/%02d/%04d | CPF: %s \n", p.matricula, p.nome, toupper(p.sexo), p.dataNascimento.dia, p.dataNascimento.mes, p.dataNascimento.ano,
            p.cpf);
 }
 
@@ -101,6 +108,40 @@ void exibirListaProfessoresAlfabetico(Professor *lista, int qtd)
             if (listaOrdenada[i].ativo == 1 && listaOrdenada[j].ativo == 1)
             {
                 if (strcmp(listaOrdenada[i].nome, listaOrdenada[j].nome) > 0)
+                {
+                    Professor aux;
+                    aux = listaOrdenada[i];
+                    listaOrdenada[i] = listaOrdenada[j];
+                    listaOrdenada[j] = aux;
+                }
+            }
+        }
+    }
+    for (int i = 0; i < qtd; i++)
+    {
+
+        if (listaOrdenada[i].ativo == 1)
+        {
+            exibirProfessor(listaOrdenada[i]);
+        }
+    }
+    printf("----------------------------\n");
+}
+
+void exibirListaProfessoresPorNascimento(Professor *lista, int qtd)
+{
+    Professor listaOrdenada[100];
+    for (int i = 0; i < qtd; i++)
+    {
+        listaOrdenada[i] = lista[i];
+    }
+    for (int i = 0; i < qtd; i++)
+    {
+        for (int j = i + 1; j < qtd; j++)
+        {
+            if (listaOrdenada[i].ativo == 1 && listaOrdenada[j].ativo == 1)
+            {
+                if ((listaOrdenada[i].dataNascimento.ano > listaOrdenada[j].dataNascimento.ano) || (listaOrdenada[i].dataNascimento.ano == listaOrdenada[j].dataNascimento.ano && listaOrdenada[i].dataNascimento.mes > listaOrdenada[j].dataNascimento.mes) || (listaOrdenada[i].dataNascimento.ano == listaOrdenada[j].dataNascimento.ano && listaOrdenada[i].dataNascimento.mes == listaOrdenada[j].dataNascimento.mes && listaOrdenada[i].dataNascimento.dia > listaOrdenada[j].dataNascimento.dia))
                 {
                     Professor aux;
                     aux = listaOrdenada[i];
