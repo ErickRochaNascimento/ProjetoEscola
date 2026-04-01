@@ -168,6 +168,12 @@ void ModuloProfessor()
                     pausarConsole();
                     break;
                 }
+                case 2:
+                {
+                    Professor *listaCompleta = listarProfessor();
+                    exibirListaProfessores(listaCompleta, quantidade);
+                    pausarConsole();
+                }
 
                 default:
                     break;

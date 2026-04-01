@@ -4,8 +4,6 @@
 #include "utils.h"
 #include "data_model.h"
 
-
-
 Professor pedirDadosProfessor()
 {
     Professor p;
@@ -84,6 +82,41 @@ int imprimirMenuRelatorios()
     printf("---  Relatorios  ---\n");
     printf("0 - Voltar ao menu Principal \n");
     printf("1 - Imprimir por Sexo\n");
+    printf("2 - Imprimir em ordem alfabetica\n");
     scanf("%d", &opcao);
     return opcao;
+}
+
+void exibirListaProfessoresAlfabetico(Professor *lista, int qtd)
+{
+    Professor listaOrdenada[100];
+    for (int i = 0; i < qtd; i++)
+    {
+        listaOrdenada[i] = lista[i];
+    }
+    for (int i = 0; i < qtd; i++)
+    {
+        for (int j = i + 1; j < qtd; j++)
+        {
+            if (listaOrdenada[i].ativo == 1 && listaOrdenada[j].ativo == 1)
+            {
+                if (strcmp(listaOrdenada[i].nome, listaOrdenada[j].nome) > 0)
+                {
+                    Professor aux;
+                    aux = listaOrdenada[i];
+                    listaOrdenada[i] = listaOrdenada[j];
+                    listaOrdenada[j] = aux;
+                }
+            }
+        }
+    }
+    for (int i = 0; i < qtd; i++)
+    {
+
+        if (listaOrdenada[i].ativo == 1)
+        {
+            exibirProfessor(listaOrdenada[i]);
+        }
+    }
+    printf("----------------------------\n");
 }
