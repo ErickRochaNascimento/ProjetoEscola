@@ -4,7 +4,7 @@
 
 #define TAM_PROFESSOR 3
 #define TAM_CPF 16
-#define TAM_NOME 50
+#define TAM_NOME 100
 
 typedef struct professor
 {
@@ -21,6 +21,6 @@ int excluirProfessor(int matricula);
 Professor *listarProfessor();
 int obterQtdProfessor();
 int atualizarProfessor(int matricula_antiga, int matricula_nova);
-Professor* obterListaOrdenadaAlfabetica();
+Professor* obterListaProfessoresAlfabetica();
 
 #endif

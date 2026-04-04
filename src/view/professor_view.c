@@ -5,6 +5,7 @@
 #include <string.h>
 #include "utils.h"
 #include "data_model.h"
+#include <stdlib.h>
 
 Professor pedirDadosProfessor()
 {
@@ -42,28 +43,11 @@ void exibirProfessor(Professor p)
 
 void exibirListaProfessores(Professor *lista, int qtd)
 {
+    printf("\n ----- Lista de Professores ----- \n");
     for (int i = 0; i < qtd; i++)
     {
-
         if (lista[i].ativo == 1)
         {
-            char *palavraSexo;
-
-            if (lista[i].sexo == 'M' || lista[i].sexo == 'm')
-            {
-                palavraSexo = "Masculino";
-            }
-
-            else if (lista[i].sexo == 'F' || lista[i].sexo == 'f')
-            {
-                palavraSexo = "Feminino";
-            }
-
-            else
-            {
-                palavraSexo = "Não Informado";
-            }
-
             exibirProfessor(lista[i]);
         }
     }
@@ -98,17 +82,17 @@ int imprimirMenuRelatorios()
 
 void exibirListaProfessoresAlfabetico(Professor *lista, int qtd)
 {
-    Professor listaOrdenadaAlfabetica[100] = listarProfessor();
+    Professor *listaOrdenadaAlfabetica = listarProfessor(); 
     
     for (int i = 0; i < qtd; i++)
     {
-
         if (listaOrdenadaAlfabetica[i].ativo == 1)
         {
             exibirProfessor(listaOrdenadaAlfabetica[i]);
         }
     }
     printf("----------------------------\n");
+    free(listaOrdenadaAlfabetica);
 }
 
 void exibirListaProfessoresPorNascimento(Professor *lista, int qtd)

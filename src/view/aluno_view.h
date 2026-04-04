@@ -9,5 +9,9 @@ void exibirListaAlunos(Aluno* lista, int qtd);
 Aluno pedirDadosAluno();
 int pedirMatricula(const char* tipoMatricula);
 void exibirAluno(Aluno aluno);
+int imprimirMenuRelatoriosAluno();
+void exibirListaAlunosPorSexo(Aluno *lista, int qtd, char sexoFiltro);
+void exibirListaAlunosAlfabetico(Aluno *lista, int qtd);
+void exibirListaAlunosPorNascimento(Aluno *lista, int qtd);
 
 #endif

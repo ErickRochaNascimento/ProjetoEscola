@@ -1,6 +1,7 @@
 #include "professor_model.h"
 #include <string.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 Professor listaProfessor[TAM_PROFESSOR];
 int qtdProfessor = 0;
@@ -39,8 +40,8 @@ int cadastrarProfessor(Professor novoProfessor)
 
 Professor *listarProfessor()
 {
-    Professor *listaProfessor = obterListaOrdenadaAlfabetica();
-    return listaProfessor;
+    Professor *listaOrdenada = obterListaProfessoresAlfabetica();
+    return listaOrdenada;
 }
 
 int obterQtdProfessor()
@@ -94,7 +95,7 @@ int excluirProfessor(int matricula)
     return -1; // matricula não encontrada
 }
 
-Professor* obterListaOrdenadaAlfabetica()
+Professor* obterListaProfessoresAlfabetica()
 {
     int qtd = qtdProfessor;
 

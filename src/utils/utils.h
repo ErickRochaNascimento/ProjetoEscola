@@ -6,11 +6,11 @@
 void mostrarMensagem(const char* mensagem);
 void limparConsole();
 int verificarCPF(const char *cpf);
-char lerCPF( char *destino);
-char lerNome( char *destino);
+void lerCPF(char *destino);
+void lerNome( char *destino);
 char lerSexo( char destino);
 int verificarSexo(const char sexo);
-char lerDataNascimento(Data *dataNascimento);
+void lerDataNascimento(Data *dataNascimento);
 int verificarData(int d, int m, int a);
 void pausarConsole();
 int menuPessoa(const char* tipoPessoa);

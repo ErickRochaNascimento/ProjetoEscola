@@ -1,6 +1,7 @@
 #include "professor_controller.h"
 #include "utils.h"
 #include <stdio.h>
+#include <stdlib.h>
 
 void ModuloProfessor()
 {
@@ -64,6 +65,7 @@ void ModuloProfessor()
             {
                 Professor *listaCompleta = listarProfessor();
                 exibirListaProfessores(listaCompleta, quantidade);
+                free(listaCompleta);
                 pausarConsole();
             }
             break;

@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "aluno_model.h"
 #include <string.h>
+#include <stdlib.h>
 
 Aluno listaAluno[TAM_ALUNO];
 int qtdAluno = 0;
@@ -17,12 +18,6 @@ int cadastrarAluno(Aluno novoAluno)
         return -3;
     }
     
-    if (novoAluno.dataNascimento.dia < 1 || novoAluno.dataNascimento.dia > 31) {
-        return -4; 
-    }
-    if (novoAluno.dataNascimento.mes < 1 || novoAluno.dataNascimento.mes > 12) {
-        return -5; 
-    }
 
     int matriculaCriada = geradorMatricula;
 
@@ -44,7 +39,8 @@ int cadastrarAluno(Aluno novoAluno)
 
 Aluno *listarAlunos()
 {
-    return listaAluno;
+    Aluno *listaOrdenada = obterListaAlunosAlfabetica();
+    return listaOrdenada;
 }
 
 int obterQtdAlunos() {
@@ -87,4 +83,37 @@ int excluirAluno(int matricula)
     }
     
     return -1; // matricula não encontrada
+}
+
+Aluno* obterListaAlunosAlfabetica()
+{
+    int qtd = qtdAluno;
+
+    Aluno *listaOrdenada = malloc(qtd * sizeof(Aluno));
+    
+    if (listaOrdenada == NULL) {
+        return NULL; 
+    }
+
+    for (int i = 0; i < qtd; i++)
+    {
+        listaOrdenada[i] = listaAluno[i];
+    }
+
+    for (int i = 0; i < qtd; i++)
+    {
+        for (int j = i + 1; j < qtd; j++)
+        {
+            if (listaOrdenada[i].ativo == 1 && listaOrdenada[j].ativo == 1)
+            {
+                if (strcmp(listaOrdenada[i].nome, listaOrdenada[j].nome) > 0)
+                {
+                    Aluno aux = listaOrdenada[i];
+                    listaOrdenada[i] = listaOrdenada[j];
+                    listaOrdenada[j] = aux;
+                }
+            }
+        }
+    }
+        return listaOrdenada;
 }

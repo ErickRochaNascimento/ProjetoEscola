@@ -1,52 +1,29 @@
-#include <stdio.h>
 #include "aluno_view.h"
+#include <stdio.h>
+#include <ctype.h>
 #include <string.h>
 #include "utils.h"
+#include "data_model.h"
+#include <stdlib.h>
 
 void exibirListaAlunos(Aluno* lista, int quantidade){
-    limparConsole();
     printf("\n ----- Lista de Alunos ----- \n");
 
     for(int i = 0 ; i < quantidade; i++){
-
         if(lista[i].ativo == 1){
-            char* palavraSexo;
-
-            if (lista[i].sexo == 'M' || lista[i].sexo == 'm') {
-                palavraSexo = "Masculino";
-            } 
-
-            else if (lista[i].sexo == 'F' || lista[i].sexo == 'f') {
-                palavraSexo = "Feminino";
-            } 
-
-            else {
-                palavraSexo = "Não Informado"; 
-            }
-
-            printf("Matricula: %d | Nome: %s | Sexo: %s | Data de Nascimento: %02d/%02d/%04d | CPF: %s\n", 
-            lista[i].matricula, 
-            lista[i].nome, 
-            palavraSexo,         
-            lista[i].dataNascimento.dia,
-            lista[i].dataNascimento.mes,
-            lista[i].dataNascimento.ano,
-            lista[i].cpf);
+            exibirAluno(lista[i]);
         }
-
     }
     printf("----------------------------\n");
 }
 
 Aluno pedirDadosAluno() {
     Aluno aluno;
-
-    limparConsole();
-    printf("\n--- Cadastrar Aluno ---\n");
+    
     lerNome(aluno.nome);
     aluno.sexo = lerSexo(aluno.sexo);
-    lerDataNascimento(&aluno.dataNascimento);
     lerCPF(aluno.cpf);
+    lerDataNascimento(&aluno.dataNascimento);
 
     return aluno;
 }
@@ -59,15 +36,96 @@ int pedirMatricula(const char* tipoMatricula){
     return matricula;
 }
 
-void exibirAluno(Aluno aluno){
-    limparConsole();
-    printf("\nCadastrado com sucesso! Segue os dados:\n");
-    printf("\nMatricula: %d | Nome: %s | Sexo: %c | Data de Nascimento: %02d/%02d/%04d | CPF: %s\n", 
+void exibirAluno(Aluno aluno)
+{
+    for (int i = 0; aluno.nome[i] != '\0'; i++)
+    {
+        aluno.nome[i] = toupper(aluno.nome[i]);
+    }
+
+    printf("Matricula: %d | Nome: %s | Sexo: %c | Data de Nascimento: %02d/%02d/%04d | CPF: %s\n", 
            aluno.matricula, 
            aluno.nome, 
-           aluno.sexo, 
+           toupper(aluno.sexo), 
            aluno.dataNascimento.dia,
            aluno.dataNascimento.mes,
            aluno.dataNascimento.ano,
            aluno.cpf);
+}
+
+int imprimirMenuRelatoriosAluno()
+{
+    limparConsole();
+    int opcao;
+    printf("---  Relatorios  ---\n");
+    printf("0 - Voltar ao menu Principal \n");
+    printf("1 - Imprimir por Sexo\n");
+    printf("2 - Imprimir em ordem alfabetica\n");
+    printf("3 - Imprimir por data de nascimento\n");
+    scanf("%d", &opcao);
+    return opcao;
+}
+
+void exibirListaAlunosPorSexo(Aluno *lista, int qtd, char sexoFiltro)
+{
+    for (int i = 0; i < qtd; i++)
+    {
+        if (lista[i].ativo == 1 && lista[i].sexo == sexoFiltro)
+        {
+            exibirAluno(lista[i]);
+        }
+    }
+    printf("----------------------------\n");
+}
+
+void exibirListaAlunosAlfabetico(Aluno *lista, int qtd)
+{
+    // Aqui corrigimos aquele erro de C do código do Professor e usamos o ponteiro corretamente!
+    Aluno *listaOrdenadaAlfabetica = listarAlunos(); 
+    
+    for (int i = 0; i < qtd; i++)
+    {
+        if (listaOrdenadaAlfabetica[i].ativo == 1)
+        {
+            exibirAluno(listaOrdenadaAlfabetica[i]);
+        }
+    }
+    printf("----------------------------\n");
+    
+    free(listaOrdenadaAlfabetica); // Limpando a memória para não vazar!
+}
+
+void exibirListaAlunosPorNascimento(Aluno *lista, int qtd)
+{
+    Aluno listaOrdenada[100]; 
+    for (int i = 0; i < qtd; i++)
+    {
+        listaOrdenada[i] = lista[i];
+    }
+    for (int i = 0; i < qtd; i++)
+    {
+        for (int j = i + 1; j < qtd; j++)
+        {
+            if (listaOrdenada[i].ativo == 1 && listaOrdenada[j].ativo == 1)
+            {
+                if ((listaOrdenada[i].dataNascimento.ano > listaOrdenada[j].dataNascimento.ano) || 
+                    (listaOrdenada[i].dataNascimento.ano == listaOrdenada[j].dataNascimento.ano && listaOrdenada[i].dataNascimento.mes > listaOrdenada[j].dataNascimento.mes) || 
+                    (listaOrdenada[i].dataNascimento.ano == listaOrdenada[j].dataNascimento.ano && listaOrdenada[i].dataNascimento.mes == listaOrdenada[j].dataNascimento.mes && listaOrdenada[i].dataNascimento.dia > listaOrdenada[j].dataNascimento.dia))
+                {
+                    Aluno aux;
+                    aux = listaOrdenada[i];
+                    listaOrdenada[i] = listaOrdenada[j];
+                    listaOrdenada[j] = aux;
+                }
+            }
+        }
+    }
+    for (int i = 0; i < qtd; i++)
+    {
+        if (listaOrdenada[i].ativo == 1)
+        {
+            exibirAluno(listaOrdenada[i]);
+        }
+    }
+    printf("----------------------------\n");
 }

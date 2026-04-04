@@ -1,9 +1,8 @@
-#include <stdio.h>
-
 #ifndef ALUNO_MODEL_H
 #define ALUNO_MODEL_H
+
 #define TAMANHO_NOME 100
-#define TAMANHO_CPF 15
+#define TAMANHO_CPF 16
 #define TAM_ALUNO 3
 #include "data_model.h"
 
@@ -22,5 +21,6 @@ int atualizarAluno(int matricula_antiga, int matricula_nova);
 int excluirAluno(int matricula);
 Aluno* listarAlunos();
 int obterQtdAlunos();
+Aluno* obterListaAlunosAlfabetica();
 
 #endif

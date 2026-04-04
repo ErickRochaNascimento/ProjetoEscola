@@ -13,7 +13,6 @@ void mostrarMensagem(const char *mensagem)
 
 int verificarCPF(const char *cpf)
 {
-    int todosDigitos = 0;
     // Verificar se o CPF tem 11 dígitos
     if (strlen(cpf) != 11)
     {
@@ -52,9 +51,10 @@ int verificarCPF(const char *cpf)
     {
         return 1; // CPF válido
     }
+    return 0;
 }
 
-char lerCPF(char *destino)
+void lerCPF(char *destino)
 {
     while (1)
     {
@@ -72,7 +72,7 @@ char lerCPF(char *destino)
     }
 }
 
-char lerNome(char *destino)
+void lerNome(char *destino)
 {
     printf("Digite o nome: ");
     scanf(" %100[^\n]", destino);
@@ -140,7 +140,7 @@ int verificarData(int d, int m, int a)
     return 1; // Se passou por tudo, a data é válida!
 }
 
-char lerDataNascimento(Data *dataNascimento)
+void lerDataNascimento(Data *dataNascimento)
 {
     while (1)
     {
