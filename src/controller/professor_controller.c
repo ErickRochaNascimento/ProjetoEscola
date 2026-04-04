@@ -160,25 +160,40 @@ void ModuloProfessor()
                     break;
                 }
                 case 1:
-                {
+                { // Lista por sexo
                     char sexoRelatorio = lerSexo(sexoRelatorio);
 
-                    Professor *listaCompleta = listarProfessor();
-                    exibirListaProfessoresPorSexo(listaCompleta, quantidade, sexoRelatorio);
+                    Professor *listaAlfabetica = listarProfessor();
+                    if (listaAlfabetica != NULL)
+                    {
+                        exibirListaProfessoresPorSexo(listaAlfabetica, quantidade, sexoRelatorio);
+                        free(listaAlfabetica); // 🧹 Limpamos a memória!
+                    }
                     pausarConsole();
                     break;
                 }
                 case 2:
                 {
-                    Professor *listaCompleta = listarProfessor();
-                    exibirListaProfessoresAlfabetico(listaCompleta, quantidade);
+                    // Exibir lista alfabetica
+                    Professor *listaAlfabetica = listarProfessor();
+                    if (listaAlfabetica != NULL)
+                    {
+                        exibirListaProfessoresAlfabetico(listaAlfabetica, quantidade);
+                        free(listaAlfabetica);
+                    }
                     pausarConsole();
+                    break;
                 }
                 case 3:
                 {
-                    Professor *listaCompleta = listarProfessor();
-                    exibirListaProfessoresPorNascimento(listaCompleta, quantidade);
+                    Professor *listaAlfabetica = listarProfessor();
+                    if (listaAlfabetica != NULL)
+                    {
+                        exibirListaProfessoresPorNascimento(listaAlfabetica, quantidade);
+                        free(listaAlfabetica);
+                    }
                     pausarConsole();
+                    break;
                 }
 
                 default:

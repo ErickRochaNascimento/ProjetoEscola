@@ -1,4 +1,5 @@
 #include "professor_view.h"
+#include "professor_controller.h"
 #include <stdio.h>
 #include <ctype.h>
 #include <string.h>
@@ -90,39 +91,21 @@ int imprimirMenuRelatorios()
     printf("0 - Voltar ao menu Principal \n");
     printf("1 - Imprimir por Sexo\n");
     printf("2 - Imprimir em ordem alfabetica\n");
+    printf("3 - Imprimir por data de nascimento\n");
     scanf("%d", &opcao);
     return opcao;
 }
 
 void exibirListaProfessoresAlfabetico(Professor *lista, int qtd)
 {
-    Professor listaOrdenada[100];
-    for (int i = 0; i < qtd; i++)
-    {
-        listaOrdenada[i] = lista[i];
-    }
-    for (int i = 0; i < qtd; i++)
-    {
-        for (int j = i + 1; j < qtd; j++)
-        {
-            if (listaOrdenada[i].ativo == 1 && listaOrdenada[j].ativo == 1)
-            {
-                if (strcmp(listaOrdenada[i].nome, listaOrdenada[j].nome) > 0)
-                {
-                    Professor aux;
-                    aux = listaOrdenada[i];
-                    listaOrdenada[i] = listaOrdenada[j];
-                    listaOrdenada[j] = aux;
-                }
-            }
-        }
-    }
+    Professor listaOrdenadaAlfabetica[100] = listarProfessor();
+    
     for (int i = 0; i < qtd; i++)
     {
 
-        if (listaOrdenada[i].ativo == 1)
+        if (listaOrdenadaAlfabetica[i].ativo == 1)
         {
-            exibirProfessor(listaOrdenada[i]);
+            exibirProfessor(listaOrdenadaAlfabetica[i]);
         }
     }
     printf("----------------------------\n");

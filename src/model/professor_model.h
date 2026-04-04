@@ -21,5 +21,6 @@ int excluirProfessor(int matricula);
 Professor *listarProfessor();
 int obterQtdProfessor();
 int atualizarProfessor(int matricula_antiga, int matricula_nova);
+Professor* obterListaOrdenadaAlfabetica();
 
 #endif

@@ -4,5 +4,4 @@
 #include "professor_view.h"
 
 void ModuloProfessor();
-
 #endif

@@ -39,6 +39,7 @@ int cadastrarProfessor(Professor novoProfessor)
 
 Professor *listarProfessor()
 {
+    Professor *listaProfessor = obterListaOrdenadaAlfabetica();
     return listaProfessor;
 }
 
@@ -91,4 +92,39 @@ int excluirProfessor(int matricula)
         }
     }
     return -1; // matricula não encontrada
+}
+
+Professor* obterListaOrdenadaAlfabetica()
+{
+    int qtd = qtdProfessor;
+
+    // Criamos a cópia da lista dinamicamente usando malloc
+    Professor *listaOrdenada = malloc(qtd * sizeof(Professor));
+    
+    if (listaOrdenada == NULL) {
+        return NULL; 
+    }
+
+    // Copiando os dados da lista original para a nova
+    for (int i = 0; i < qtd; i++)
+    {
+        listaOrdenada[i] = listaProfessor[i];
+    }
+
+    for (int i = 0; i < qtd; i++)
+    {
+        for (int j = i + 1; j < qtd; j++)
+        {
+            if (listaOrdenada[i].ativo == 1 && listaOrdenada[j].ativo == 1)
+            {
+                if (strcmp(listaOrdenada[i].nome, listaOrdenada[j].nome) > 0)
+                {
+                    Professor aux = listaOrdenada[i];
+                    listaOrdenada[i] = listaOrdenada[j];
+                    listaOrdenada[j] = aux;
+                }
+            }
+        }
+    }
+        return listaOrdenada;
 }
