@@ -2,14 +2,14 @@
 #include <stdlib.h>
 #include <string.h>
 #include "utils.h"
+#include "professor_model.h"
+#include "aluno_model.h"
 
 // Escrevemos a função uma única vez aqui!
 void mostrarMensagem(const char *mensagem)
 {
     printf("%s\n", mensagem);
 }
-
-
 
 int verificarCPF(const char *cpf)
 {
@@ -26,6 +26,27 @@ int verificarCPF(const char *cpf)
         if (cpf[i] < '0' || cpf[i] > '9')
         {
             return 0;
+        }
+    }
+
+    int qtdAluno = obterQtdAlunos();
+    int qtdProfessor = obterQtdProfessor();
+    Professor *listaProfessor = listarProfessor();
+    Aluno *listaAluno = listarAlunos();
+    
+
+    for (int i = 0; i < qtdAluno; i++)
+    {
+        if (strcmp(listaAluno[i].cpf, cpf) == 0 && listaAluno[i].ativo == 1)
+        {
+            return -1; // algum aluno cadastrado com esse cpf
+        }
+    }
+    for (int i = 0; i < qtdProfessor; i++)
+    {
+        if (strcmp(listaProfessor[i].cpf, cpf) == 0 && listaProfessor[i].ativo == 1)
+        {
+            return -2; // algum professor cadastrado com esse cpf
         }
     }
 
@@ -61,9 +82,18 @@ void lerCPF(char *destino)
         printf("Digite o CPF (apenas numeros):");
         scanf("%s", destino);
         getchar();
-        if (verificarCPF(destino))
+        int resultado = verificarCPF(destino);
+        if (resultado == 1)
         {
             break;
+        }
+        else if (resultado == -1)
+        {
+            printf("CPF existente em Aluno\n");
+        }
+        else if (resultado == -2)
+        {
+            printf("CPF existente em Professor\n");
         }
         else
         {
@@ -163,22 +193,24 @@ void lerDataNascimento(Data *dataNascimento)
     }
 }
 
-
-void limparConsole(){
-    #ifdef _WIN32
-        system("cls");
-    #else
-        system("clear");
-    #endif
+void limparConsole()
+{
+#ifdef _WIN32
+    system("cls");
+#else
+    system("clear");
+#endif
 }
 
-void pausarConsole() {
+void pausarConsole()
+{
     printf("\nPressione qualquer tecla para continuar...\n");
     system("pause");
 }
 
-int menuPessoa(const char* tipoPessoa) {
-    limparConsole();    
+int menuPessoa(const char *tipoPessoa)
+{
+    limparConsole();
     int opcaoPessoa;
     printf("---- Modulo %s ----\n", tipoPessoa);
     printf("\n0 - Voltar ao menu Principal \n");
@@ -186,17 +218,17 @@ int menuPessoa(const char* tipoPessoa) {
     printf("2 - Listar %s\n", tipoPessoa);
     printf("3 - Atualizar %s\n", tipoPessoa);
     printf("4 - Excluir %s\n", tipoPessoa);
-    printf("5 - Relatorios %s\n",tipoPessoa);
+    printf("5 - Relatorios %s\n", tipoPessoa);
     scanf("%d", &opcaoPessoa);
 
     return opcaoPessoa;
 }
 
-int lerMatricula(const char* tipoMatricula){
+int lerMatricula(const char *tipoMatricula)
+{
     limparConsole();
     int matricula;
     printf("\nDigite a matricula %s: ", tipoMatricula);
     scanf("%d", &matricula);
     return matricula;
 }
-
