@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "aluno_controller.h"
 #include "professor_controller.h"
+#include "disciplina_controller.h"
 #include "utils.h"
 
 #define TAM_ALUNO 3
@@ -48,10 +49,9 @@ int main()
             case 3:
             {
                 limparConsole();
-                printf("Módulo Disciplina\n");
+                ModuloDisciplina();
                 break;
             }
-
             default:
             {
                 limparConsole();
