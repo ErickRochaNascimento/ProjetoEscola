@@ -7,7 +7,7 @@ Disciplina pedirDadosDisciplina();
 int pedirCodigoDisciplina();
 void exibirDisciplina(Disciplina p);
 void exibirListaDisciplinas(Disciplina *lista, int qtd);
-int imprimirMenuRelatorios();
+int imprimirMenuRelatoriosDisciplina();
 void exibirListaDisciplinasAlfabetico(Disciplina *lista, int qtd);
 
 #endif

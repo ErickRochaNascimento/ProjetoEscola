@@ -75,8 +75,8 @@ void ModuloDisciplina()
                 pausarConsole();
                 break;
             }
-            int codigoAntigo = lercodigo("antiga");
-            int codigoNovo = lercodigo("nova");
+            int codigoAntigo = lerMatricula("antiga");
+            int codigoNovo = lerMatricula("nova");
             int resultadoAtualizacao = atualizarDisciplina(codigoAntigo, codigoNovo);
 
             if (resultadoAtualizacao == 1)
@@ -111,7 +111,7 @@ void ModuloDisciplina()
                 break;
             }
 
-            int codigoExcluir = lercodigo("a excluir");
+            int codigoExcluir = lerMatricula("a excluir");
 
             int resultadoExclusao = excluirDisciplina(codigoExcluir);
 
@@ -146,7 +146,7 @@ void ModuloDisciplina()
 
             while (!sairMenu)
             {
-                int opcao = imprimirMenuRelatorios();
+                int opcao = imprimirMenuRelatoriosDisciplina();
 
                 switch (opcao)
                 {

@@ -49,7 +49,7 @@ void exibirListaDisciplinas(Disciplina *lista, int qtd)
 }
 
 
-int imprimirMenuRelatorios()
+int imprimirMenuRelatoriosDisciplina()
 {
     limparConsole();
     int opcao;

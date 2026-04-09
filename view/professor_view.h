@@ -7,7 +7,7 @@ Professor pedirDadosProfessor();
 int pedirMatriculaProfessor();
 void exibirProfessor(Professor p);
 void exibirListaProfessores(Professor *lista, int qtd);
-int imprimirMenuRelatorios();
+int imprimirMenuRelatoriosProfessor();
 void exibirListaProfessoresPorSexo(Professor *lista, int qtd, char sexoFiltro);
 void exibirListaProfessoresAlfabetico(Professor *lista, int qtd);
 void exibirListaProfessoresPorNascimento(Professor *lista, int qtd);

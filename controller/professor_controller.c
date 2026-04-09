@@ -151,7 +151,7 @@ void ModuloProfessor()
 
             while (!sairMenu)
             {
-                int opcao = imprimirMenuRelatorios();
+                int opcao = imprimirMenuRelatoriosProfessor();
 
                 switch (opcao)
                 {
