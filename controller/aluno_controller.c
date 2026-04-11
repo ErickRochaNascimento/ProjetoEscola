@@ -50,9 +50,9 @@ void ModuloAluno()
 
             else if (resultadoBusca == -2)
             {
-                mostrarMensagem("Sexo inválido. ");
+                mostrarMensagem("Cadastro cancelado. ");
+                pausarConsole();
             }
-
             break;
         }
 

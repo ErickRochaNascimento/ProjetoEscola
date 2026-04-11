@@ -2,6 +2,8 @@
 #include "utils.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+#
 
 void ModuloDisciplina()
 {
@@ -43,6 +45,11 @@ void ModuloDisciplina()
             {
                 mostrarMensagem("Já existe uma Disciplina cadastrada com essa disciplina! ");
             }
+            else if (resultadoBusca == -2)
+            {
+                mostrarMensagem("Cadastro cancelado. ");
+                pausarConsole();
+            }
 
             break;
         }
@@ -75,8 +82,8 @@ void ModuloDisciplina()
                 pausarConsole();
                 break;
             }
-            int codigoAntigo = lerMatricula("antiga");
-            int codigoNovo = lerMatricula("nova");
+            int codigoAntigo = lerMatricula("antiga", 3);
+            int codigoNovo = lerMatricula("nova", 3);
             int resultadoAtualizacao = atualizarDisciplina(codigoAntigo, codigoNovo);
 
             if (resultadoAtualizacao == 1)
@@ -111,7 +118,7 @@ void ModuloDisciplina()
                 break;
             }
 
-            int codigoExcluir = lerMatricula("a excluir");
+            int codigoExcluir = lerMatricula("a excluir", 3);
 
             int resultadoExclusao = excluirDisciplina(codigoExcluir);
 
@@ -181,4 +188,32 @@ void ModuloDisciplina()
         }
         }
     }
+}
+
+int verificarSemestre(const char *semestre)
+{
+    if (strlen(semestre) != 6)
+    {
+        return 0; 
+    }
+
+    for (int i = 0; i < 4; i++)
+    {
+        if (semestre[i] < '0' || semestre[i] > '9')
+        {
+            return 0; 
+        }
+    }
+
+    if (semestre[4] != '.')
+    {
+        return 0; 
+    }
+
+    if (semestre[5] != '1' && semestre[5] != '2')
+    {
+        return 0; 
+    }
+
+    return 1; 
 }

@@ -3,17 +3,19 @@
 #include "data_model.h"
 
 // Declaramos a função genérica para todo mundo usar
-void mostrarMensagem(const char* mensagem);
+void mostrarMensagem(const char *mensagem);
 void limparConsole();
 int verificarCPF(const char *cpf);
 void lerCPF(char *destino);
-void lerNome( char *destino);
-char lerSexo( char destino);
+void lerNome(char *destino);
+char lerSexo(char destino);
 int verificarSexo(const char sexo);
 void lerDataNascimento(Data *dataNascimento);
 int verificarData(int d, int m, int a);
 void pausarConsole();
-int menuPessoa(const char* tipoPessoa);
-int lerMatricula(const char* tipoMatricula);
+int menuPessoa(const char *tipoPessoa);
+int lerMatricula(const char *tipoMatricula, int tipo);
+int verificarMatricula(const char matricula, const int tipo);
+int lerMatriculaParaDisciplina(const char *tipoMatricula);
 
 #endif

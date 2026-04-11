@@ -1,5 +1,6 @@
 #include "disciplina_view.h"
 #include "disciplina_controller.h"
+#include "professor_model.h"
 #include <stdio.h>
 #include <ctype.h>
 #include <string.h>
@@ -8,31 +9,35 @@
 
 Disciplina pedirDadosDisciplina()
 {
-    Disciplina p;
+    Disciplina d;
 
+    lerNome(d.nome);
+    lerSemestre(d.semestre);
+    d.matricula_professor = lerMatriculaParaDisciplina("do professor da diciplina");
 
-    lerNome(p.nome);
-
-    return p;
+    return d;
 }
 
-int pedirCodigoDisciplina()
+void exibirDisciplina(Disciplina d)
 {
-    printf("Digite a matrícula: ");
-    int codigo;
-    scanf("%d", &codigo);
-    return codigo;
-}
-
-void exibirDisciplina(Disciplina p)
-{
-    for (int i = 0; p.nome[i] != '\0'; i++)
+    for (int i = 0; d.nome[i] != '\0'; i++)
     {
-        p.nome[i] = toupper(p.nome[i]);
+        d.nome[i] = toupper(d.nome[i]);
     }
-    
 
-    printf("Codigo: %d | Nome: %s |\n", p.codigo, p.nome);
+    Professor *lista = listarProfessor();
+    int qtd = obterQtdProfessor();
+    for (int i = 0; i < qtd; i++)
+    {
+        if (lista[i].matricula == d.matricula_professor && lista[i].ativo == 1)
+        {
+            printf("Codigo: %d | Nome: %s | Semestre: %s | Professor Matricula: %d | Nome: %s\n", d.codigo, d.nome, d.semestre, d.matricula_professor, lista[i].nome);
+        }
+    }
+}
+
+void exibirDadosDiciplina(Disciplina d)
+{
 }
 
 void exibirListaDisciplinas(Disciplina *lista, int qtd)
@@ -48,7 +53,6 @@ void exibirListaDisciplinas(Disciplina *lista, int qtd)
     printf("----------------------------\n");
 }
 
-
 int imprimirMenuRelatoriosDisciplina()
 {
     limparConsole();
@@ -62,8 +66,8 @@ int imprimirMenuRelatoriosDisciplina()
 
 void exibirListaDisciplinasAlfabetico(Disciplina *lista, int qtd)
 {
-    Disciplina *listaOrdenadaAlfabetica = listarDisciplina(); 
-    
+    Disciplina *listaOrdenadaAlfabetica = listarDisciplina();
+
     for (int i = 0; i < qtd; i++)
     {
         if (listaOrdenadaAlfabetica[i].ativo == 1)
@@ -73,4 +77,28 @@ void exibirListaDisciplinasAlfabetico(Disciplina *lista, int qtd)
     }
     printf("----------------------------\n");
     free(listaOrdenadaAlfabetica);
+}
+
+void lerSemestre(char *destino)
+{
+    while (1)
+    {
+        printf("Digite 0 para sair.\nDigite o semestre (ex: 2024.1): ");
+        scanf("%s", destino);
+        getchar();
+
+        if (!strcmp(destino, "0"))
+        {
+            break;
+        }
+
+        if (verificarSemestre(destino) == 1)
+        {
+            break; 
+        }
+        else
+        {
+            printf("Semestre invalido! Use o formato correto (ex: 2024.1 ou 2023.2).\n\n");
+        }
+    }
 }

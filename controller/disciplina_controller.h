@@ -5,5 +5,6 @@
 #include "disciplina_view.h"
 
 void ModuloDisciplina();
+int verificarSemestre(const char *semestre);
 
 #endif

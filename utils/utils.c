@@ -4,6 +4,7 @@
 #include "utils.h"
 #include "professor_model.h"
 #include "aluno_model.h"
+#include "disciplina_model.h"
 
 // Escrevemos a função uma única vez aqui!
 void mostrarMensagem(const char *mensagem)
@@ -33,7 +34,6 @@ int verificarCPF(const char *cpf)
     int qtdProfessor = obterQtdProfessor();
     Professor *listaProfessor = listarProfessor();
     Aluno *listaAluno = listarAlunos();
-    
 
     for (int i = 0; i < qtdAluno; i++)
     {
@@ -79,9 +79,13 @@ void lerCPF(char *destino)
 {
     while (1)
     {
-        printf("Digite o CPF (apenas numeros):");
+        printf("Digite 0 para sair.\nDigite o CPF (apenas numeros):");
         scanf("%s", destino);
         getchar();
+        if (!strcmp(destino, "0"))
+        {
+            break;
+        }
         int resultado = verificarCPF(destino);
         if (resultado == 1)
         {
@@ -99,6 +103,7 @@ void lerCPF(char *destino)
         {
             printf("CPF invalido.\n");
         }
+        
     }
 }
 
@@ -123,8 +128,13 @@ char lerSexo(char destino)
 {
     while (1)
     {
-        printf("Digite seu sexo (M/F): ");
+        printf("Digite 0 para sair.\nDigite seu sexo (M/F): ");
         scanf(" %c", &destino);
+        if (destino == '0')
+        {
+            break;
+        }
+
         if (verificarSexo(destino))
         {
             return destino;
@@ -135,6 +145,7 @@ char lerSexo(char destino)
             printf("Sexo invalido!\n");
         }
     }
+    return '0';
 }
 
 int verificarData(int d, int m, int a)
@@ -174,14 +185,18 @@ void lerDataNascimento(Data *dataNascimento)
 {
     while (1)
     {
-        printf("Digite o dia de nascimento: ");
+        printf("Digite 0 para sair.\nDigite o dia de nascimento: ");
         scanf("%d", &dataNascimento->dia);
 
-        printf("Digite o mêS de nascimento: ");
+        printf("Digite 0 para sair.\nDigite o mêS de nascimento: ");
         scanf("%d", &dataNascimento->mes);
 
-        printf("Digite o ano de nascimento: ");
+        printf("Digite 0 para sair.\nDigite o ano de nascimento: ");
         scanf("%d", &dataNascimento->ano);
+        if (dataNascimento->dia == 0 || dataNascimento->mes == 0 || dataNascimento->ano == 0)
+        {
+            break;
+        }
         if (verificarData(dataNascimento->dia, dataNascimento->mes, dataNascimento->ano))
         {
             break; // Data válida!
@@ -224,11 +239,80 @@ int menuPessoa(const char *tipoPessoa)
     return opcaoPessoa;
 }
 
-int lerMatricula(const char *tipoMatricula)
+int lerMatricula(const char *tipoMatricula, int tipo)
 {
     limparConsole();
     int matricula;
     printf("\nDigite a matricula %s: ", tipoMatricula);
     scanf("%d", &matricula);
     return matricula;
+}
+
+int lerMatriculaParaDisciplina(const char *tipoMatricula)
+{
+    int tipo = 3;
+    while (1)
+    {
+        int matricula;
+        printf("Digite 0 para sair.\nDigite a matricula do %s: ", tipoMatricula);
+        scanf("%d", &matricula);
+        if (matricula == 0)
+        {
+            break;
+        }
+        if (verificarMatricula(matricula, tipo) == 1)
+        {
+            return matricula;
+        }
+        else
+        {
+            printf("Matricula não existe! Tente novamente.\n");
+            pausarConsole();
+            limparConsole();
+        }
+    }
+    return -1;
+}
+
+int verificarMatricula(const char matricula, const int tipo)
+{
+    int qtd;
+
+    if (tipo == 1) // Aluno
+    {
+        Aluno *lista = listarAlunos();
+        qtd = obterQtdAlunos();
+        for (int i = 0; i < qtd; i++)
+        {
+            if (matricula == lista[i].matricula && lista[i].ativo == 1)
+            {
+                return 1; // Matricula existe
+            }
+        }
+    }
+    else if (tipo == 2) // Professor
+    {
+        Professor *lista = listarProfessor();
+        qtd = obterQtdProfessor();
+        for (int i = 0; i < qtd; i++)
+        {
+            if (matricula == lista[i].matricula && lista[i].ativo == 1)
+            {
+                return 1; // Matricula existe
+            }
+        }
+    }
+    else if (tipo == 3) // Disciplina
+    {
+        Disciplina *lista = listarDisciplina();
+        qtd = obterQtdDisciplina();
+        for (int i = 0; i < qtd; i++)
+        {
+            if (matricula == lista[i].codigo && lista[i].ativo == 1)
+            {
+                return 1; // Matricula existe
+            }
+        }
+    }
+    return 0; // Não existe
 }

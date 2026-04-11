@@ -4,10 +4,11 @@
 #include "disciplina_model.h"
 
 Disciplina pedirDadosDisciplina();
-int pedirCodigoDisciplina();
-void exibirDisciplina(Disciplina p);
+void exibirDisciplina(Disciplina d);
 void exibirListaDisciplinas(Disciplina *lista, int qtd);
 int imprimirMenuRelatoriosDisciplina();
 void exibirListaDisciplinasAlfabetico(Disciplina *lista, int qtd);
+void exibirDadosDiciplina(Disciplina d);
+void lerSemestre(char *destino);
 
 #endif

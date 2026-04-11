@@ -37,16 +37,19 @@ void ModuloProfessor()
             else if (resultadoBusca == -1)
             {
                 mostrarMensagem("Lista de professores cheia!");
+                pausarConsole();
             }
 
             else if (resultadoBusca == -2)
             {
-                mostrarMensagem("Sexo invalido. ");
+                mostrarMensagem("Cadastro cancelado. ");
+                pausarConsole();
             }
 
             else if (resultadoBusca == 0)
             {
                 mostrarMensagem("Já existe um professor cadastrado com essa matrícula! ");
+                pausarConsole();
             }
 
             break;
@@ -80,8 +83,8 @@ void ModuloProfessor()
                 pausarConsole();
                 break;
             }
-            int matriculaAntiga = lerMatricula("antiga");
-            int matriculaNova = lerMatricula("nova");
+            int matriculaAntiga = lerMatricula("antiga", 2);
+            int matriculaNova = lerMatricula("nova", 2);
             int resultadoAtualizacao = atualizarProfessor(matriculaAntiga, matriculaNova);
 
             if (resultadoAtualizacao == 1)
@@ -116,7 +119,7 @@ void ModuloProfessor()
                 break;
             }
 
-            int matriculaExcluir = lerMatricula("a excluir");
+            int matriculaExcluir = lerMatricula("a excluir", 2);
 
             int resultadoExclusao = excluirProfessor(matriculaExcluir);
 

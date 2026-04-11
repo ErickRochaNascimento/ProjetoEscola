@@ -14,6 +14,9 @@ int cadastrarDisciplina(Disciplina novaDisciplina)
     {
         return -1;
     }
+    if(novaDisciplina.matricula_professor == 0){
+        return -2;
+    }
     int codigoCriado = geradorCodigoDiciplina;
 
     listaDisciplina[qtdDisciplina].codigo = geradorCodigoDiciplina;
@@ -21,7 +24,6 @@ int cadastrarDisciplina(Disciplina novaDisciplina)
 
     strcpy(listaDisciplina[qtdDisciplina].nome, novaDisciplina.nome);
     strcpy(listaDisciplina[qtdDisciplina].semestre, novaDisciplina.semestre);
-    listaDisciplina[qtdDisciplina].professor = novaDisciplina.professor;
 
     listaDisciplina[qtdDisciplina].ativo = 1;
     qtdDisciplina++;

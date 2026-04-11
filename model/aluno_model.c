@@ -14,8 +14,8 @@ int cadastrarAluno(Aluno novoAluno)
         return -1; 
 
 
-    if(novoAluno.sexo != 'M' && novoAluno.sexo != 'm' && novoAluno.sexo != 'F' && novoAluno.sexo != 'f'){
-        return -3;
+    if(!strcmp(novoAluno.cpf,"0")|| novoAluno.sexo == '0'  || novoAluno.dataNascimento.dia == 0 || novoAluno.dataNascimento.mes == 0 || novoAluno.dataNascimento.ano == 0){
+        return -2;
     }
     
 

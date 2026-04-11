@@ -1,4 +1,5 @@
 #include "professor_model.h"
+#include "utils.h"
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -13,9 +14,8 @@ int cadastrarProfessor(Professor novoProfessor)
     {
         return -1; // Lista sem espaço
     }
-    if (novoProfessor.sexo != 'M' && novoProfessor.sexo != 'm' && novoProfessor.sexo != 'F' && novoProfessor.sexo != 'f')
-    {
-        return -3;
+    if(!strcmp(novoProfessor.cpf,"0")|| novoProfessor.sexo == '0'  || novoProfessor.dataNascimento.dia == 0 || novoProfessor.dataNascimento.mes == 0 || novoProfessor.dataNascimento.ano == 0){
+        return -2;
     }
 
     int matriculaCriada = geradorMAtriculaProfessor;
@@ -57,7 +57,7 @@ int atualizarProfessor(int matricula_antiga, int matricula_nova)
     }
     for (int i = 0; i < qtdProfessor; i++)
     {
-        if (matricula_nova == listaProfessor[i].matricula && listaProfessor[i].ativo == 1)
+        if (verificarMatricula(matricula_nova, 1))
         {
             return 0; // alguem ja possui essa matricula
         }
@@ -65,7 +65,7 @@ int atualizarProfessor(int matricula_antiga, int matricula_nova)
 
     for (int i = 0; i < qtdProfessor; i++)
     {
-        if (matricula_antiga == listaProfessor[i].matricula && listaProfessor[i].ativo == 1)
+        if (verificarMatricula(matricula_antiga, 1))
         {
             listaProfessor[i].matricula = matricula_nova;
             return 1; // Matricula atualizada
@@ -82,7 +82,7 @@ int excluirProfessor(int matricula)
 
     for (int i = 0; i < qtdProfessor; i++)
     {
-        if (matricula == listaProfessor[i].matricula && listaProfessor[i].ativo)
+        if (verificarMatricula(matricula, 1))
         {
             for (int j = i; j < qtdProfessor - 1; j++)
             {
