@@ -15,7 +15,7 @@ Disciplina pedirDadosDisciplina()
 
     lerNome(d.nome);
     lerSemestre(d.semestre);
-    d.matricula_professor = lerMatriculaWhile("professor da diciplina", 2);
+    d.matricula_professor = lerMatriculaWhile("a matricula do professor da disciplina", 2);
 
     return d;
 }

@@ -12,7 +12,7 @@ Matricula pedirDadosMatricula(int codigoDisciplina){
     Matricula m;
 
     m.codigoDisciplina = codigoDisciplina;
-    m.matriculaAluno = lerMatricula("aluno",1);
+    m.matriculaAluno = lerMatricula("a matricula do aluno",1);
 
     return m;
 }

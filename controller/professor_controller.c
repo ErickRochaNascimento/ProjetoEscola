@@ -83,8 +83,8 @@ void ModuloProfessor()
                 pausarConsole();
                 break;
             }
-            int matriculaAntiga = lerMatricula("antiga", 2);
-            int matriculaNova = lerMatricula("nova", 2);
+            int matriculaAntiga = lerMatricula("a matricula antiga", 2);
+            int matriculaNova = lerMatricula("a matricula nova", 2);
             int resultadoAtualizacao = atualizarProfessor(matriculaAntiga, matriculaNova);
 
             if (resultadoAtualizacao == 1)
@@ -119,7 +119,7 @@ void ModuloProfessor()
                 break;
             }
 
-            int matriculaExcluir = lerMatricula("a excluir", 2);
+            int matriculaExcluir = lerMatricula("a matricula a excluir", 2);
 
             int resultadoExclusao = excluirProfessor(matriculaExcluir);
 

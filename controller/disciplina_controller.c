@@ -81,8 +81,8 @@ void ModuloDisciplina()
                 pausarConsole();
                 break;
             }
-            int codigoAntigo = lerMatricula("antiga", 3);
-            int codigoNovo = lerMatricula("nova", 3);
+            int codigoAntigo = lerMatricula("a matricula antiga", 3);
+            int codigoNovo = lerMatricula("a matricula nova", 3);
             int resultadoAtualizacao = atualizarDisciplina(codigoAntigo, codigoNovo);
 
             if (resultadoAtualizacao == 1)
@@ -117,7 +117,7 @@ void ModuloDisciplina()
                 break;
             }
 
-            int codigoExcluir = lerMatricula("a excluir", 3);
+            int codigoExcluir = lerMatricula("a matricula a excluir", 3);
 
             int resultadoExclusao = excluirDisciplina(codigoExcluir);
 
@@ -176,7 +176,7 @@ void ModuloDisciplina()
                 }
                 case 3:
                 {
-                    int codigo = lerMatriculaWhile("da disciplina", 3);
+                    int codigo = lerMatriculaWhile("o codigo da disciplina", 3);
                     exibirAlunosDisciplina(codigo);
                     pausarConsole();
                 }

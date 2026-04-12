@@ -243,7 +243,7 @@ int lerMatricula(const char *mensagem, int tipo)
 {
     limparConsole();
     int matricula;
-    printf("\nDigite a matricula %s: ", mensagem);
+    printf("\nDigite %s: ", mensagem);
     scanf("%d", &matricula);
     return matricula;
 }

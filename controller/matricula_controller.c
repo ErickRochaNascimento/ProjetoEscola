@@ -23,7 +23,7 @@ void ModuloMatricula()
         case 1:
         {
             mostrarMensagem(" --- Cadastrar Aluno em Disciplina --- ");
-            int codigoDisciplina = lerMatriculaWhile("disciplina", 3);
+            int codigoDisciplina = lerMatriculaWhile("o codigo da disciplina", 3);
 
             while (1)
             {
@@ -71,8 +71,8 @@ void ModuloMatricula()
                 break;
             }
 
-            int matriculaExcluir = lerMatricula("do aluno", 1);
-            int codigoExcluir = lerMatricula("da diciplina", 3);
+            int matriculaExcluir = lerMatricula("a matricula do aluno", 1);
+            int codigoExcluir = lerMatricula("o codigo da diciplina", 3);
 
             int resultadoExclusao = excluirAlunoDisciplina(matriculaExcluir, codigoExcluir);
 
