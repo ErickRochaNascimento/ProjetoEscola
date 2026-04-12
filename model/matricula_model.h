@@ -1,5 +1,5 @@
-#ifndef DICIPLINA_MODEL_H
-#define DICIPLINA_MODEL_H
+#ifndef MATRICULA_MODEL_H
+#define MATRICULA_MODEL_H
 #define TAM_MATRICULA 1000
 
 typedef struct matricula

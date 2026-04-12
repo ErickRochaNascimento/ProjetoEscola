@@ -6,7 +6,7 @@
 Disciplina listaDisciplina[TAM_DISCIPLINA];
 
 int qtdDisciplina = 0;
-int geradorCodigoDiciplina = 1;
+int geradorCodigoDisciplina = 1;
 
 int cadastrarDisciplina(Disciplina novaDisciplina)
 {
@@ -17,10 +17,10 @@ int cadastrarDisciplina(Disciplina novaDisciplina)
     if(novaDisciplina.matricula_professor == 0){
         return -2;
     }
-    int codigoCriado = geradorCodigoDiciplina;
+    int codigoCriado = geradorCodigoDisciplina;
 
-    listaDisciplina[qtdDisciplina].codigo = geradorCodigoDiciplina;
-    geradorCodigoDiciplina++;
+    listaDisciplina[qtdDisciplina].codigo = geradorCodigoDisciplina;
+    geradorCodigoDisciplina++;
 
     strcpy(listaDisciplina[qtdDisciplina].nome, novaDisciplina.nome);
     strcpy(listaDisciplina[qtdDisciplina].semestre, novaDisciplina.semestre);
@@ -53,7 +53,7 @@ int atualizarDisciplina(int codigo_antigo, int codigo_novo)
     {
         if (codigo_novo == listaDisciplina[i].codigo && listaDisciplina[i].ativo == 1)
         {
-            return 0; // diciplina ja possui esse codigo
+            return 0; // disciplina ja possui esse codigo
         }
     }
 

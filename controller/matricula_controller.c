@@ -66,13 +66,13 @@ void ModuloMatricula()
             int quantidade = obterQtdMatricula();
             if (quantidade == 0)
             {
-                mostrarMensagem("Lista de Matriculas Vazia!\nPrimeiro cadastre um aluno em diciplina.\n");
+                mostrarMensagem("Lista de Matriculas Vazia!\nPrimeiro cadastre um aluno em disciplina.\n");
                 pausarConsole();
                 break;
             }
 
             int matriculaExcluir = lerMatricula("a matricula do aluno", 1);
-            int codigoExcluir = lerMatricula("o codigo da diciplina", 3);
+            int codigoExcluir = lerMatricula("o codigo da disciplina", 3);
 
             int resultadoExclusao = excluirAlunoDisciplina(matriculaExcluir, codigoExcluir);
 
