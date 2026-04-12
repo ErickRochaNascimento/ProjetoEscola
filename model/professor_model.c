@@ -57,7 +57,7 @@ int atualizarProfessor(int matricula_antiga, int matricula_nova)
     }
     for (int i = 0; i < qtdProfessor; i++)
     {
-        if (verificarMatricula(matricula_nova, 1))
+        if (verificarMatricula(matricula_nova, 2))
         {
             return 0; // alguem ja possui essa matricula
         }
@@ -65,7 +65,7 @@ int atualizarProfessor(int matricula_antiga, int matricula_nova)
 
     for (int i = 0; i < qtdProfessor; i++)
     {
-        if (verificarMatricula(matricula_antiga, 1))
+        if (verificarMatricula(matricula_antiga, 2))
         {
             listaProfessor[i].matricula = matricula_nova;
             return 1; // Matricula atualizada
@@ -82,7 +82,7 @@ int excluirProfessor(int matricula)
 
     for (int i = 0; i < qtdProfessor; i++)
     {
-        if (verificarMatricula(matricula, 1))
+        if (verificarMatricula(matricula, 2))
         {
             for (int j = i; j < qtdProfessor - 1; j++)
             {
