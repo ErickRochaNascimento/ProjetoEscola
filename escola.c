@@ -21,7 +21,7 @@ int main()
         printf("4 - Matricular Aluno em Disciplina\n");
         printf("0 - sair\n");
 
-        scanf("%d", &opcao);
+        opcao = lerOpcao(4);
 
         switch (opcao)
         {

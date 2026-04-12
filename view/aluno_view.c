@@ -56,14 +56,12 @@ void exibirAluno(Aluno aluno)
 int imprimirMenuRelatoriosAluno()
 {
     limparConsole();
-    int opcao;
     printf("---  Relatorios  ---\n");
     printf("0 - Voltar ao menu Principal \n");
     printf("1 - Imprimir por Sexo\n");
     printf("2 - Imprimir em ordem alfabetica\n");
     printf("3 - Imprimir por data de nascimento\n");
-    scanf("%d", &opcao);
-    return opcao;
+    return lerOpcao(3);
 }
 
 void exibirListaAlunosPorSexo(Aluno *lista, int qtd, char sexoFiltro)

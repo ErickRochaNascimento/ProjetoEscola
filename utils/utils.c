@@ -103,7 +103,6 @@ void lerCPF(char *destino)
         {
             printf("CPF invalido.\n");
         }
-        
     }
 }
 
@@ -226,7 +225,6 @@ void pausarConsole()
 int menuPessoa(const char *tipoPessoa)
 {
     limparConsole();
-    int opcaoPessoa;
     printf("---- Modulo %s ----\n", tipoPessoa);
     printf("\n0 - Voltar ao menu Principal \n");
     printf("1 - Cadastrar %s\n", tipoPessoa);
@@ -234,9 +232,8 @@ int menuPessoa(const char *tipoPessoa)
     printf("3 - Atualizar %s\n", tipoPessoa);
     printf("4 - Excluir %s\n", tipoPessoa);
     printf("5 - Relatorios %s\n", tipoPessoa);
-    scanf("%d", &opcaoPessoa);
 
-    return opcaoPessoa;
+    return lerOpcao(5);
 }
 
 int lerMatricula(const char *mensagem, int tipo)
@@ -314,4 +311,32 @@ int verificarMatricula(const int matricula, const int tipo)
         }
     }
     return 0; // Não existe
+}
+
+int lerOpcao(int limite)
+{
+    int opcao;
+    while (1)
+    {
+        scanf("%d", &opcao);
+        getchar();
+
+        if (verificarOpcao(opcao, limite) == 1)
+        {
+            return opcao;
+        }
+        else
+        {
+            mostrarMensagem("Opção invalida! Digite novamente: ");
+        }
+    }
+}
+
+int verificarOpcao(int opcao, int limite)
+{
+    if (opcao >= 0 && opcao <= limite)
+    {
+        return 1;
+    }
+    return 0;
 }

@@ -59,12 +59,9 @@ void exibirMatricula(Matricula m)
 int menuMatricula()
 {
     limparConsole();
-    int opcao;
     printf("---- Modulo Matricula ----\n");
     printf("\n0 - Voltar ao menu Principal \n");
     printf("1 - Cadastrar Matricula\n");
     printf("2 - Excluir Matricula\n");
-    scanf("%d", &opcao);
-
-    return opcao;
+    return lerOpcao(2);
 }

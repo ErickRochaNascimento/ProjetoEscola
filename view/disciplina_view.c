@@ -109,13 +109,11 @@ void exibirListaDisciplinas(Disciplina *lista, int qtd)
 int imprimirMenuRelatoriosDisciplina()
 {
     limparConsole();
-    int opcao;
     printf("---  Relatorios  ---\n");
     printf("0 - Voltar ao menu Principal \n");
     printf("2 - Imprimir em ordem alfabetica\n");
     printf("3 - Imprimir disciplina com alunos\n");
-    scanf("%d", &opcao);
-    return opcao;
+    return lerOpcao(3);
 }
 
 void exibirListaDisciplinasAlfabetico(Disciplina *lista, int qtd)
