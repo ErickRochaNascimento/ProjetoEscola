@@ -5,9 +5,6 @@
 #include "utils.h"
 #include "matricula_controller.h"
 
-#define TAM_ALUNO 3
-#define TAM_PROFESSOR 3
-
 
 int main()
 {

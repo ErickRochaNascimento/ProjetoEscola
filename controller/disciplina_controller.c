@@ -3,7 +3,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#
 
 void ModuloDisciplina()
 {
@@ -175,6 +174,12 @@ void ModuloDisciplina()
                     pausarConsole();
                     break;
                 }
+                case 3:
+                {
+                    int codigo = lerMatriculaWhile("da disciplina", 3);
+                    exibirAlunosDisciplina(codigo);
+                    pausarConsole();
+                }
 
                 default:
                     break;
@@ -222,7 +227,7 @@ int verificarSemestre(const char *semestre)
 
     if (ano < 2000 || ano > 2026)
     {
-        return 0; 
+        return 0;
     }
 
     return 1;

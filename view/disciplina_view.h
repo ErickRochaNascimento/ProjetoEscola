@@ -8,7 +8,7 @@ void exibirDisciplina(Disciplina d);
 void exibirListaDisciplinas(Disciplina *lista, int qtd);
 int imprimirMenuRelatoriosDisciplina();
 void exibirListaDisciplinasAlfabetico(Disciplina *lista, int qtd);
-void exibirDadosDiciplina(Disciplina d);
+void exibirAlunosDisciplina(int codigoDisciplina);
 void lerSemestre(char *destino);
 
 #endif

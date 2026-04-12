@@ -253,7 +253,7 @@ int lerMatriculaWhile(const char *mensagem, int tipo)
     while (1)
     {
         int matricula;
-        printf("Digite 0 para sair.\nDigite a matricula do %s: ", mensagem);
+        printf("Digite 0 para sair.\nDigite %s: ", mensagem);
         scanf("%d", &matricula);
         if (matricula == 0)
         {
