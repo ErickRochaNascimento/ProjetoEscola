@@ -248,9 +248,8 @@ int lerMatricula(const char *tipoMatricula, int tipo)
     return matricula;
 }
 
-int lerMatriculaParaDisciplina(const char *tipoMatricula)
+int lerMatriculaWhile(const char *tipoMatricula, int tipo)
 {
-    int tipo = 3;
     while (1)
     {
         int matricula;
@@ -271,7 +270,7 @@ int lerMatriculaParaDisciplina(const char *tipoMatricula)
             limparConsole();
         }
     }
-    return -1;
+    return 0;
 }
 
 int verificarMatricula(const char matricula, const int tipo)

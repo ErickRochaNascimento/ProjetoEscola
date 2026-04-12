@@ -3,6 +3,7 @@
 #include "professor_controller.h"
 #include "disciplina_controller.h"
 #include "utils.h"
+#include "matricula_controller.h"
 
 #define TAM_ALUNO 3
 #define TAM_PROFESSOR 3
@@ -20,6 +21,7 @@ int main()
         printf("1 - Aluno\n");
         printf("2 - Professor\n");
         printf("3 - Disciplina\n");
+        printf("4 - Matricular Aluno em Disciplina\n");
         printf("0 - sair\n");
 
         scanf("%d", &opcao);
@@ -51,6 +53,10 @@ int main()
                 limparConsole();
                 ModuloDisciplina();
                 break;
+            }
+            case 4:{
+                limparConsole();
+                ModuloMatricula();
             }
             default:
             {

@@ -13,7 +13,8 @@ Disciplina pedirDadosDisciplina()
 
     lerNome(d.nome);
     lerSemestre(d.semestre);
-    d.matricula_professor = lerMatriculaParaDisciplina("do professor da diciplina");
+    d.matricula_professor = lerMatriculaWhile("professor da diciplina",2);
+
 
     return d;
 }

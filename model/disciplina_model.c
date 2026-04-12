@@ -24,6 +24,7 @@ int cadastrarDisciplina(Disciplina novaDisciplina)
 
     strcpy(listaDisciplina[qtdDisciplina].nome, novaDisciplina.nome);
     strcpy(listaDisciplina[qtdDisciplina].semestre, novaDisciplina.semestre);
+    listaDisciplina[qtdDisciplina].matricula_professor = novaDisciplina.matricula_professor;
 
     listaDisciplina[qtdDisciplina].ativo = 1;
     qtdDisciplina++;

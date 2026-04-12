@@ -16,6 +16,6 @@ void pausarConsole();
 int menuPessoa(const char *tipoPessoa);
 int lerMatricula(const char *tipoMatricula, int tipo);
 int verificarMatricula(const char matricula, const int tipo);
-int lerMatriculaParaDisciplina(const char *tipoMatricula);
+int lerMatriculaWhile(const char *tipoMatricula, int tipo);
 
 #endif
