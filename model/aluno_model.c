@@ -50,27 +50,27 @@ int obterQtdAlunos() {
 int atualizarAluno(int matricula_antiga, int matricula_nova)
 {
     if (matricula_nova < 0)
-        return -2; // matrícula inválida
+        return -2; 
 
     for (int i = 0; i < qtdAluno; i++){
         if (listaAluno[i].matricula == matricula_nova && listaAluno[i].ativo == 1){
-            return 0; // alguem ja possui essa matricula
+            return 0; 
         }
     }
 
     for (int i = 0; i < qtdAluno; i++){
         if(listaAluno[i].matricula == matricula_antiga && listaAluno[i].ativo == 1){
             listaAluno[i].matricula = matricula_nova;
-            return 1; // matricula atualizada
+            return 1;
         }
     }
 
-    return -1; // matrícula antiga não encontrada
+    return -1; 
 }
 
 int excluirAluno(int matricula)
 {
-    if (matricula < 0) return -2; // matricula invalida
+    if (matricula < 0) return -2;
 
     for (int i = 0; i < qtdAluno; i++){
         if(matricula == listaAluno[i].matricula && listaAluno[i].ativo){
@@ -78,11 +78,11 @@ int excluirAluno(int matricula)
                 listaAluno[j] = listaAluno[j + 1];
             }
             qtdAluno--;
-            return 1; // aluno excluido com sucesso
+            return 1; 
         }
     }
     
-    return -1; // matricula não encontrada
+    return -1; 
 }
 
 Aluno* obterListaAlunosAlfabetica()

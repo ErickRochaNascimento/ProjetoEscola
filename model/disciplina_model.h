@@ -1,7 +1,7 @@
 #ifndef DISCIPLINA_MODEL_H
 #define DISCIPLINA_MODEL_H
 
-#define TAM_DISCIPLINA 3
+#define TAM_DISCIPLINA 20
 #define TAM_NOME 100
 #define TAM_SEMESTRE 8
 

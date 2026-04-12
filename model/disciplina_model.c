@@ -96,14 +96,12 @@ Disciplina* obterListaDisciplinasAlfabetica()
 {
     int qtd = qtdDisciplina;
 
-    // Criamos a cópia da lista dinamicamente usando malloc
     Disciplina *listaOrdenada = malloc(qtd * sizeof(Disciplina));
     
     if (listaOrdenada == NULL) {
         return NULL; 
     }
 
-    // Copiando os dados da lista original para a nova
     for (int i = 0; i < qtd; i++)
     {
         listaOrdenada[i] = listaDisciplina[i];

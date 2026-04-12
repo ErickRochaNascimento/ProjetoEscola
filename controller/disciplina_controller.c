@@ -194,26 +194,36 @@ int verificarSemestre(const char *semestre)
 {
     if (strlen(semestre) != 6)
     {
-        return 0; 
+        return 0;
     }
 
     for (int i = 0; i < 4; i++)
     {
         if (semestre[i] < '0' || semestre[i] > '9')
         {
-            return 0; 
+            return 0;
         }
     }
 
     if (semestre[4] != '.')
     {
-        return 0; 
+        return 0;
     }
 
     if (semestre[5] != '1' && semestre[5] != '2')
     {
+        return 0;
+    }
+
+    int ano = (semestre[0] - '0') * 1000 +
+              (semestre[1] - '0') * 100 +
+              (semestre[2] - '0') * 10 +
+              (semestre[3] - '0');
+
+    if (ano < 2000 || ano > 2026)
+    {
         return 0; 
     }
 
-    return 1; 
+    return 1;
 }

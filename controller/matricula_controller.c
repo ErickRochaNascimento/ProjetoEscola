@@ -60,7 +60,7 @@ void ModuloMatricula()
 
             break;
         }
-        case 4:
+        case 2:
         {
             mostrarMensagem(" --- Excluir Aluno de Disciplina --- ");
             int quantidade = obterQtdMatricula();

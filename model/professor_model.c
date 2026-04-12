@@ -99,14 +99,12 @@ Professor* obterListaProfessoresAlfabetica()
 {
     int qtd = qtdProfessor;
 
-    // Criamos a cópia da lista dinamicamente usando malloc
     Professor *listaOrdenada = malloc(qtd * sizeof(Professor));
     
     if (listaOrdenada == NULL) {
         return NULL; 
     }
 
-    // Copiando os dados da lista original para a nova
     for (int i = 0; i < qtd; i++)
     {
         listaOrdenada[i] = listaProfessor[i];

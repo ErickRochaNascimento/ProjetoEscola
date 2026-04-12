@@ -11,5 +11,5 @@ int imprimirMenuRelatoriosProfessor();
 void exibirListaProfessoresPorSexo(Professor *lista, int qtd, char sexoFiltro);
 void exibirListaProfessoresAlfabetico(Professor *lista, int qtd);
 void exibirListaProfessoresPorNascimento(Professor *lista, int qtd);
-
+malloc();
 #endif

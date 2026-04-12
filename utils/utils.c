@@ -80,7 +80,7 @@ void lerCPF(char *destino)
     while (1)
     {
         printf("Digite 0 para sair.\nDigite o CPF (apenas numeros):");
-        scanf("%s", destino);
+        scanf("%16s", destino);
         getchar();
         if (!strcmp(destino, "0"))
         {
@@ -239,21 +239,21 @@ int menuPessoa(const char *tipoPessoa)
     return opcaoPessoa;
 }
 
-int lerMatricula(const char *tipoMatricula, int tipo)
+int lerMatricula(const char *mensagem, int tipo)
 {
     limparConsole();
     int matricula;
-    printf("\nDigite a matricula %s: ", tipoMatricula);
+    printf("\nDigite a matricula %s: ", mensagem);
     scanf("%d", &matricula);
     return matricula;
 }
 
-int lerMatriculaWhile(const char *tipoMatricula, int tipo)
+int lerMatriculaWhile(const char *mensagem, int tipo)
 {
     while (1)
     {
         int matricula;
-        printf("Digite 0 para sair.\nDigite a matricula do %s: ", tipoMatricula);
+        printf("Digite 0 para sair.\nDigite a matricula do %s: ", mensagem);
         scanf("%d", &matricula);
         if (matricula == 0)
         {
@@ -273,7 +273,7 @@ int lerMatriculaWhile(const char *tipoMatricula, int tipo)
     return 0;
 }
 
-int verificarMatricula(const char matricula, const int tipo)
+int verificarMatricula(const int matricula, const int tipo)
 {
     int qtd;
 

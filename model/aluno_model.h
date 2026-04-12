@@ -3,7 +3,7 @@
 
 #define TAMANHO_NOME 100
 #define TAMANHO_CPF 16
-#define TAM_ALUNO 3
+#define TAM_ALUNO 1000
 #include "data_model.h"
 
 typedef struct aluno

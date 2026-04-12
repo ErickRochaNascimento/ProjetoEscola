@@ -14,8 +14,8 @@ void lerDataNascimento(Data *dataNascimento);
 int verificarData(int d, int m, int a);
 void pausarConsole();
 int menuPessoa(const char *tipoPessoa);
-int lerMatricula(const char *tipoMatricula, int tipo);
-int verificarMatricula(const char matricula, const int tipo);
-int lerMatriculaWhile(const char *tipoMatricula, int tipo);
+int lerMatricula(const char *mensagem, int tipo);
+int verificarMatricula(const int matricula, const int tipo);
+int lerMatriculaWhile(const char *mensagem, int tipo);
 
 #endif

@@ -2,7 +2,7 @@
 #define PROFESSOR_MODEL_H
 #include "data_model.h"
 
-#define TAM_PROFESSOR 3
+#define TAM_PROFESSOR 200
 #define TAM_CPF 16
 #define TAM_NOME 100
 
