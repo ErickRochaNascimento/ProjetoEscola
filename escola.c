@@ -21,7 +21,7 @@ int main()
         printf("4 - Matricular Aluno em Disciplina\n");
         printf("0 - sair\n");
 
-        opcao = lerOpcao(4);
+        opcao = lerOpcao(5);
 
         switch (opcao)
         {
@@ -54,6 +54,10 @@ int main()
             case 4:{
                 limparConsole();
                 ModuloMatricula();
+            }
+            case 5:{
+                limparConsole();
+                ModuloAniversario();
             }
             default:
             {
