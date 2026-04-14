@@ -127,3 +127,21 @@ void exibirListaAlunosPorNascimento(Aluno *lista, int qtd)
     }
     printf("----------------------------\n");
 }
+
+void exibirListaAlunosPorMes(Aluno *lista, int qtd, int mes) {
+    int encontrou = 0;
+    printf("\n --- Aniversariantes do Mes %d (Alunos) --- \n", mes);
+    
+    for (int i = 0; i < qtd; i++) {
+        // Verifica se o aluno está ativo e se o mês de nascimento coincide
+        if (lista[i].ativo == 1 && lista[i].dataNascimento.mes == mes) {
+            exibirAluno(lista[i]);
+            encontrou = 1;
+        }
+    }
+
+    if (!encontrou) {
+        printf("Nenhum aluno faz aniversario neste mes.\n");
+    }
+    printf("-------------------------------------------\n");
+}

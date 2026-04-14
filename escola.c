@@ -4,7 +4,7 @@
 #include "disciplina_controller.h"
 #include "utils.h"
 #include "matricula_controller.h"
-
+#include "relatorio_controller.h"
 
 int main()
 {
@@ -19,6 +19,7 @@ int main()
         printf("2 - Professor\n");
         printf("3 - Disciplina\n");
         printf("4 - Matricular Aluno em Disciplina\n");
+        printf("5 - Aniversariantes do Mes\n");
         printf("0 - sair\n");
 
         opcao = lerOpcao(5);

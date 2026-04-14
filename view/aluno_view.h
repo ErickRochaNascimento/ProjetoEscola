@@ -13,5 +13,6 @@ int imprimirMenuRelatoriosAluno();
 void exibirListaAlunosPorSexo(Aluno *lista, int qtd, char sexoFiltro);
 void exibirListaAlunosAlfabetico(Aluno *lista, int qtd);
 void exibirListaAlunosPorNascimento(Aluno *lista, int qtd);
+void exibirListaAlunosPorMes(Aluno *lista, int qtd, int mes);
 
 #endif
