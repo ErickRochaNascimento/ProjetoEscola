@@ -145,3 +145,24 @@ void exibirListaAlunosPorMes(Aluno *lista, int qtd, int mes) {
     }
     printf("-------------------------------------------\n");
 }
+
+
+void exibirListaAlunosPorNome(Aluno *lista, int qtd, char *pesquisa) {
+    int encontrou = 0;
+    printf("\n --- Resultados da Busca por: '%s' (Alunos) --- \n", pesquisa);
+
+    for (int i = 0; i < qtd; i++) {
+        if (lista[i].ativo == 1) {
+
+            if (strstr(lista[i].nome, pesquisa) != NULL) {
+                exibirAluno(lista[i]);
+                encontrou = 1;
+            }
+        }
+    }
+
+    if (!encontrou) {
+        printf("Nenhum aluno encontrado com esse termo.\n");
+    }
+    printf("----------------------------------------------\n");
+}
