@@ -11,4 +11,5 @@ void exibirListaDisciplinasAlfabetico(Disciplina *lista, int qtd);
 void exibirAlunosDisciplina(int codigoDisciplina);
 void lerSemestre(char *destino);
 void exibirDisciplinaMais40Vagas(Disciplina *lista);
+int menuDisciplina(const char *nome);
 #endif

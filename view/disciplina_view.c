@@ -167,3 +167,17 @@ void exibirDisciplinaMais40Vagas(Disciplina *lista)
         printf("----------------------------\n");
     }
 }
+int menuDisciplina(const char *nome)
+{
+    limparConsole();
+    printf("---- Modulo %s ----\n", nome);
+    printf("\n0 - Voltar ao menu Principal \n");
+    printf("1 - Cadastrar %s\n", nome);
+    printf("2 - Listar %s\n", nome);
+    printf("3 - Atualizar %s\n", nome);
+    printf("4 - Excluir %s\n", nome);
+    printf("5 - Matricular Alunos %s\n", nome);
+    printf("6 - Relatorios %s\n", nome);
+    
+    return lerOpcao(6);
+}

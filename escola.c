@@ -18,9 +18,8 @@ int main()
         printf("1 - Aluno\n");
         printf("2 - Professor\n");
         printf("3 - Disciplina\n");
-        printf("4 - Matricular Aluno em Disciplina\n");
-        printf("5 - Aniversariantes do Mes\n");
-        printf("6 - Buscar Pessoa\n");
+        printf("4 - Aniversariantes do Mes\n");
+        printf("5 - Buscar Pessoa\n");
         printf("0 - sair\n");
 
         opcao = lerOpcao(6);
@@ -55,15 +54,10 @@ int main()
             }
             case 4:{
                 limparConsole();
-                ModuloMatricula();
-                break;
-            }
-            case 5:{
-                limparConsole();
                 ModuloAniversario();
                 break;
             }
-            case 6:
+            case 5:
             {
                 limparConsole();
                 ModuloBusca(); 

@@ -1,4 +1,5 @@
 #include "disciplina_controller.h"
+#include "matricula_controller.h"
 #include "utils.h"
 #include <stdio.h>
 #include <stdlib.h>
@@ -11,7 +12,7 @@ void ModuloDisciplina()
 
     while (!sairDisciplina)
     {
-        opcaoDisciplina = menuPessoa("Disciplina");
+        opcaoDisciplina = menuDisciplina("Disciplina");
 
         switch (opcaoDisciplina)
         {
@@ -139,6 +140,12 @@ void ModuloDisciplina()
             break;
         }
         case 5:
+        {
+            limparConsole();
+            ModuloMatricula();
+            break;
+        }
+        case 6:
         { // Relatorios
 
             int sairMenu = 0;
@@ -180,7 +187,8 @@ void ModuloDisciplina()
                     exibirAlunosDisciplina(codigo);
                     pausarConsole();
                 }
-                case 4:{
+                case 4:
+                {
                     Disciplina *lista = listarDisciplina();
                     if (lista != NULL)
                     {
@@ -196,6 +204,7 @@ void ModuloDisciplina()
                 }
             }
         }
+
         default:
         {
             mostrarMensagem("Opção Inválida!");
