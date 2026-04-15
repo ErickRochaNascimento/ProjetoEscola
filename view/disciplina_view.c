@@ -112,7 +112,8 @@ int imprimirMenuRelatoriosDisciplina()
     printf("0 - Voltar ao menu Principal \n");
     printf("2 - Imprimir em ordem alfabetica\n");
     printf("3 - Imprimir disciplina com alunos\n");
-    return lerOpcao(3);
+    printf("4 - Imprimir disciplinas com mais de 40 alunos\n");
+    return lerOpcao(4);
 }
 
 void exibirListaDisciplinasAlfabetico(Disciplina *lista, int qtd)

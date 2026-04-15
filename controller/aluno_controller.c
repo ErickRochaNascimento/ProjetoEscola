@@ -193,6 +193,16 @@ void ModuloAluno()
                     pausarConsole();
                     break;
                 }
+                case 4:{
+                    Aluno *lista = listarAlunos();
+                    if (lista != NULL)
+                    {
+                        exibirAlunosMatriculadosMenos3Disciplinas(lista);
+                        free(lista);
+                    }
+                    pausarConsole();
+                    break;
+                }
 
                 default:
                 {
