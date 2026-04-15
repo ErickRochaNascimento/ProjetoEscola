@@ -23,7 +23,7 @@ void ModuloDisciplina()
             break;
         }
         case 1:
-        { // Cadastrar Disciplina
+        { 
             mostrarMensagem(" --- Cadastrar Disciplina --- ");
             Disciplina novaDisciplina = pedirDadosDisciplina();
             int resultadoBusca = cadastrarDisciplina(novaDisciplina);
@@ -54,7 +54,7 @@ void ModuloDisciplina()
             break;
         }
         case 2:
-        { // Listar Disciplina
+        { 
             mostrarMensagem(" --- Listar Disciplina --- ");
             int quantidade = obterQtdDisciplina();
             if (quantidade == 0)
@@ -73,7 +73,7 @@ void ModuloDisciplina()
             break;
         }
         case 3:
-        { // Atualizar Disciplina
+        {
             mostrarMensagem(" --- Atualizar Disciplina --- ");
             int quantidade = obterQtdDisciplina();
             if (quantidade == 0)
@@ -108,7 +108,7 @@ void ModuloDisciplina()
             break;
         }
         case 4:
-        { // Excluir Disciplina
+        { 
             mostrarMensagem(" --- Excluir Disciplina --- ");
             int quantidade = obterQtdDisciplina();
             if (quantidade == 0)
@@ -146,7 +146,7 @@ void ModuloDisciplina()
             break;
         }
         case 6:
-        { // Relatorios
+        { 
 
             int sairMenu = 0;
             int quantidade = obterQtdDisciplina();
@@ -171,7 +171,6 @@ void ModuloDisciplina()
                 }
                 case 2:
                 {
-                    // Exibir lista alfabetica
                     Disciplina *listaAlfabetica = listarDisciplina();
                     if (listaAlfabetica != NULL)
                     {

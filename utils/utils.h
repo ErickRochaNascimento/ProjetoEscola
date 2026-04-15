@@ -2,7 +2,6 @@
 #define UTILS_H
 #include "data_model.h"
 
-// Declaramos a função genérica para todo mundo usar
 void mostrarMensagem(const char *mensagem);
 void limparConsole();
 int verificarCPF(const char *cpf);
@@ -19,4 +18,5 @@ int verificarMatricula(const int matricula, const int tipo);
 int lerMatriculaWhile(const char *mensagem, int tipo);
 int lerOpcao(int limite);
 int verificarOpcao(int opcao, int limite);
+
 #endif

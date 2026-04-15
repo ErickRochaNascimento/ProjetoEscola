@@ -163,7 +163,7 @@ void lerTermoBusca(char *termo)
     {
         printf("Digite o nome (minimo 3 letras): ");
         scanf(" %100[^\n]", termo);
-        getchar(); // limpa buffer
+        getchar(); 
 
         if (strlen(termo) >= 3)
         {

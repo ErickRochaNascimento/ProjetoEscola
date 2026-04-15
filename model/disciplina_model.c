@@ -49,13 +49,13 @@ int atualizarDisciplina(int codigo_antigo, int codigo_novo)
 {
     if (codigo_novo < 0)
     {
-        return -2; // codigo invalido
+        return -2; 
     }
     for (int i = 0; i < qtdDisciplina; i++)
     {
         if (codigo_novo == listaDisciplina[i].codigo && listaDisciplina[i].ativo == 1)
         {
-            return 0; // disciplina ja possui esse codigo
+            return 0; 
         }
     }
 
@@ -64,18 +64,18 @@ int atualizarDisciplina(int codigo_antigo, int codigo_novo)
         if (codigo_antigo == listaDisciplina[i].codigo && listaDisciplina[i].ativo == 1)
         {
             listaDisciplina[i].codigo = codigo_novo;
-            return 1; // Codigo atualizado
+            return 1; 
         }
     }
 
-    return -1; // Codigo  antigo não encontrada
+    return -1; 
 }
 
 int excluirDisciplina(int codigo)
 {
     if (codigo < 0)
     {
-        return -2; // Codigo invalida
+        return -2; 
     }
 
     for (int i = 0; i < qtdDisciplina; i++)
@@ -87,10 +87,10 @@ int excluirDisciplina(int codigo)
                 listaDisciplina[j] = listaDisciplina[j + 1];
             }
             qtdDisciplina--;
-            return 1; // Disciplina excluida com sucesso
+            return 1; 
         }
     }
-    return -1; // Codigo não encontrado
+    return -1;
 }
 
 Disciplina *obterListaDisciplinasAlfabetica()

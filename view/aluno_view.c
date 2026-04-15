@@ -79,7 +79,6 @@ void exibirListaAlunosPorSexo(Aluno *lista, int qtd, char sexoFiltro)
 
 void exibirListaAlunosAlfabetico(Aluno *lista, int qtd)
 {
-    // Aqui corrigimos aquele erro de C do código do Professor e usamos o ponteiro corretamente!
     Aluno *listaOrdenadaAlfabetica = listarAlunos(); 
 
     for (int i = 0; i < qtd; i++)
@@ -91,7 +90,7 @@ void exibirListaAlunosAlfabetico(Aluno *lista, int qtd)
     }
     printf("----------------------------\n");
     
-    free(listaOrdenadaAlfabetica); // Limpando a memória para não vazar!
+    free(listaOrdenadaAlfabetica); 
 }
 
 void exibirListaAlunosPorNascimento(Aluno *lista, int qtd)
@@ -145,7 +144,6 @@ void exibirListaAlunosPorMes(Aluno *lista, int qtd, int mes) {
     printf("\n --- Aniversariantes do Mes %d (Alunos) --- \n", mes);
     
     for (int i = 0; i < qtd; i++) {
-        // Verifica se o aluno está ativo e se o mês de nascimento coincide
         if (lista[i].ativo == 1 && lista[i].dataNascimento.mes == mes) {
             exibirAluno(lista[i]);
             encontrou = 1;
