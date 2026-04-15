@@ -56,10 +56,12 @@ int main()
             case 4:{
                 limparConsole();
                 ModuloMatricula();
+                break;
             }
             case 5:{
                 limparConsole();
                 ModuloAniversario();
+                break;
             }
             case 6:
             {
