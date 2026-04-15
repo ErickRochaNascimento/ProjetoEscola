@@ -12,6 +12,7 @@ typedef struct disciplina
     char semestre[TAM_SEMESTRE];
     int ativo;
     int matricula_professor;
+    int quantidadeAlunos;
 } Disciplina;
 
 int cadastrarDisciplina(Disciplina novaDisciplina);
@@ -20,6 +21,9 @@ Disciplina *listarDisciplina();
 int obterQtdDisciplina();
 int atualizarDisciplina(int codigo_antigo, int codigo_novo);
 Disciplina* obterListaDisciplinasAlfabetica();
+void incrementarQuantidadeAlunos(int codigoDisciplina);
+int obterQuantidadeAlunos(int codigoDisciplina);
+void decrementarQuantidadeAlunos(int codigoDisciplina);
 
 
 #endif

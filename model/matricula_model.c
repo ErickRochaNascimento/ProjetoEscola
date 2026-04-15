@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include "matricula_model.h"
+#include "disciplina_model.h"
+#include "aluno_model.h"
 
 Matricula listaMatricula[TAM_MATRICULA];
 
@@ -27,7 +29,11 @@ int cadastrarAlunoDisciplina(Matricula novaMatricula)
     listaMatricula[qtdMatricula].codigoDisciplina = novaMatricula.codigoDisciplina;
 
     listaMatricula[qtdMatricula].ativo = 1;
+    incrementarQuantidadeAlunos(listaMatricula[qtdMatricula].codigoDisciplina);
+    incrementarQuantidadeDisciplinas(listaMatricula[qtdMatricula].matriculaAluno);
     qtdMatricula++;
+    
+    
 
     return qtdMatricula;
 }
@@ -57,6 +63,8 @@ int excluirAlunoDisciplina(int matriculaAluno, int codigoDisciplina)
             {
                 listaMatricula[j] = listaMatricula[j + 1];
             }
+            decrementarQuantidadeAlunos(codigoDisciplina);
+            decrementarQuantidadeDisciplinas(matriculaAluno);
             qtdMatricula--;
             return 1;
         }

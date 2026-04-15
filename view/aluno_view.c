@@ -43,14 +43,14 @@ void exibirAluno(Aluno aluno)
         aluno.nome[i] = toupper(aluno.nome[i]);
     }
 
-    printf("Matricula: %d | Nome: %s | Sexo: %c | Data de Nascimento: %02d/%02d/%04d | CPF: %s\n", 
+    printf("Matricula: %d | Nome: %s | Sexo: %c | Data de Nascimento: %02d/%02d/%04d | CPF: %s | Disciplinas: %d\n", 
            aluno.matricula, 
            aluno.nome, 
            toupper(aluno.sexo), 
            aluno.dataNascimento.dia,
            aluno.dataNascimento.mes,
            aluno.dataNascimento.ano,
-           aluno.cpf);
+           aluno.cpf,aluno.quantidadeDisciplinas);
 }
 
 int imprimirMenuRelatoriosAluno()
@@ -61,7 +61,8 @@ int imprimirMenuRelatoriosAluno()
     printf("1 - Imprimir por Sexo\n");
     printf("2 - Imprimir em ordem alfabetica\n");
     printf("3 - Imprimir por data de nascimento\n");
-    return lerOpcao(3);
+    printf("4 - Imprimir alunos matriculados em menos de 3 disciplinas");
+    return lerOpcao(4);
 }
 
 void exibirListaAlunosPorSexo(Aluno *lista, int qtd, char sexoFiltro)
@@ -80,7 +81,7 @@ void exibirListaAlunosAlfabetico(Aluno *lista, int qtd)
 {
     // Aqui corrigimos aquele erro de C do código do Professor e usamos o ponteiro corretamente!
     Aluno *listaOrdenadaAlfabetica = listarAlunos(); 
-    
+
     for (int i = 0; i < qtd; i++)
     {
         if (listaOrdenadaAlfabetica[i].ativo == 1)
@@ -123,6 +124,18 @@ void exibirListaAlunosPorNascimento(Aluno *lista, int qtd)
         if (listaOrdenada[i].ativo == 1)
         {
             exibirAluno(listaOrdenada[i]);
+        }
+    }
+    printf("----------------------------\n");
+}
+
+void exibirAlunosMatriculadosMenos3Disciplinas(Aluno *lista){
+
+    for (int i = 0; i < obterQtdAlunos(); i++)
+    {
+        if (lista[i].ativo == 1 && lista[i].quantidadeDisciplinas < 3)
+        {
+            exibirAluno(lista[i]);
         }
     }
     printf("----------------------------\n");
