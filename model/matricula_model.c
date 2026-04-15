@@ -2,6 +2,7 @@
 #include "matricula_model.h"
 #include "disciplina_model.h"
 #include "aluno_model.h"
+#include "utils.h"
 
 Matricula listaMatricula[TAM_MATRICULA];
 
@@ -16,6 +17,9 @@ int cadastrarAlunoDisciplina(Matricula novaMatricula)
     if (novaMatricula.matriculaAluno == 0 || novaMatricula.codigoDisciplina == 0)
     {
         return -2;
+    }
+    if(verificarMatricula(novaMatricula.matriculaAluno,1) == 0){
+        return -4;
     }
     for (int i = 0; i < qtdMatricula; i++)
     {

@@ -262,7 +262,7 @@ int lerMatriculaWhile(const char *mensagem, int tipo)
         }
         else
         {
-            printf("Matricula não existe! Tente novamente.\n");
+            printf("%s não existe! Tente novamente.\n");
             pausarConsole();
             limparConsole();
         }
