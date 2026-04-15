@@ -4,7 +4,7 @@
 #include "disciplina_controller.h"
 #include "utils.h"
 #include "matricula_controller.h"
-
+#include "busca_controller.h"
 
 int main()
 {
@@ -19,9 +19,11 @@ int main()
         printf("2 - Professor\n");
         printf("3 - Disciplina\n");
         printf("4 - Matricular Aluno em Disciplina\n");
+        printf("5 - Aniversariantes do Mes\n");
+        printf("6 - Buscar Pessoa\n");
         printf("0 - sair\n");
 
-        opcao = lerOpcao(4);
+        opcao = lerOpcao(6);
 
         switch (opcao)
         {
@@ -54,6 +56,16 @@ int main()
             case 4:{
                 limparConsole();
                 ModuloMatricula();
+            }
+            case 5:{
+                limparConsole();
+                ModuloAniversario();
+            }
+            case 6:
+            {
+                limparConsole();
+                ModuloBusca(); 
+                break; 
             }
             default:
             {
