@@ -2,6 +2,7 @@
 #include "aluno_model.h"
 #include <string.h>
 #include <stdlib.h>
+#include "utils.h"
 
 Aluno listaAluno[TAM_ALUNO];
 int qtdAluno = 0;
@@ -54,7 +55,7 @@ int atualizarAluno(int matricula_antiga, int matricula_nova)
         return -2; 
 
     for (int i = 0; i < qtdAluno; i++){
-        if (listaAluno[i].matricula == matricula_nova && listaAluno[i].ativo == 1){
+        if (verificarMatricula(matricula_nova, 1)){
             return 0; 
         }
     }

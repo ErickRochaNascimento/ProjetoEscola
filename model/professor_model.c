@@ -55,18 +55,15 @@ int atualizarProfessor(int matricula_antiga, int matricula_nova)
     {
         return -2; 
     }
-    for (int i = 0; i < qtdProfessor; i++)
-    {
-        if (verificarMatricula(matricula_nova, 2))
-        {
+
+    for (int i = 0; i < qtdProfessor; i++){
+        if (verificarMatricula(matricula_nova, 2)){
             return 0; 
         }
-    }
+    }    
 
-    for (int i = 0; i < qtdProfessor; i++)
-    {
-        if (verificarMatricula(matricula_antiga, 2))
-        {
+    for (int i = 0; i < qtdProfessor; i++){
+        if(listaProfessor[i].matricula == matricula_antiga && listaProfessor[i].ativo == 1){
             listaProfessor[i].matricula = matricula_nova;
             return 1;
         }
@@ -77,22 +74,19 @@ int atualizarProfessor(int matricula_antiga, int matricula_nova)
 
 int excluirProfessor(int matricula)
 {
-    if (matricula < 0)
-        return -2; 
+    if (matricula < 0) return -2;
 
-    for (int i = 0; i < qtdProfessor; i++)
-    {
-        if (verificarMatricula(matricula, 2))
-        {
-            for (int j = i; j < qtdProfessor - 1; j++)
-            {
+    for (int i = 0; i < qtdProfessor; i++){
+        if(matricula == listaProfessor[i].matricula && listaProfessor[i].ativo){
+            for(int j = i; j < qtdProfessor - 1; j++){
                 listaProfessor[j] = listaProfessor[j + 1];
             }
             qtdProfessor--;
             return 1; 
         }
     }
-    return -1;
+    
+    return -1; 
 }
 
 Professor* obterListaProfessoresAlfabetica()
