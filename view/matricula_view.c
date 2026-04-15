@@ -48,6 +48,8 @@ void exibirMatricula(Matricula m)
 
     if (indiceDisciplina != -1 && indiceAluno != -1)
     {
+        converterParaMaiusculo(listaDisciplina[indiceDisciplina].nome);
+        converterParaMaiusculo(listaAluno[indiceAluno].nome);
         printf("Codigo Disciplina: %d | Nome Disciplina: %s | Matricula Aluno: %d | Nome Aluno: %s\n", 
                listaDisciplina[indiceDisciplina].codigo, 
                listaDisciplina[indiceDisciplina].nome, 

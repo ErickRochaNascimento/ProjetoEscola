@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 #include "utils.h"
 #include "professor_model.h"
 #include "aluno_model.h"
@@ -331,4 +332,12 @@ int verificarOpcao(int opcao, int limite)
         return 1;
     }
     return 0;
+}
+
+void converterParaMaiusculo(char *str)
+{
+    for (int i = 0; str[i] != '\0'; i++)
+    {
+        str[i] = toupper(str[i]);
+    }
 }

@@ -22,10 +22,7 @@ Disciplina pedirDadosDisciplina()
 
 void exibirDisciplina(Disciplina d)
 {
-    for (int i = 0; d.nome[i] != '\0'; i++)
-    {
-        d.nome[i] = toupper(d.nome[i]);
-    }
+    converterParaMaiusculo(d.nome);
 
     Professor *lista = listarProfessor();
     int qtd = obterQtdProfessor();
@@ -33,6 +30,7 @@ void exibirDisciplina(Disciplina d)
     {
         if (lista[i].matricula == d.matricula_professor && lista[i].ativo == 1)
         {
+            converterParaMaiusculo(lista[i].nome);
             printf("Codigo: %d | Nome: %s | Semestre: %s | Quantidade de Alunos: %d | Professor Matricula: %d | Nome: %s\n", d.codigo, d.nome, d.semestre, d.quantidadeAlunos, d.matricula_professor, lista[i].nome);
         }
     }
@@ -77,6 +75,7 @@ void exibirAlunosDisciplina(int codigoDisciplina)
             {
                 if (listaAluno[j].matricula == listaMatricula[i].matriculaAluno && listaAluno[j].ativo == 1)
                 {
+                    converterParaMaiusculo(listaAluno[j].nome);
                     printf("Matricula: %d | Nome: %s\n", listaAluno[j].matricula, listaAluno[j].nome);
                     contadorAlunos++;
                     break;
@@ -178,6 +177,6 @@ int menuDisciplina(const char *nome)
     printf("4 - Excluir %s\n", nome);
     printf("5 - Matricular Alunos %s\n", nome);
     printf("6 - Relatorios %s\n", nome);
-    
+
     return lerOpcao(6);
 }

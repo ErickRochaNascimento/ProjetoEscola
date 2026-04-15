@@ -18,5 +18,6 @@ int verificarMatricula(const int matricula, const int tipo);
 int lerMatriculaWhile(const char *mensagem, int tipo);
 int lerOpcao(int limite);
 int verificarOpcao(int opcao, int limite);
+void converterParaMaiusculo(char *str);
 
 #endif

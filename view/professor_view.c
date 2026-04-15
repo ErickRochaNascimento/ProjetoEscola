@@ -31,13 +31,10 @@ int pedirMatriculaProfessor()
 
 void exibirProfessor(Professor p)
 {
-    for (int i = 0; p.nome[i] != '\0'; i++)
-    {
-        p.nome[i] = toupper(p.nome[i]);
-    }
+    converterParaMaiusculo(p.nome);
     
 
-    printf("Matricula: %d | Nome: %s | Sexo: %c | Data de Nascimento:  %02d/%02d/%04d | CPF: %s \n", p.matricula, p.nome, toupper(p.sexo), p.dataNascimento.dia, p.dataNascimento.mes, p.dataNascimento.ano,
+    printf("Matricula: %d | Nome: %s | Sexo: %c | Data de Nascimento:  %02d/%02d/%04d | CPF: %s \n", p.matricula, p.nome,toupper(p.sexo), p.dataNascimento.dia, p.dataNascimento.mes, p.dataNascimento.ano,
            p.cpf);
 }
 

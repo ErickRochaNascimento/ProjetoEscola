@@ -38,10 +38,7 @@ int pedirMatricula(const char* tipoMatricula){
 
 void exibirAluno(Aluno aluno)
 {
-    for (int i = 0; aluno.nome[i] != '\0'; i++)
-    {
-        aluno.nome[i] = toupper(aluno.nome[i]);
-    }
+    converterParaMaiusculo(aluno.nome);
 
     printf("Matricula: %d | Nome: %s | Sexo: %c | Data de Nascimento: %02d/%02d/%04d | CPF: %s | Disciplinas: %d\n", 
            aluno.matricula, 
