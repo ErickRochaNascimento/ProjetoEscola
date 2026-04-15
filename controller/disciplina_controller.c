@@ -169,7 +169,7 @@ void ModuloDisciplina()
                     mostrarMensagem("Voltando ao menu principal...");
                     break;
                 }
-                case 2:
+                case 1:
                 {
                     Disciplina *listaAlfabetica = listarDisciplina();
                     if (listaAlfabetica != NULL)
@@ -180,13 +180,14 @@ void ModuloDisciplina()
                     pausarConsole();
                     break;
                 }
-                case 3:
+                case 2:
                 {
                     int codigo = lerMatriculaWhile("o codigo da disciplina", 3);
                     exibirAlunosDisciplina(codigo);
                     pausarConsole();
+                    break;
                 }
-                case 4:
+                case 3:
                 {
                     Disciplina *lista = listarDisciplina();
                     if (lista != NULL)

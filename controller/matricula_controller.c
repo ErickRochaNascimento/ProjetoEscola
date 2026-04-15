@@ -36,6 +36,7 @@ void ModuloMatricula()
                     mostrarMensagem("Aluno cadastrado na disciplina com sucesso!");
                     exibirMatricula(novaMatricula);
                     pausarConsole();
+                    mostrarMensagem("Para sair digite 0\n Para cadastrar outro aluno");
                 }
 
                 else if (resultadoBusca == -1)
@@ -54,6 +55,9 @@ void ModuloMatricula()
                 else if (resultadoBusca == -3)
                 {
                     mostrarMensagem("Aluno já cadastrado nessa disciplina! ");
+                    pausarConsole();
+                }else if(resultadoBusca == -4){
+                    mostrarMensagem("Matricula não existe");
                     pausarConsole();
                 }
             }
