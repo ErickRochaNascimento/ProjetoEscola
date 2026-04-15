@@ -14,5 +14,6 @@ int cadastrarAlunoDisciplina(Matricula novaMatricula);
 int excluirAlunoDisciplina(int matriculaAluno, int codigoDisciplina);
 int obterQtdMatricula();
 Matricula *listarMatricula();
+void excluirTodasMatriculasAluno(int matriculaAluno);
 
 #endif

@@ -75,3 +75,23 @@ int excluirAlunoDisciplina(int matriculaAluno, int codigoDisciplina)
     }
     return -1;
 }
+
+void excluirTodasMatriculasAluno(int matriculaAluno)
+{
+    for (int i = 0; i < qtdMatricula; i++)
+    {
+        if (listaMatricula[i].matriculaAluno == matriculaAluno && listaMatricula[i].ativo == 1)
+        {
+            decrementarQuantidadeAlunos(listaMatricula[i].codigoDisciplina);
+
+            for (int j = i; j < qtdMatricula - 1; j++)
+            {
+                listaMatricula[j] = listaMatricula[j + 1];
+            }
+            listaMatricula[i].ativo = 0;
+            qtdMatricula--;
+
+            i--; 
+        }
+    }
+}

@@ -111,12 +111,13 @@ void ModuloAluno()
             mostrarMensagem("  --- Excluir matricula de Aluno ---  ");
 
             int matriculaExcluir = pedirMatricula("a excluir");
+            excluirTodasMatriculasAluno(matriculaExcluir);
 
             int resultadoExclusao = excluirAluno(matriculaExcluir);
 
             if (resultadoExclusao == 1)
             {
-                mostrarMensagem("Aluno excluído com sucesso! ");
+                mostrarMensagem("Aluno e suas matriculas foram excluidos com sucesso!");
             }
 
             else if (resultadoExclusao == -2)
@@ -128,6 +129,7 @@ void ModuloAluno()
             {
                 mostrarMensagem("Matrícula não encontrada. ");
             }
+            pausarConsole();
             break;
         }
         case 5:
