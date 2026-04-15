@@ -33,7 +33,7 @@ void exibirDisciplina(Disciplina d)
     {
         if (lista[i].matricula == d.matricula_professor && lista[i].ativo == 1)
         {
-            printf("Codigo: %d | Nome: %s | Semestre: %s | Professor Matricula: %d | Nome: %s\n", d.codigo, d.nome, d.semestre, d.matricula_professor, lista[i].nome);
+            printf("Codigo: %d | Nome: %s | Semestre: %s | Quantidade de Alunos: %d | Professor Matricula: %d | Nome: %s\n", d.codigo, d.nome, d.semestre, d.quantidadeAlunos, d.matricula_professor, lista[i].nome);
         }
     }
 }
@@ -46,7 +46,7 @@ void exibirAlunosDisciplina(int codigoDisciplina)
 
     int qtdDisciplinas = obterQtdDisciplina();
     int qtdAlunos = obterQtdAlunos();
-    int qtdMatriculas = obterQtdMatricula(); 
+    int qtdMatriculas = obterQtdMatricula();
 
     int indiceDisciplina = -1;
 
@@ -67,7 +67,7 @@ void exibirAlunosDisciplina(int codigoDisciplina)
 
     printf("\n--- Alunos da Disciplina: %s | Codigo: %d ---\n", listaDisciplina[indiceDisciplina].nome, listaDisciplina[indiceDisciplina].codigo);
 
-    int contadorAlunos = 0; 
+    int contadorAlunos = 0;
 
     for (int i = 0; i < qtdMatriculas; i++)
     {
@@ -79,7 +79,7 @@ void exibirAlunosDisciplina(int codigoDisciplina)
                 {
                     printf("Matricula: %d | Nome: %s\n", listaAluno[j].matricula, listaAluno[j].nome);
                     contadorAlunos++;
-                    break; 
+                    break;
                 }
             }
         }
@@ -91,7 +91,6 @@ void exibirAlunosDisciplina(int codigoDisciplina)
     }
     printf("-----------------------------------\n");
 }
-
 
 void exibirListaDisciplinas(Disciplina *lista, int qtd)
 {
@@ -152,5 +151,18 @@ void lerSemestre(char *destino)
         {
             printf("Semestre invalido! Use o formato correto (ex: 2024.1 ou 2023.2).\n\n");
         }
+    }
+}
+
+void exibirDisciplinaMais40Vagas(Disciplina *lista)
+{
+    for (int i = 0; i < obterQtdDisciplina; i++)
+    {
+        if (lista[i].ativo == 1 && lista[i].quantidadeAlunos > 40)
+        {
+            exibirDisciplina(lista[i]);
+        }
+
+        printf("----------------------------\n");
     }
 }

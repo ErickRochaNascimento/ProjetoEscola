@@ -14,6 +14,7 @@ typedef struct aluno
     Data dataNascimento;
     char cpf [TAMANHO_CPF];
     int ativo;
+    int quantidadeDisciplinas;
 } Aluno;
 
 int cadastrarAluno(Aluno novoAluno);
@@ -22,5 +23,7 @@ int excluirAluno(int matricula);
 Aluno* listarAlunos();
 int obterQtdAlunos();
 Aluno* obterListaAlunosAlfabetica();
-
+void incrementarQuantidadeDisciplinas(int matriculaAluno);
+void decrementarQuantidadeDisciplinas(int matriculaAluno);
+int obterQuantidadeDisciplinas(int matriculaAluno);
 #endif

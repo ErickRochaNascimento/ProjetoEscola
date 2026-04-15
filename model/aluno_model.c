@@ -30,6 +30,7 @@ int cadastrarAluno(Aluno novoAluno)
     listaAluno[qtdAluno].dataNascimento.mes = novoAluno.dataNascimento.mes;
     listaAluno[qtdAluno].dataNascimento.ano = novoAluno.dataNascimento.ano;
     strcpy(listaAluno[qtdAluno].cpf, novoAluno.cpf);
+    listaAluno[qtdAluno].quantidadeDisciplinas = 0;
     listaAluno[qtdAluno].ativo = 1;
     qtdAluno++;
 
@@ -116,4 +117,40 @@ Aluno* obterListaAlunosAlfabetica()
         }
     }
         return listaOrdenada;
+}
+
+void incrementarQuantidadeDisciplinas(int matriculaAluno)
+{
+   
+    for (int i = 0; i < obterQtdAlunos(); i++)
+    {
+        if (matriculaAluno == listaAluno[i].matricula && listaAluno[i].ativo == 1)
+        {
+            listaAluno[i].quantidadeDisciplinas++;
+        }
+    }
+}
+
+void decrementarQuantidadeDisciplinas(int matriculaAluno)
+{
+   
+    for (int i = 0; i < obterQtdAlunos(); i++)
+    {
+        if (matriculaAluno == listaAluno[i].matricula && listaAluno[i].ativo == 1)
+        {
+            listaAluno[i].quantidadeDisciplinas--;
+        }
+    }
+}
+
+int obterQuantidadeDisciplinas(int matriculaAluno)
+{
+    for (int i = 0; i < obterQtdAlunos(); i++)
+    {
+        if (matriculaAluno == listaAluno[i].matricula && listaAluno[i].ativo == 1)
+        {
+            return listaAluno[i].quantidadeDisciplinas;
+        }
+    }
+    return 0;
 }

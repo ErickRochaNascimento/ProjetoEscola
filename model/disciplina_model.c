@@ -14,7 +14,8 @@ int cadastrarDisciplina(Disciplina novaDisciplina)
     {
         return -1;
     }
-    if(novaDisciplina.matricula_professor == 0){
+    if (novaDisciplina.matricula_professor == 0)
+    {
         return -2;
     }
     int codigoCriado = geradorCodigoDisciplina;
@@ -25,6 +26,7 @@ int cadastrarDisciplina(Disciplina novaDisciplina)
     strcpy(listaDisciplina[qtdDisciplina].nome, novaDisciplina.nome);
     strcpy(listaDisciplina[qtdDisciplina].semestre, novaDisciplina.semestre);
     listaDisciplina[qtdDisciplina].matricula_professor = novaDisciplina.matricula_professor;
+    listaDisciplina[qtdDisciplina].quantidadeAlunos = 0;
 
     listaDisciplina[qtdDisciplina].ativo = 1;
     qtdDisciplina++;
@@ -78,7 +80,7 @@ int excluirDisciplina(int codigo)
 
     for (int i = 0; i < qtdDisciplina; i++)
     {
-       if (codigo == listaDisciplina[i].codigo && listaDisciplina[i].ativo)
+        if (codigo == listaDisciplina[i].codigo && listaDisciplina[i].ativo)
         {
             for (int j = i; j < qtdDisciplina - 1; j++)
             {
@@ -88,18 +90,18 @@ int excluirDisciplina(int codigo)
             return 1; // Disciplina excluida com sucesso
         }
     }
-    return -1; //Codigo não encontrado
-    
+    return -1; // Codigo não encontrado
 }
 
-Disciplina* obterListaDisciplinasAlfabetica()
+Disciplina *obterListaDisciplinasAlfabetica()
 {
     int qtd = qtdDisciplina;
 
     Disciplina *listaOrdenada = malloc(qtd * sizeof(Disciplina));
-    
-    if (listaOrdenada == NULL) {
-        return NULL; 
+
+    if (listaOrdenada == NULL)
+    {
+        return NULL;
     }
 
     for (int i = 0; i < qtd; i++)
@@ -122,5 +124,41 @@ Disciplina* obterListaDisciplinasAlfabetica()
             }
         }
     }
-        return listaOrdenada;
+    return listaOrdenada;
+}
+
+void incrementarQuantidadeAlunos(int codigoDisciplina)
+{
+   
+    for (int i = 0; i < obterQtdDisciplina(); i++)
+    {
+        if (codigoDisciplina == listaDisciplina[i].codigo && listaDisciplina[i].ativo == 1)
+        {
+            listaDisciplina[i].quantidadeAlunos++;
+        }
+    }
+}
+
+void decrementarQuantidadeAlunos(int codigoDisciplina)
+{
+   
+    for (int i = 0; i < obterQtdDisciplina(); i++)
+    {
+        if (codigoDisciplina == listaDisciplina[i].codigo && listaDisciplina[i].ativo == 1)
+        {
+            listaDisciplina[i].quantidadeAlunos--;
+        }
+    }
+}
+
+int obterQuantidadeAlunos(int codigoDisciplina)
+{
+    for (int i = 0; i < obterQtdDisciplina(); i++)
+    {
+        if (codigoDisciplina == listaDisciplina[i].codigo && listaDisciplina[i].ativo == 1)
+        {
+            return listaDisciplina[i].quantidadeAlunos;
+        }
+    }
+    return 0;
 }
