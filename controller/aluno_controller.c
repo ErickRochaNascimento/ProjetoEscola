@@ -139,7 +139,7 @@ void ModuloAluno()
             if (quantidade == 0)
             {
                 mostrarMensagem("Lista de Alunos Vazia!\nPrimeiro cadastre um aluno.\n");
-                // pausarConsole(); <-- Lembrete: colocar se não tiver no final do laço principal
+                pausarConsole();
                 break;
             }
 

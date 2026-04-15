@@ -156,13 +156,14 @@ void lerSemestre(char *destino)
 
 void exibirDisciplinaMais40Vagas(Disciplina *lista)
 {
-    for (int i = 0; i < obterQtdDisciplina; i++)
+    int qtd = obterQtdDisciplina();
+    for (int i = 0; i < qtd; i++)
     {
         if (lista[i].ativo == 1 && lista[i].quantidadeAlunos > 40)
         {
             exibirDisciplina(lista[i]);
+            printf("----------------------------\n");
         }
 
-        printf("----------------------------\n");
     }
 }
