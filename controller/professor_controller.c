@@ -21,7 +21,7 @@ void ModuloProfessor()
             break;
         }
         case 1:
-        { // Cadastrar Professor
+        { 
             mostrarMensagem(" --- Cadastrar Professor --- ");
             Professor novoProfessor = pedirDadosProfessor();
             int resultadoBusca = cadastrarProfessor(novoProfessor);
@@ -55,7 +55,7 @@ void ModuloProfessor()
             break;
         }
         case 2:
-        { // Listar Professor
+        { 
             mostrarMensagem(" --- Listar Professor --- ");
             int quantidade = obterQtdProfessor();
             if (quantidade == 0)
@@ -74,7 +74,7 @@ void ModuloProfessor()
             break;
         }
         case 3:
-        { // Atualizar Professor
+        { 
             mostrarMensagem(" --- Atualizar Professor --- ");
             int quantidade = obterQtdProfessor();
             if (quantidade == 0)
@@ -109,7 +109,7 @@ void ModuloProfessor()
             break;
         }
         case 4:
-        { // Excluir Professor
+        { 
             mostrarMensagem(" --- Excluir Professor --- ");
             int quantidade = obterQtdProfessor();
             if (quantidade == 0)
@@ -141,7 +141,7 @@ void ModuloProfessor()
             break;
         }
         case 5:
-        { // Relatorios
+        { 
 
             int sairMenu = 0;
             int quantidade = obterQtdProfessor();
@@ -165,21 +165,20 @@ void ModuloProfessor()
                     break;
                 }
                 case 1:
-                { // Lista por sexo
+                { 
                     char sexoRelatorio = lerSexo(sexoRelatorio);
 
                     Professor *listaAlfabetica = listarProfessor();
                     if (listaAlfabetica != NULL)
                     {
                         exibirListaProfessoresPorSexo(listaAlfabetica, quantidade, sexoRelatorio);
-                        free(listaAlfabetica); // 🧹 Limpamos a memória!
+                        free(listaAlfabetica); 
                     }
                     pausarConsole();
                     break;
                 }
                 case 2:
                 {
-                    // Exibir lista alfabetica
                     Professor *listaAlfabetica = listarProfessor();
                     if (listaAlfabetica != NULL)
                     {

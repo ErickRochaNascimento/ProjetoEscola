@@ -6,7 +6,6 @@
 #include "aluno_model.h"
 #include "disciplina_model.h"
 
-// Escrevemos a função uma única vez aqui!
 void mostrarMensagem(const char *mensagem)
 {
     printf("%s\n", mensagem);
@@ -14,13 +13,10 @@ void mostrarMensagem(const char *mensagem)
 
 int verificarCPF(const char *cpf)
 {
-    // Verificar se o CPF tem 11 dígitos
     if (strlen(cpf) != 11)
     {
-        return 0; // CPF Invalido
+        return 0; 
     }
-
-    // Verificar se todos os caracteres são dígitos
 
     for (int i = 0; i < 11; i++)
     {
@@ -39,14 +35,14 @@ int verificarCPF(const char *cpf)
     {
         if (strcmp(listaAluno[i].cpf, cpf) == 0 && listaAluno[i].ativo == 1)
         {
-            return -1; // algum aluno cadastrado com esse cpf
+            return -1;
         }
     }
     for (int i = 0; i < qtdProfessor; i++)
     {
         if (strcmp(listaProfessor[i].cpf, cpf) == 0 && listaProfessor[i].ativo == 1)
         {
-            return -2; // algum professor cadastrado com esse cpf
+            return -2;
         }
     }
 
@@ -70,7 +66,7 @@ int verificarCPF(const char *cpf)
 
     if (primeiroVerificador == (cpf[9] - '0') && segundoVerificador == (cpf[10] - '0'))
     {
-        return 1; // CPF válido
+        return 1;  
     }
     return 0;
 }
@@ -150,20 +146,17 @@ char lerSexo(char destino)
 int verificarData(int d, int m, int a)
 {
     if (a < 1900 || a > 2026)
-        return 0; // Ano fora da realidade
+        return 0; 
     if (m < 1 || m > 12)
-        return 0; // Mês inexistente
+        return 0;
     if (d < 1 || d > 31)
-        return 0; // Dia impossível
+        return 0;
 
-    // 2. Meses com 30 dias
     if ((m == 4 || m == 6 || m == 9 || m == 11) && d > 30)
         return 0;
 
-    // 3. Verificação de Fevereiro e Ano Bissexto
     if (m == 2)
     {
-        // Regra do Bissexto: divisível por 4 e (não por 100 ou divisível por 400)
         int bissexto = (a % 4 == 0 && (a % 100 != 0 || a % 400 == 0));
         if (bissexto)
         {
@@ -177,7 +170,7 @@ int verificarData(int d, int m, int a)
         }
     }
 
-    return 1; // Se passou por tudo, a data é válida!
+    return 1;
 }
 
 void lerDataNascimento(Data *dataNascimento)
@@ -198,7 +191,7 @@ void lerDataNascimento(Data *dataNascimento)
         }
         if (verificarData(dataNascimento->dia, dataNascimento->mes, dataNascimento->ano))
         {
-            break; // Data válida!
+            break; 
         }
         else
         {
@@ -218,7 +211,6 @@ void limparConsole()
 
 void pausarConsole()
 {
-    printf("\nPressione qualquer tecla para continuar...\n");
     system("pause");
 }
 
@@ -262,7 +254,7 @@ int lerMatriculaWhile(const char *mensagem, int tipo)
         }
         else
         {
-            printf("%s não existe! Tente novamente.\n");
+            printf("%s não existe! Tente novamente.\n", mensagem);
             pausarConsole();
             limparConsole();
         }
@@ -274,7 +266,7 @@ int verificarMatricula(const int matricula, const int tipo)
 {
     int qtd;
 
-    if (tipo == 1) // Aluno
+    if (tipo == 1)
     {
         Aluno *lista = listarAlunos();
         qtd = obterQtdAlunos();
@@ -282,11 +274,11 @@ int verificarMatricula(const int matricula, const int tipo)
         {
             if (matricula == lista[i].matricula && lista[i].ativo == 1)
             {
-                return 1; // Matricula existe
+                return 1; 
             }
         }
     }
-    else if (tipo == 2) // Professor
+    else if (tipo == 2)
     {
         Professor *lista = listarProfessor();
         qtd = obterQtdProfessor();
@@ -294,11 +286,11 @@ int verificarMatricula(const int matricula, const int tipo)
         {
             if (matricula == lista[i].matricula && lista[i].ativo == 1)
             {
-                return 1; // Matricula existe
+                return 1; 
             }
         }
     }
-    else if (tipo == 3) // Disciplina
+    else if (tipo == 3) 
     {
         Disciplina *lista = listarDisciplina();
         qtd = obterQtdDisciplina();
@@ -306,11 +298,11 @@ int verificarMatricula(const int matricula, const int tipo)
         {
             if (matricula == lista[i].codigo && lista[i].ativo == 1)
             {
-                return 1; // Matricula existe
+                return 1; 
             }
         }
     }
-    return 0; // Não existe
+    return 0;
 }
 
 int lerOpcao(int limite)

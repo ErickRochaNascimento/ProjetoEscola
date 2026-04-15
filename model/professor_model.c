@@ -12,7 +12,7 @@ int cadastrarProfessor(Professor novoProfessor)
 {
     if (qtdProfessor == TAM_PROFESSOR)
     {
-        return -1; // Lista sem espaço
+        return -1; 
     }
     if(!strcmp(novoProfessor.cpf,"0")|| novoProfessor.sexo == '0'  || novoProfessor.dataNascimento.dia == 0 || novoProfessor.dataNascimento.mes == 0 || novoProfessor.dataNascimento.ano == 0){
         return -2;
@@ -35,7 +35,7 @@ int cadastrarProfessor(Professor novoProfessor)
     listaProfessor[qtdProfessor].ativo = 1;
     qtdProfessor++;
 
-    return matriculaCriada; // matriculado com sucesso
+    return matriculaCriada; 
 }
 
 Professor *listarProfessor()
@@ -53,13 +53,13 @@ int atualizarProfessor(int matricula_antiga, int matricula_nova)
 {
     if (matricula_nova < 0)
     {
-        return -2; // matrícula inválida
+        return -2; 
     }
     for (int i = 0; i < qtdProfessor; i++)
     {
         if (verificarMatricula(matricula_nova, 2))
         {
-            return 0; // alguem ja possui essa matricula
+            return 0; 
         }
     }
 
@@ -68,17 +68,17 @@ int atualizarProfessor(int matricula_antiga, int matricula_nova)
         if (verificarMatricula(matricula_antiga, 2))
         {
             listaProfessor[i].matricula = matricula_nova;
-            return 1; // Matricula atualizada
+            return 1;
         }
     }
 
-    return -1; // Matricula antiga não encontrada
+    return -1; 
 }
 
 int excluirProfessor(int matricula)
 {
     if (matricula < 0)
-        return -2; // Matricula invalida
+        return -2; 
 
     for (int i = 0; i < qtdProfessor; i++)
     {
@@ -89,10 +89,10 @@ int excluirProfessor(int matricula)
                 listaProfessor[j] = listaProfessor[j + 1];
             }
             qtdProfessor--;
-            return 1; // Professor excluido com sucesso
+            return 1; 
         }
     }
-    return -1; // matricula não encontrada
+    return -1;
 }
 
 Professor* obterListaProfessoresAlfabetica()

@@ -131,7 +131,7 @@ void ModuloAluno()
             break;
         }
         case 5:
-        { // Relatorios
+        { 
 
             int sairMenu = 0;
             int quantidade = obterQtdAlunos();
@@ -139,7 +139,7 @@ void ModuloAluno()
             if (quantidade == 0)
             {
                 mostrarMensagem("Lista de Alunos Vazia!\nPrimeiro cadastre um aluno.\n");
-                // pausarConsole(); <-- Lembrete: colocar se não tiver no final do laço principal
+                pausarConsole();
                 break;
             }
 
@@ -156,7 +156,7 @@ void ModuloAluno()
                     break;
                 }
                 case 1:
-                { // Lista por sexo
+                {
                     char sexoRelatorio = ' ';
                     sexoRelatorio = lerSexo(sexoRelatorio); 
 
@@ -164,31 +164,29 @@ void ModuloAluno()
                     if (listaAlfabetica != NULL)
                     {
                         exibirListaAlunosPorSexo(listaAlfabetica, quantidade, sexoRelatorio);
-                        free(listaAlfabetica); // 🧹 Limpamos a memória da cópia da lista!
+                        free(listaAlfabetica); 
                     }
                     pausarConsole();
                     break;
                 }
                 case 2:
                 {
-                    // Exibir lista alfabetica
                     Aluno *listaAlfabetica = listarAlunos();
                     if (listaAlfabetica != NULL)
                     {
                         exibirListaAlunosAlfabetico(listaAlfabetica, quantidade);
-                        free(listaAlfabetica); // 🧹 Limpamos a memória da cópia da lista!
+                        free(listaAlfabetica);
                     }
                     pausarConsole();
                     break;
                 }
                 case 3:
                 {
-                    // Exibir por data de nascimento
                     Aluno *listaAlfabetica = listarAlunos();
                     if (listaAlfabetica != NULL)
                     {
                         exibirListaAlunosPorNascimento(listaAlfabetica, quantidade);
-                        free(listaAlfabetica); // 🧹 Limpamos a memória da cópia da lista!
+                        free(listaAlfabetica); 
                     }
                     pausarConsole();
                     break;
