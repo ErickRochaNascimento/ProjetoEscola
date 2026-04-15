@@ -180,6 +180,16 @@ void ModuloDisciplina()
                     exibirAlunosDisciplina(codigo);
                     pausarConsole();
                 }
+                case 4:{
+                    Disciplina *lista = listarDisciplina();
+                    if (lista != NULL)
+                    {
+                        exibirDisciplinaMais40Vagas(lista);
+                        free(lista);
+                    }
+                    pausarConsole();
+                    break;
+                }
 
                 default:
                     break;
