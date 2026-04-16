@@ -10,9 +10,10 @@ O sistema implementa as seguintes funcionalidades principais:
 
 ### Gestão de Cadastros
 
-*   **Alunos**: Cadastro, listagem, atualização e exclusão de alunos, com campos para Matrícula, Nome, Sexo, Data de Nascimento e CPF.
-*   **Professores**: Cadastro, listagem, atualização e exclusão de professores, com campos para Matrícula, Nome, Sexo, Data de Nascimento e CPF.
-*   **Disciplinas**: Cadastro, listagem, atualização e exclusão de disciplinas, incluindo Nome, Código, Semestre e associação a um Professor. As disciplinas também gerenciam a quantidade de alunos matriculados.
+*   **Alunos**: Matrícula, Nome, Sexo, Data de Nascimento, CPF.
+*   **Professores**: Matrícula, Nome, Sexo, Data de Nascimento, CPF.
+*   **Disciplinas**: Nome, Código, Semestre, Professor.
+    *   Inserir/Excluir aluno de uma disciplina.
 
 ### Gestão de Matrículas
 
@@ -57,12 +58,12 @@ ProjetoEscola/
 └── view/             # Interface com o usuário (exibição de dados e coleta de entradas)
 ```
 
-*   **`controller/`**: Contém os arquivos `.c` e `.h` que implementam a lógica de controle para cada entidade (Aluno, Professor, Disciplina, Matrícula, Busca). Eles atuam como intermediários entre a camada de modelo e a camada de visualização.
-*   **`model/`**: Abriga as definições das estruturas de dados (e.g., `Aluno`, `Professor`, `Disciplina`, `Data`, `Matricula`) e as funções que realizam operações de baixo nível sobre esses dados, como cadastro, exclusão, listagem e atualização. A persistência dos dados é feita em memória (arrays estáticos).
-*   **`view/`**: Responsável pela interação direta com o usuário, exibindo menus, solicitando entradas e formatando a saída dos dados. Cada entidade possui sua própria `view` (e.g., `aluno_view.c`, `professor_view.c`).
-*   **`utils/`**: Contém funções de uso geral que não se encaixam especificamente em nenhuma das outras camadas, como `limparConsole()`, `lerOpcao()`, `verificarCPF()`, entre outras.
-*   **`escola.c`**: É o arquivo principal que inicializa o programa, exibe o menu principal e gerencia a navegação entre os diferentes módulos do sistema.
-*   **`Makefile`**: Um script para automatizar o processo de compilação do projeto, facilitando a geração do executável e a limpeza de arquivos temporários.
+*   **`controller/`**: Contém a lógica de controle e manipulação dos dados, interagindo entre a `view` e o `model`.
+*   **`model/`**: Define as estruturas de dados e as operações de persistência/manipulação de baixo nível.
+*   **`view/`**: Responsável pela interface com o usuário, exibindo informações e coletando entradas.
+*   **`utils/`**: Funções utilitárias diversas, como limpeza de console e leitura de opções.
+*   **`escola.c`**: O arquivo principal que orquestra a execução do programa e o menu de opções.
+*   **`Makefile`**: Script para automatizar o processo de compilação do projeto.
 
 ## Como Compilar e Executar
 
@@ -87,11 +88,6 @@ Para compilar e executar o projeto, siga os passos abaixo:
     ```
     O programa exibirá um menu principal interativo, permitindo que você explore todas as funcionalidades do sistema.
 
-5.  **Limpar arquivos de compilação**: Para remover o executável e outros arquivos gerados pela compilação, utilize:
-    ```bash
-    make clean
-    ```
-
 ## Tecnologias Utilizadas
 
 *   **Linguagem**: C
@@ -99,9 +95,7 @@ Para compilar e executar o projeto, siga os passos abaixo:
 
 ## Autor
 
-*   Erick Rocha Nascimento
-*   README gerado por Manus AI
-
-## Licença
-
-Este projeto está licenciado sob a licença MIT. Consulte o arquivo `LICENSE` (se disponível) para mais detalhes.
+* **Erick Rocha Nascimento**  
+🔗 [LinkedIn](https://www.linkedin.com/in/erickrochanascimento) | [GitHub](https://github.com/ErickRochaNascimento)
+* **Gabriel Viniciús**  
+🔗 [LinkedIn](https://www.linkedin.com/in/gabriel-vinici%C3%BAs-8539521b7/) | [GitHub](https://github.com/ProgrammerGV)
