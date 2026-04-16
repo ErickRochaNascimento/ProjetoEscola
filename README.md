@@ -93,6 +93,9 @@ Para compilar e executar o projeto, siga os passos abaixo:
 *   **Linguagem**: C
 *   **Compilador**: GCC (GNU Compiler Collection)
 
+
+* Este projeto foi desenvolvido no âmbito da disciplina **INF029 - Laboratório de Programação** do curso de Graduação Tecnológica em Análise e Desenvolvimento de Sistemas do IFBA – Instituto Federal de Educação, Ciência e Tecnologia da Bahia.
+
 ## Autor
 
 * **Erick Rocha Nascimento**  
