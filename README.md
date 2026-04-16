@@ -2,97 +2,73 @@
 
 ## Descrição
 
-Este projeto consiste em um sistema de gerenciamento para uma escola, desenvolvido em linguagem C. Ele foi projetado para controlar diversas funcionalidades essenciais, como o cadastro de alunos, professores e disciplinas, além de oferecer uma série de relatórios para consulta e análise dos dados. O objetivo principal é demonstrar a aplicação de conceitos de programação modular e boas práticas de desenvolvimento em C.
+O Projeto Escola é um sistema de gerenciamento educacional desenvolvido em linguagem C, projetado para demonstrar a aplicação de princípios de programação modular e boas práticas de desenvolvimento. Ele oferece funcionalidades essenciais para a administração de dados de alunos, professores e disciplinas, além de um conjunto robusto de relatórios para análise e consulta. A arquitetura do sistema segue um padrão que se assemelha ao MVC (Model-View-Controller), promovendo a separação de responsabilidades e facilitando a manutenção e escalabilidade do código.
 
 ## Funcionalidades
 
-As principais funcionalidades implementadas neste sistema incluem:
+O sistema implementa as seguintes funcionalidades principais:
 
-### Cadastro
+### Gestão de Cadastros
 
-*   **Alunos**: Matrícula, Nome, Sexo, Data de Nascimento, CPF.
-*   **Professores**: Matrícula, Nome, Sexo, Data de Nascimento, CPF.
-*   **Disciplinas**: Nome, Código, Semestre, Professor.
-    *   Inserir/Excluir aluno de uma disciplina.
+*   **Alunos**: Cadastro, listagem, atualização e exclusão de alunos, com campos para Matrícula, Nome, Sexo, Data de Nascimento e CPF.
+*   **Professores**: Cadastro, listagem, atualização e exclusão de professores, com campos para Matrícula, Nome, Sexo, Data de Nascimento e CPF.
+*   **Disciplinas**: Cadastro, listagem, atualização e exclusão de disciplinas, incluindo Nome, Código, Semestre e associação a um Professor. As disciplinas também gerenciam a quantidade de alunos matriculados.
 
-### Relatórios
+### Gestão de Matrículas
 
-*   Listar Alunos.
-*   Listar Professores.
-*   Listar Disciplinas (apenas dados da disciplina).
-*   Listar uma disciplina específica (dados da disciplina e alunos matriculados).
-*   Listar Alunos por sexo (Masculino/Feminino).
-*   Listar Alunos ordenados por Nome.
-*   Listar Alunos ordenados por data de nascimento.
-*   Listar Professores por sexo (Masculino/Feminino).
-*   Listar Professores ordenados por Nome.
-*   Listar Professores ordenados por data de nascimento.
-*   Aniversariantes do mês.
-*   Lista de pessoas (professor/aluno) a partir de uma string de busca (mínimo de três letras).
-*   Lista de alunos matriculados em menos de 3 disciplinas.
-*   Lista de Disciplinas, com nome do professor, que extrapolam 40 vagas.
+*   **Matrícula de Alunos em Disciplinas**: Permite vincular alunos a disciplinas, controlando a capacidade das turmas e evitando matrículas duplicadas. As operações de matrícula e exclusão de matrícula atualizam automaticamente os contadores de alunos por disciplina e disciplinas por aluno.
+*   **Exclusão de Matrículas**: Possibilita a remoção de um aluno de uma disciplina específica ou a exclusão de todas as matrículas de um aluno ao ser removido do sistema.
+
+### Relatórios Abrangentes
+
+O sistema oferece uma variedade de relatórios para consulta e análise dos dados:
+
+*   **Listagem Geral**: Alunos, Professores e Disciplinas.
+*   **Listagem Detalhada de Disciplina**: Exibe os dados de uma disciplina específica e todos os alunos nela matriculados.
+*   **Relatórios por Sexo**: Lista Alunos e Professores separados por sexo (Masculino/Feminino).
+*   **Ordenação Alfabética**: Lista Alunos e Professores ordenados por Nome.
+*   **Ordenação por Data de Nascimento**: Lista Alunos e Professores ordenados por data de nascimento.
+*   **Aniversariantes do Mês**: Identifica e lista alunos e professores que fazem aniversário em um mês específico.
+*   **Busca de Pessoas**: Permite buscar alunos e professores por uma string de texto no nome (requer mínimo de três letras).
+*   **Alunos com Poucas Disciplinas**: Lista alunos matriculados em menos de 3 disciplinas.
+*   **Disciplinas com Excesso de Vagas**: Lista disciplinas que excedem 40 vagas (indicando potencial para otimização ou atenção).
 
 ### Validações
 
-*   Validação de campos necessários, como Data de Nascimento e CPF.
+O sistema inclui validações para garantir a integridade dos dados:
+
+*   **CPF**: Validação de formato e consistência.
+*   **Data de Nascimento**: Verificação de datas válidas.
+*   **Semestre**: Validação do formato `AAAA.S` (ex: `2023.1`, `2024.2`).
+*   **Matrículas**: Prevenção de matrículas duplicadas em uma mesma disciplina e controle de capacidade.
 
 ## Estrutura do Projeto
 
-O projeto segue uma estrutura modular, organizada em diretórios para facilitar a manutenção e a reutilização de código:
+O projeto é organizado em diretórios que refletem uma arquitetura modular, facilitando a compreensão, manutenção e expansão:
 
 ```
 ProjetoEscola/
 ├── Makefile
-├── controller/
-│   ├── aluno_controller.c
-│   ├── aluno_controller.h
-│   ├── busca_controller.c
-│   ├── busca_controller.h
-│   ├── disciplina_controller.c
-│   ├── disciplina_controller.h
-│   ├── matricula_controller.c
-│   ├── matricula_controller.h
-│   ├── professor_controller.c
-│   └── professor_controller.h
-├── escola.c
-├── model/
-│   ├── aluno_model.c
-│   ├── aluno_model.h
-│   ├── data_model.c
-│   ├── data_model.h
-│   ├── disciplina_model.c
-│   ├── disciplina_model.h
-│   ├── matricula_model.c
-│   ├── matricula_model.h
-│   ├── professor_model.c
-│   └── professor_model.h
+├── controller/       # Lógica de negócio e orquestração entre Model e View
+├── escola.c          # Ponto de entrada principal e menu de navegação
+├── model/            # Estruturas de dados e lógica de persistência/manipulação de baixo nível
 ├── projeto_escola.exe (gerado após compilação)
-├── utils/
-│   ├── utils.c
-│   └── utils.h
-└── view/
-    ├── aluno_view.c
-    ├── aluno_view.h
-    ├── disciplina_view.c
-    ├── disciplina_view.h
-    ├── matricula_view.c
-    ├── matricula_view.h
-    ├── professor_view.c
-    └── professor_view.h
+├── utils/            # Funções utilitárias diversas (validações, I/O de console)
+└── view/             # Interface com o usuário (exibição de dados e coleta de entradas)
 ```
 
-*   **`controller/`**: Contém a lógica de controle e manipulação dos dados, interagindo entre a `view` e o `model`.
-*   **`model/`**: Define as estruturas de dados e as operações de persistência/manipulação de baixo nível.
-*   **`view/`**: Responsável pela interface com o usuário, exibindo informações e coletando entradas.
-*   **`utils/`**: Funções utilitárias diversas, como limpeza de console e leitura de opções.
-*   **`escola.c`**: O arquivo principal que orquestra a execução do programa e o menu de opções.
-*   **`Makefile`**: Script para automatizar o processo de compilação do projeto.
+*   **`controller/`**: Contém os arquivos `.c` e `.h` que implementam a lógica de controle para cada entidade (Aluno, Professor, Disciplina, Matrícula, Busca). Eles atuam como intermediários entre a camada de modelo e a camada de visualização.
+*   **`model/`**: Abriga as definições das estruturas de dados (e.g., `Aluno`, `Professor`, `Disciplina`, `Data`, `Matricula`) e as funções que realizam operações de baixo nível sobre esses dados, como cadastro, exclusão, listagem e atualização. A persistência dos dados é feita em memória (arrays estáticos).
+*   **`view/`**: Responsável pela interação direta com o usuário, exibindo menus, solicitando entradas e formatando a saída dos dados. Cada entidade possui sua própria `view` (e.g., `aluno_view.c`, `professor_view.c`).
+*   **`utils/`**: Contém funções de uso geral que não se encaixam especificamente em nenhuma das outras camadas, como `limparConsole()`, `lerOpcao()`, `verificarCPF()`, entre outras.
+*   **`escola.c`**: É o arquivo principal que inicializa o programa, exibe o menu principal e gerencia a navegação entre os diferentes módulos do sistema.
+*   **`Makefile`**: Um script para automatizar o processo de compilação do projeto, facilitando a geração do executável e a limpeza de arquivos temporários.
 
 ## Como Compilar e Executar
 
 Para compilar e executar o projeto, siga os passos abaixo:
 
-1.  **Pré-requisitos**: Certifique-se de ter um compilador C (como o GCC) instalado em seu sistema.
+1.  **Pré-requisitos**: Certifique-se de ter um compilador C (como o GCC) instalado em seu sistema operacional.
 
 2.  **Navegue até o diretório do projeto**:
     ```bash
@@ -109,7 +85,7 @@ Para compilar e executar o projeto, siga os passos abaixo:
     ```bash
     ./projeto_escola
     ```
-    O programa exibirá um menu principal, permitindo que você interaja com as funcionalidades do sistema.
+    O programa exibirá um menu principal interativo, permitindo que você explore todas as funcionalidades do sistema.
 
 5.  **Limpar arquivos de compilação**: Para remover o executável e outros arquivos gerados pela compilação, utilize:
     ```bash
@@ -123,7 +99,8 @@ Para compilar e executar o projeto, siga os passos abaixo:
 
 ## Autor
 
-*   Manus AI
+*   Erick Rocha Nascimento
+*   README gerado por Manus AI
 
 ## Licença
 
