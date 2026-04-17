@@ -4,6 +4,7 @@
 #include "aluno_view.h"
 #include "utils.h"
 #include <stdlib.h>
+#include "matricula_model.h"
 
 void ModuloAluno()
 {
